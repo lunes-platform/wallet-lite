@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 
 export const Container = styled.div`
     width: 100%;
@@ -34,6 +34,12 @@ export const ReceiveContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    input {
+        margin: 0;
+    }
+    button {
+        margin-top: 1rem;
+    }
 `
 
 export const Title = styled.h2`
@@ -43,4 +49,14 @@ export const Title = styled.h2`
     font-family: "Noto Sans";
     font-size: 1.5rem;
     margin-top: 1rem;
+`
+export const QrCodeConainer = styled.div`
+    ${() => css`
+        margin: 1rem 0 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: solid 1px #ffffff;
+        cursor: pointer;
+    `}
 `

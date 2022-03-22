@@ -5,7 +5,12 @@ type InputProps = {
     placeholderText?: string
     inputType?: string
     value?: string | number
-    onChange: any
+    onChange?: any
+    disabled?: boolean
+    style?: {
+        width: string
+        margin: string
+    }
 }
 
 const TextInput = (props: InputProps) => {
@@ -17,6 +22,8 @@ const TextInput = (props: InputProps) => {
                 placeholder={props.placeholderText}
                 value={props.value}
                 onChange={props.onChange}
+                disabled={props.disabled}
+                style={props.style}
             />
         </S.InputBox>
     )
