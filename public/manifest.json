@@ -1,25 +1,16 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "icons": [
-    {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+    "short_name": "lite",
+    "name": "Lunes Lite",
+    "manifest_version": 2,
+    "browser_action": {
+        "default_popup": "index.html",
+        "default_title": "Chrome Ext"
     },
-    {
-      "src": "logo192.png",
-      "type": "image/png",
-      "sizes": "192x192"
+    "permissions": ["activeTab"],
+    "icons": {
+        "16": "react16.png",
+        "48": "react48.png",
+        "128": "react128.png"
     },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
-    }
-  ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+    "version": "1.0"
 }
