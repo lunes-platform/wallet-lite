@@ -1,16 +1,22 @@
 {
-    "short_name": "lite",
+    "short_name": "Lite",
     "name": "Lunes Lite",
     "manifest_version": 2,
-    "browser_action": {
-        "default_popup": "index.html",
-        "default_title": "Chrome Ext"
+    "description": "Lunes wallet",
+    "background": {
+        "page": "index.html",
+        "persistent": true
     },
-    "permissions": ["activeTab"],
+    "browser_action": {
+        "default_icon": "react48.png",
+        "default_popup": "index.html"
+    },
+    "permissions": ["management", "cookies", "*://*/*", "activeTab", "storage"],
     "icons": {
         "16": "react16.png",
         "48": "react48.png",
         "128": "react128.png"
     },
-    "version": "1.0"
+    "version": "1.0",
+    "content_security_policy": "script-src 'self' 'sha256-t7j1pGqqtdJ6ksVwUrz21tiZR0uYJOhei4TerYKKiJo='; object-src 'self'"
 }
