@@ -8,7 +8,6 @@ import useTheme from "./hooks/useTheme"
 import Router from "./routes"
 import Navbar from "./components/navbar"
 import Send from "./components/send"
-import Receive from "./components/receive"
 
 const initialvalue: { setOperation: any; setAsset: any } = {
     setAsset: () => {},
@@ -34,7 +33,6 @@ function App() {
             >
                 <MainContainer>
                     {operation === "send" && <Send asset={asset} />}
-                    <Receive />
                     <Navbar />
                     <Router />
                     <GlobalStyles />
