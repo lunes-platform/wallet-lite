@@ -1,20 +1,22 @@
-import { useRef, useEffect } from "react"
+import React, { useRef, useEffect } from "react"
 import QRCode from "easyqrcodejs"
 import Lunes from "../../assets/images/lunes-icon.png"
 import Input from "../../components/textInput"
 import * as S from "./styles"
 import { getAddressFromStorage } from "../../services/lunes"
-import { ButtonConfirm } from "../button"
+import { ButtonCancelTransparent, ButtonConfirm } from "../button"
+
+import { OperationContext } from "../../App"
 
 function Receive() {
     const qrcode = useRef(null)
     const address = getAddressFromStorage()
 
+    const { setOperation } = React.useContext(OperationContext)
+
     useEffect(() => {
         const options = {
             text: address,
-            width: 210,
-            height: 210,
             colorDark: "#000000",
             colorLight: "#ffffff",
             logo: Lunes
@@ -30,20 +32,28 @@ function Receive() {
 
     return (
         <S.Container>
-            <S.CloseButton>x</S.CloseButton>
+            <S.CloseButton onClick={() => setOperation("")}>x</S.CloseButton>
             <S.ReceiveContainer>
                 <S.Title>{`Seu endereço Lunes`}</S.Title>
 
-                <S.QrCodeConainer ref={qrcode}></S.QrCodeConainer>
+                <S.QrCodeConainer
+                    ref={qrcode}
+                    onClick={() =>
+                        window.open(
+                            `https://blockexplorer.lunes.io/address/${getAddressFromStorage()}`,
+                            "_blank"
+                        )
+                    }
+                ></S.QrCodeConainer>
                 <Input
                     value={address}
                     disabled={true}
-                    style={{ width: "227px", margin: "0 auto 1rem" }}
+                    style={{ width: "100%", margin: "0 auto 1rem" }}
                 />
 
                 <ButtonConfirm
                     label="Fechar"
-                    action={() => console.log("fecha")}
+                    action={() => setOperation("")}
                     style={{ width: "227px", margin: "auto" }}
                 />
             </S.ReceiveContainer>

@@ -4330,6 +4330,11 @@ duplexify@^3.4.2, duplexify@^3.6.0:
     readable-stream "^2.0.0"
     stream-shift "^1.0.0"
 
+easyqrcodejs@^4.4.10:
+  version "4.4.10"
+  resolved "https://registry.yarnpkg.com/easyqrcodejs/-/easyqrcodejs-4.4.10.tgz#38e84f2002e94b30415fc1232861465e9ce1c5c6"
+  integrity sha512-DEr/Txdyfo0RsKuC0tX6t72GF5oqNFbnKVL9dTLatL5yiLJaId65BSfa5HKl4FaJt71yRX3DF1sf977FwynWtw==
+
 ee-first@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
@@ -7158,10 +7163,10 @@ lru-cache@^6.0.0:
   dependencies:
     yallist "^4.0.0"
 
-lunes-js-api@^0.31.8:
-  version "0.31.9"
-  resolved "https://registry.yarnpkg.com/lunes-js-api/-/lunes-js-api-0.31.9.tgz#b44f1c14089052b22fe5b038827428cd75c1dfae"
-  integrity sha512-v7tuC6yGEtMDkfUXoKuHMAnlHADN209I3WxMM+Ih9/v705fgMmEsIzCvmVmbw0NZkHVcbvJ/L6bTRuOODBnCGQ==
+lunes-js-api@0.31.8:
+  version "0.31.8"
+  resolved "https://registry.yarnpkg.com/lunes-js-api/-/lunes-js-api-0.31.8.tgz#f8829e2fcbc33ad472cd6af4ac89229d2a6d798b"
+  integrity sha512-KVxe+ef3N/3AasQx8oxRsjqrggNTgVSFop+cXptpSzJ0NTyR8e3gt+ZAFgjXIvAQsPknsbsS4gD4c3MF6WK9PA==
   dependencies:
     bignumber.js "4.1.0"
     crypto-js "3.1.9-1"
@@ -7382,10 +7387,10 @@ minimatch@^3.0.4, minimatch@^3.1.2:
   dependencies:
     brace-expansion "^1.1.7"
 
-minimist@^1.1.1, minimist@^1.2.0, minimist@^1.2.5:
-  version "1.2.5"
-  resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.5.tgz#67d66014b66a6a8aaa0c083c5fd58df4e4e97602"
-  integrity sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==
+minimist@^1.1.1, minimist@^1.2.0, minimist@^1.2.5, minimist@^1.2.6:
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.6.tgz#8637a5b759ea0d6e98702cfb3a9283323c93af44"
+  integrity sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==
 
 minipass-collect@^1.0.2:
   version "1.0.2"
@@ -10767,13 +10772,13 @@ ts-utils@^4.0.2:
   integrity sha512-nLchzdDOiZ93CxZCsY6Od9q0FwFJivRD0qLSL/au6qjoCE3iBdLr5GnvMENOYdS7Z2ThUBHjq+D1UiMq0aYqng==
 
 tsconfig-paths@^3.12.0:
-  version "3.14.0"
-  resolved "https://registry.yarnpkg.com/tsconfig-paths/-/tsconfig-paths-3.14.0.tgz#4fcc48f9ccea8826c41b9ca093479de7f5018976"
-  integrity sha512-cg/1jAZoL57R39+wiw4u/SCC6Ic9Q5NqjBOb+9xISedOYurfog9ZNmKJSxAnb2m/5Bq4lE9lhUcau33Ml8DM0g==
+  version "3.14.1"
+  resolved "https://registry.yarnpkg.com/tsconfig-paths/-/tsconfig-paths-3.14.1.tgz#ba0734599e8ea36c862798e920bcf163277b137a"
+  integrity sha512-fxDhWnFSLt3VuTwtvJt5fpwxBHg5AdKWMsgcPOOIilyjymcYVZoCQF8fvFRezCNfblEXmi+PcM1eYHeOAgXCOQ==
   dependencies:
     "@types/json5" "^0.0.29"
     json5 "^1.0.1"
-    minimist "^1.2.0"
+    minimist "^1.2.6"
     strip-bom "^3.0.0"
 
 tslib@^1.8.1:
