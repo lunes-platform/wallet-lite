@@ -4,7 +4,7 @@ import * as S from "./styles"
 const Navbar = () => {
     return (
         <S.Container>
-            <img src={Logo} />
+            <img src={Logo} alt="logo" />
         </S.Container>
     )
 }
