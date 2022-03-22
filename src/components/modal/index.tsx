@@ -14,7 +14,7 @@ type ModalProps = {
     children: ReactChild
 }
 
-type ModalAlert = {
+type ModalAlertProps = {
     onClose: Function
     type: "success" | "error"
     text: string
@@ -24,6 +24,11 @@ type ModalAlert = {
 type ModalPasswordProps = {
     onClose: Function
     onSuccess: Function
+}
+
+type ModalTransferProps = {
+    onClose: Function
+    txId: string
 }
 
 const Modal = (props: ModalProps) => {
@@ -39,7 +44,7 @@ const colors = {
     error: "#AC2940"
 }
 
-export const ModalAlert = (props: ModalAlert) => {
+export const ModalAlert = (props: ModalAlertProps) => {
     return (
         <Modal>
             <>
@@ -112,6 +117,36 @@ export const ModalPassword = (props: ModalPasswordProps) => {
                         action={() => comparePassword()}
                     />
                 </S.Row>
+            </>
+        </Modal>
+    )
+}
+
+export const ModalTransferSucessful = (props: ModalTransferProps) => {
+    return (
+        <Modal>
+            <>
+                <S.TitleSuccess
+                    style={{
+                        color: "success"
+                    }}
+                >
+                    Atenção
+                </S.TitleSuccess>
+
+                <S.Paragraph>Transação enviada com sucesso!</S.Paragraph>
+                <S.Paragraph>
+                    <S.Link
+                        href={`https://blockexplorer.lunes.io/tx/${props.txId}`}
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        Clique aqui
+                    </S.Link>{" "}
+                    para ver os detalhes
+                </S.Paragraph>
+
+                <ButtonConfirm label="Fechar" action={() => props.onClose()} />
             </>
         </Modal>
     )

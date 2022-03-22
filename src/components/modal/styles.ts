@@ -46,6 +46,14 @@ export const Paragraph = styled.p`
     text-align: center;
 `
 
+export const Link = styled.a`
+    font-size: 1rem;
+    margin-top: 1rem;
+    color: ${({ theme }) => theme.colors.success[500]};
+    text-align: center;
+    text-decoration: none;
+`
+
 export const Row = styled.div`
     width: 100%;
     display: flex;
