@@ -34,7 +34,7 @@ function App() {
             >
                 <MainContainer>
                     {operation === "send" && <Send asset={asset} />}
-                    <Receive />
+                    {operation === "receive" && <Receive />}
                     <Navbar />
                     <Router />
                     <GlobalStyles />
