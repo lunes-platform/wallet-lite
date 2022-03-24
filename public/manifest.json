@@ -2,7 +2,7 @@
     "short_name": "Lite",
     "name": "Lunes Lite",
     "manifest_version": 2,
-    "description": "Lunes wallet",
+    "description": "The fastest, lightest and most practical lunes wallet ever made",
     "background": {
         "page": "index.html",
         "persistent": true
