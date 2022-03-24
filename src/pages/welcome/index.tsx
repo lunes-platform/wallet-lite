@@ -8,13 +8,13 @@ function Welcome() {
     return (
         <S.Container>
             <S.CenterBox>
-                <S.Title>Bem vindo!</S.Title>
+                <S.Title>Welcome!</S.Title>
                 <S.Paragraph>
-                    Clique em Continuar para adicionar sua <span>seed</span>
+                    Click continue to add your <span>seed</span>
                 </S.Paragraph>
 
                 <ButtonConfirm
-                    label="Continuar"
+                    label="Continue"
                     action={() => navigate("/advice")}
                 />
             </S.CenterBox>

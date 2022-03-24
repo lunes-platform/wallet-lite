@@ -54,6 +54,10 @@ export const ActionButton = styled.button`
     cursor: pointer;
     border-radius: 8px;
     margin: 0 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
     img {
         width: 40px;

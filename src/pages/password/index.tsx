@@ -35,31 +35,31 @@ const Pass = () => {
 
     return (
         <S.Container>
-            <S.Title>Senha</S.Title>
+            <S.Title>Password</S.Title>
             <S.InputHolder>
                 <TextInput
-                    labelText="Escolha uma senha"
+                    labelText="Choose a password"
                     inputType="password"
                     onChange={(event: any) =>
                         setNewPassword(event.target.value)
                     }
                 />
                 <TextInput
-                    labelText="Redigite sua senha"
+                    labelText="Type the password again"
                     inputType="password"
                     onChange={(event: any) =>
                         setConfirmPassword(event.target.value)
                     }
                 />
                 <ButtonConfirm
-                    label="Continuar"
+                    label="Continue"
                     action={() => handlePassword()}
                 />
             </S.InputHolder>
 
             {hasError && (
                 <ModalAlert
-                    text="As senhas não coincidem"
+                    text="Passwords don't match"
                     type="error"
                     buttonLabel="OK"
                     onClose={() => setHasError(false)}

@@ -34,7 +34,7 @@ function Receive() {
         <S.Container>
             <S.CloseButton onClick={() => setOperation("")}>x</S.CloseButton>
             <S.ReceiveContainer>
-                <S.Title>{`Seu endereço Lunes`}</S.Title>
+                <S.Title>{`Your Lunes Address`}</S.Title>
 
                 <S.QrCodeConainer
                     ref={qrcode}
@@ -52,7 +52,7 @@ function Receive() {
                 />
 
                 <ButtonConfirm
-                    label="Fechar"
+                    label="Close"
                     action={() => setOperation("")}
                     style={{ width: "227px", margin: "auto" }}
                 />

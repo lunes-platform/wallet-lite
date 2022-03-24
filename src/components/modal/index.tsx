@@ -98,22 +98,22 @@ export const ModalPassword = (props: ModalPasswordProps) => {
                     ModalAlert({
                         buttonLabel: "OK",
                         onClose: () => setHasError(false),
-                        text: "Senha incorreta",
+                        text: "Incorrect password",
                         type: "error"
                     })}
-                <S.TitleSuccess>Atenção</S.TitleSuccess>
-                <S.Paragraph>Digite sua senha para continuar</S.Paragraph>
+                <S.TitleSuccess>Attention</S.TitleSuccess>
+                <S.Paragraph>Enter your password to continue</S.Paragraph>
                 <Input
                     inputType="password"
                     onChange={(event: any) => setPassword(event.target.value)}
                 />
                 <S.Row>
                     <ButtonCancelTransparent
-                        label="Cancelar"
+                        label="Cancel"
                         action={props.onClose}
                     />
                     <ButtonConfirm
-                        label="Confirmar"
+                        label="Confirm"
                         action={() => comparePassword()}
                     />
                 </S.Row>
@@ -131,22 +131,22 @@ export const ModalTransferSucessful = (props: ModalTransferProps) => {
                         color: "success"
                     }}
                 >
-                    Atenção
+                    Attention
                 </S.TitleSuccess>
 
-                <S.Paragraph>Transação enviada com sucesso!</S.Paragraph>
+                <S.Paragraph>Transaction sent successfully!</S.Paragraph>
                 <S.Paragraph>
                     <S.Link
                         href={`https://blockexplorer.lunes.io/tx/${props.txId}`}
                         target="_blank"
                         rel="noreferrer"
                     >
-                        Clique aqui
+                        Click here
                     </S.Link>{" "}
-                    para ver os detalhes
+                    to see the details
                 </S.Paragraph>
 
-                <ButtonConfirm label="Fechar" action={() => props.onClose()} />
+                <ButtonConfirm label="Close" action={() => props.onClose()} />
             </>
         </Modal>
     )

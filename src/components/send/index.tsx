@@ -114,30 +114,30 @@ function Send(props: SendProps) {
 
             <S.SendContainer>
                 <S.Icon src={LunesIcon} alt="Icon" />
-                <S.Title>{`Enviar ${props?.asset?.name || "Lunes"}`}</S.Title>
+                <S.Title>{`Send ${props?.asset?.name || "Lunes"}`}</S.Title>
 
                 <Input
-                    placeholderText="Endereço da carteira Lunes"
+                    placeholderText="Receiver address"
                     value={receiver}
                     onChange={(event: any) => setReceiver(event.target.value)}
                 />
                 <Input
                     inputType="number"
-                    placeholderText="Valor a ser enviado"
+                    placeholderText="Amount"
                     value={amount}
                     onChange={(event: any) => setAmount(event.target.value)}
                 />
 
                 <S.TransferDetails>
                     <S.Row>
-                        <S.Label>Saldo disponível</S.Label>
+                        <S.Label>Available balance</S.Label>
                         <S.Label>{`${balance} ${
                             props.asset?.name || "Lunes"
                         }`}</S.Label>
                     </S.Row>
 
                     <S.Row>
-                        <S.Label>Taxa da rede</S.Label>
+                        <S.Label>Fee</S.Label>
                         <S.Label>{`${toBiggestCoinUnit(
                             fee,
                             8
@@ -152,12 +152,12 @@ function Send(props: SendProps) {
 
                 <ButtonConfirm
                     action={() => setModal("password")}
-                    label="Confirmar"
+                    label="Confirm"
                     style={{ width: "100%", margin: "1rem 0 0.5rem" }}
                 />
                 <ButtonCancelTransparent
                     action={() => setOperation("")}
-                    label="Cancelar"
+                    label="Cancel"
                 />
             </S.SendContainer>
             {txId && (

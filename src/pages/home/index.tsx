@@ -83,11 +83,11 @@ function Home() {
             <S.ButtonHolder>
                 <S.ActionButton onClick={() => setOperation("receive")}>
                     <img src={Receive} alt="receive" />
-                    <span>Receber</span>
+                    <span>Receive</span>
                 </S.ActionButton>
                 <S.ActionButton onClick={() => setOperation("send")}>
                     <img src={Send} />
-                    <span>Enviar</span>
+                    <span>Send</span>
                 </S.ActionButton>
                 <S.ActionButton
                     onClick={() =>
@@ -104,7 +104,7 @@ function Home() {
 
             <S.AssetsBox>
                 {assetBalances.length > 0 && (
-                    <S.AssetsTitle>Seus tokens</S.AssetsTitle>
+                    <S.AssetsTitle>Your tokens</S.AssetsTitle>
                 )}
                 <S.AssetButtonHolder>
                     {assetBalances.map((asset: any, index: number) => {

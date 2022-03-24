@@ -18,7 +18,7 @@ const Seed = () => {
 
     return (
         <S.Container>
-            <S.InputSeedTitle>Digite sua seed</S.InputSeedTitle>
+            <S.InputSeedTitle>Enter your seed</S.InputSeedTitle>
             <S.InputSeed
                 rows={5}
                 value={seed}
@@ -31,7 +31,7 @@ const Seed = () => {
                         const generated = newSeed()
                         setSeed(generated.phrase)
                     }}
-                    label="Gerar nova"
+                    label="Generate new"
                 />
                 <ButtonConfirm
                     action={() => {
@@ -49,15 +49,15 @@ const Seed = () => {
                         )
                         setModal("confirm")
                     }}
-                    label="Validar"
+                    label="Validate"
                 />
             </S.ButtonHolder>
 
             {modal === "confirm" && (
                 <ModalAlert
-                    text="Sua seed foi adicionada com sucesso!"
+                    text="Your seed has been enteded successfully!"
                     type="success"
-                    buttonLabel="Continuar"
+                    buttonLabel="Continue"
                     onClose={() => {
                         setModal("")
                         navigate("/")
@@ -67,9 +67,9 @@ const Seed = () => {
 
             {modal === "seed-invalid" && (
                 <ModalAlert
-                    text="A seed digitada é inválida"
+                    text="The seed entered is invalid"
                     type="error"
-                    buttonLabel="Tentar de novo"
+                    buttonLabel="Try again"
                     onClose={() => {
                         setModal("")
                     }}
