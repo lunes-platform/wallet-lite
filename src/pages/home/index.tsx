@@ -44,7 +44,7 @@ function Home() {
         getAssets()
 
         if (!encrypted || encrypted === null) {
-            navigate("advice")
+            navigate("/welcome")
             return
         }
 
