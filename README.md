@@ -16,6 +16,7 @@ Lunes Lite will be available on [Chrome Web Store]("#") (Coming soon)
 -   Step by step
     -   Clone repository
     -   `npm install` or `yarn`
+    -   `export INLINE_RUNTIME_CHUNK=false;`
     -   `npm run build` or `yarn build`
     -   Open `chrome://settings/help`
     -   Enable developer mode
