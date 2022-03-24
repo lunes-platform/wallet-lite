@@ -1,46 +1,56 @@
-# Getting Started with Create React App
+# **Lunes Wallet Lite**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Offered by: [Lunes](http://lunes.io)**
 
-## Available Scripts
+## **Installing**
 
-In the project directory, you can run:
+### **Web store:**
 
-### `npm start`
+Lunes Lite will be available on [Chrome Web Store]("#") (Coming soon)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### **Build:**
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+-   Requisites
+    -   NodeJS (16 or higher)
+    -   Git
+-   Step by step
+    -   Clone repository
+    -   `npm install` or `yarn`
+    -   `npm run build` or `yarn build`
+    -   Open `chrome://settings/help`
+    -   Enable developer mode
+    -   Click in "Load uncompressed"
+    -   Select build folder in project root
+    -   Enjoy
 
-### `npm test`
+## **Overview**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![icon](/public/react16.png) Lunes Wallet in your browser! ![icon](/public/react16.png)
 
-### `npm run build`
+Lunes Wallet is a multi-service, decentralized wallet with the convenience of internet banking, the freedom of cryptocurrencies, blockchain security and ESG practices.
+At Lunes Wallet, you can use your cryptocurrencies in the various services available on the platform, giving greater utility to your digital assets with a totally innovative and reputable design.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+🚀 WHY USE THE LUNES WALLET?
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+-   ✅ Send, receive and store your cryptocurrencies easily and securely;
+-   ✅ It is not necessary to have a bank account;
+-   ✅ Receive cryptocurrencies without the need for a machine in your business.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## **Are you a developer?**
 
-### `npm run eject`
+You can collaborate with this project. Read our [Collaboration Guide](https://github.com/lunes-platform/lunes-lite/blob/master/CONTRIBUTING.md) to learn how.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Found a bug or want to propose a feature?
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+[Click here](https://github.com/lunes-platform/lunes-lite/issues) to open an issue
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## **Tems, policies and contact**
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Read our [TERMS AND CONDITIONS OF USE](https://lunes.io/pt-br/privacidade-e-termos/)
 
-## Learn More
+Support: [support@lunes.io](mailto:support@lunes.io)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Developers:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+-   [admin@lunes.io](mailto:admin@lunes.io)
+-   [development@lunes.io](mailto:development@lunes.io)
