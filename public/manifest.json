@@ -17,6 +17,6 @@
         "48": "react48.png",
         "128": "react128.png"
     },
-    "version": "1.0",
+    "version": "0.0.1",
     "content_security_policy": "script-src 'self' 'sha256-t7j1pGqqtdJ6ksVwUrz21tiZR0uYJOhei4TerYKKiJo='; object-src 'self'"
 }
