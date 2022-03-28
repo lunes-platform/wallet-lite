@@ -37,16 +37,16 @@ function Home() {
     useEffect(() => {
         const encrypted = getEncryptedSeedFromStorageOrNull()
 
+        if (!encrypted || encrypted === null) {
+            navigate("/welcome")
+            return
+        }
+
         async function getAssets() {
             setAssetBalances(await getAssetsBalance(address))
         }
 
         getAssets()
-
-        if (!encrypted || encrypted === null) {
-            navigate("/welcome")
-            return
-        }
 
         handleLunesBalance()
     }, [])
