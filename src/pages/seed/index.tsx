@@ -55,7 +55,7 @@ const Seed = () => {
 
             {modal === "confirm" && (
                 <ModalAlert
-                    text="Your seed has been enteded successfully!"
+                    text="Your seed has been inserted successfully!"
                     type="success"
                     buttonLabel="Continue"
                     onClose={() => {
