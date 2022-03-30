@@ -86,13 +86,13 @@ function Send(props: SendProps) {
 
         if (Number(amount) <= 0) {
             setHashSendError(true)
-            setErrorText("O valor a enviar deve ser maior que 0")
+            setErrorText("The value must be greater than 0")
             return
         }
 
         if (!receiver) {
             setHashSendError(true)
-            setErrorText("Insira o endereço do destinatário")
+            setErrorText("Enter the receiver address")
             return
         }
 
@@ -103,7 +103,7 @@ function Send(props: SendProps) {
             .catch((error) => {
                 setHashSendError(true)
                 setErrorText(
-                    "Erro ao efetuar transação. Verifique seu saldo e sua conexão de rede e tente novamente."
+                    "Transaction error. Check your balance and network connection and try again."
                 )
             })
     }

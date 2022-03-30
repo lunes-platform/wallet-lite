@@ -53,7 +53,7 @@ export const ModalAlert = (props: ModalAlertProps) => {
                         color: colors[props.type]
                     }}
                 >
-                    Atenção
+                    Attention
                 </S.TitleSuccess>
                 <S.Paragraph>{props.text}</S.Paragraph>
 
