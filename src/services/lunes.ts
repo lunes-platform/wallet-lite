@@ -4,23 +4,9 @@ import { TransferPayload, TransferResponse } from "../types/assets.d"
 import { decryptAes } from "./cryptograpy"
 import { generateMnemonic, validateMnemonic } from "bip39"
 
-const config = {
-    coinSymbol: "LUNES",
-    coinName: "Lunes",
-    apiUrl: "https://lunesnode.lunes.io",
-    APICONFIG: {
-        minimumSeedLength: 25,
-        requestOffset: 0,
-        requestLimit: 100,
-        logLevel: "warning",
-        timeDiff: 0,
-        networkByte: "1".charCodeAt(0),
-        nodeAddress: "https://lunesnode.lunes.io",
-        matcherAddress: "https://lunesnode.lunes.io/matcher"
-    }
-}
+import { config } from "../config/lunes.config"
 
-const lunes = create(config.APICONFIG)
+const lunes = create(config[localStorage.getItem("NETWORK") || "mainnet"])
 
 export const newSeed = () => {
     return { phrase: generateMnemonic() }
