@@ -3,7 +3,6 @@ import Send from "../../assets/images/money-send.png"
 import Explorer from "../../assets/images/explorer.png"
 
 import LunesIcon from "../../assets/images/lunes-icon.png"
-import AssetDefaultIcon from "../../assets/images/asset-default.png"
 
 import { useNavigate } from "react-router-dom"
 
@@ -19,6 +18,10 @@ import {
     getLunesBalance
 } from "../../services/lunes"
 import { toBiggestCoinUnit } from "../../utils/amountConverter"
+import { getIcon } from "../../utils/getIconUrl"
+
+// types
+import { Asset } from "../../types/assets"
 
 function Home() {
     const navigate = useNavigate()
@@ -60,7 +63,11 @@ function Home() {
             <S.BoxBalance>
                 <S.LunesButton>
                     <img
-                        src={LunesIcon}
+                        src={
+                            selectedAsset.issueTransaction.name
+                                ? getIcon(selectedAsset.issueTransaction.name)
+                                : LunesIcon
+                        }
                         onClick={() => {
                             handleLunesBalance()
                             setAsset({})
@@ -107,7 +114,7 @@ function Home() {
                     <S.AssetsTitle>Your tokens</S.AssetsTitle>
                 )}
                 <S.AssetButtonHolder>
-                    {assetBalances.map((asset: any, index: number) => {
+                    {assetBalances.map((asset: Asset, index: number) => {
                         return (
                             <S.AssetButton
                                 key={index}
@@ -122,7 +129,9 @@ function Home() {
                                     )
                                 }}
                             >
-                                <img src={asset.iconUrl || AssetDefaultIcon} />
+                                <img
+                                    src={getIcon(asset.issueTransaction.name)}
+                                />
                                 <span>{asset.issueTransaction.name}</span>
                             </S.AssetButton>
                         )

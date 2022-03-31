@@ -27,7 +27,6 @@ export const MainContainer = styled.div`
     height: 580px;
     background-color: ${({ theme }) => theme.colors.themeColors[500]};
     color: ${({ theme }) => theme.colors.themeColors[100]};
-    border-radius: 8px;
     margin: 0 auto;
     box-sizing: border-box;
     position: relative;

@@ -23,6 +23,10 @@ export const LunesButton = styled.button`
     outline: none;
     border-radius: 50px;
     cursor: pointer;
+    img {
+        width: 64px;
+        height: 64px;
+    }
 `
 
 export const BalanceText = styled.h1`

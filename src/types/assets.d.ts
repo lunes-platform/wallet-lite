@@ -1,8 +1,23 @@
 export interface Asset {
-    name: string
-    symbol: string
     assetId: string
-    iconUrl?: string
+    balance: number
+    issueTransaction: {
+        assetId: string
+        decimals: number
+        description: string
+        fee: number
+        id: string
+        name: string
+        quantity: number
+        reissuable: boolean
+        sender: string
+        senderPublicKey: string
+        signature: string
+        timestamp: number
+        type: number
+    }
+    quantity: number
+    reissuable: boolean
 }
 
 export interface TransferPayload {
