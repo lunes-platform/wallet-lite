@@ -1,5 +1,5 @@
 import assetDefault from "./asset-default.png"
-import lunes_badge from "./lunes_badge.png"
+import lunes_badge from "./lunes-badge.png"
 import gold_mining from "./gold-mining.png"
 import up_coin from "./up-coin.png"
 import lbrl from "./lbrl.png"
