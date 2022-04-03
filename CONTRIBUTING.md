@@ -20,32 +20,33 @@ why was it modified?
 
 #issue
 ```
+
 ### **Types**
 
-- **fixed** Fix a bug
-- **added** Add a new feature
-- **removed** Remove a peace of code
-- **updated** Update any thing. e.g. feature, piece, refact
+-   **fixed** Fix a bug
+-   **added** Add a new feature
+-   **removed** Remove a peace of code
+-   **updated** Update any thing. e.g. feature, piece, refact
 
 ### **Semantic Version**
 
-- **added** -> _Major_
-- **updated** -> _Minor_
-- **fixed** -> _Patch_
+-   **added** -> _Major_
+-   **updated** -> _Minor_
+-   **fixed** -> _Patch_
 
 ---
 
 ## References
 
-- [Good Practices](https://bestpractices.coreinfrastructure.org/pt-BR)
-- [Semantic Versioning](https://semver.org/lang/pt-BR/)
-- [More about Versioning](http://www.modelcvs.org/versioning/)
-- [Versioning Automate](https://bhuwanupadhyay.github.io/2020/04/applying-semantic-versioning-with-git-repository/)
-- [Conventional Commit](https://www.conventionalcommits.org/en/v1.0.0-beta.2/#why-use-conventional-commits)
-- [Default Angular Commit](https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#-commit-message-guidelines)
-- [Global hook for repositories](https://docs.gitlab.com/ce/administration/server_hooks.html#set-a-global-server-hook-for-all-repositories)
-- [More about Commits](https://chris.beams.io/posts/git-commit/)
-- [Quick Actions for Commits](https://docs.gitlab.com/ee/user/project/quick_actions.html)
-- [Commits examples](https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit#)
-- [Full Tutorial Add Convetional Commit as default](https://prahladyeri.com/blog/2019/06/how-to-enforce-conventional-commit-messages-using-git-hooks.html)
-- [Create a global git commit hook](https://coderwall.com/p/jp7d5q/create-a-global-git-commit-hook)
+-   [Good Practices](https://bestpractices.coreinfrastructure.org/pt-BR)
+-   [Semantic Versioning](https://semver.org/lang/pt-BR/)
+-   [More about Versioning](http://www.modelcvs.org/versioning/)
+-   [Versioning Automate](https://bhuwanupadhyay.github.io/2020/04/applying-semantic-versioning-with-git-repository/)
+-   [Conventional Commit](https://www.conventionalcommits.org/en/v1.0.0-beta.2/#why-use-conventional-commits)
+-   [Default Angular Commit](https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#-commit-message-guidelines)
+-   [Global hook for repositories](https://docs.gitlab.com/ce/administration/server_hooks.html#set-a-global-server-hook-for-all-repositories)
+-   [More about Commits](https://chris.beams.io/posts/git-commit/)
+-   [Quick Actions for Commits](https://docs.gitlab.com/ee/user/project/quick_actions.html)
+-   [Commits examples](https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit#)
+-   [Full Tutorial Add Convetional Commit as default](https://prahladyeri.com/blog/2019/06/how-to-enforce-conventional-commit-messages-using-git-hooks.html)
+-   [Create a global git commit hook](https://coderwall.com/p/jp7d5q/create-a-global-git-commit-hook)
