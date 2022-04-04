@@ -6,7 +6,7 @@
 
 ### **Web store:**
 
-Lunes Lite will be available on [Chrome Web Store](https://chrome.google.com/webstore/detail/lunes-lite/lpobojhglniknpdkecomjkkjdlkdabhk?hl=pt-BR)
+Lunes Lite will be available on [Chrome Web Store]("#") (Coming soon)
 
 ### **Build:**
 
