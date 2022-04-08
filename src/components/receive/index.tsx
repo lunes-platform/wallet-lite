@@ -52,7 +52,7 @@ function Receive() {
                 />
 
                 <ButtonConfirm
-                    label="Close"
+                    label="Copy"
                     action={() => setOperation("")}
                     style={{ width: "263px", margin: "auto" }}
                 />
