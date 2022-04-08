@@ -2,9 +2,11 @@ import React, { useRef, useEffect } from "react"
 import QRCode from "easyqrcodejs"
 import Lunes from "../../assets/images/lunes-icon.png"
 import Input from "../../components/textInput"
-import * as S from "./styles"
+import * as Styles from "./styles"
 import { getAddressFromStorage } from "../../services/lunes"
 import { ButtonCancelTransparent, ButtonConfirm } from "../button"
+
+import toastMessage from "../toast"
 
 import { OperationContext } from "../../App"
 
@@ -30,21 +32,23 @@ function Receive() {
         }
     }, [address])
 
-    return (
-        <S.Container>
-            <S.CloseButton onClick={() => setOperation("")}>x</S.CloseButton>
-            <S.ReceiveContainer>
-                <S.Title>{`Your Lunes Address`}</S.Title>
+    function copyToClipboard() {
+        toastMessage("Address copied to clipboard", "success")
+        navigator.clipboard.writeText(address)
+    }
 
-                <S.QrCodeConainer
+    return (
+        <Styles.Container>
+            <Styles.CloseButton onClick={() => setOperation("")}>
+                x
+            </Styles.CloseButton>
+            <Styles.ReceiveContainer>
+                <Styles.Title>{`Your Lunes Address`}</Styles.Title>
+
+                <Styles.QrCodeConainer
                     ref={qrcode}
-                    onClick={() =>
-                        window.open(
-                            `https://blockexplorer.lunes.io/address/${getAddressFromStorage()}`,
-                            "_blank"
-                        )
-                    }
-                ></S.QrCodeConainer>
+                    onClick={() => copyToClipboard()}
+                ></Styles.QrCodeConainer>
                 <Input
                     value={address}
                     disabled={true}
@@ -53,7 +57,7 @@ function Receive() {
 
                 <ButtonConfirm
                     label="Copy"
-                    action={() => setOperation("")}
+                    action={() => copyToClipboard()}
                     style={{ width: "263px", margin: "auto" }}
                 />
 
@@ -62,8 +66,8 @@ function Receive() {
                     action={() => setOperation("")}
                     style={{ margin: "0", width: "auto" }}
                 />
-            </S.ReceiveContainer>
-        </S.Container>
+            </Styles.ReceiveContainer>
+        </Styles.Container>
     )
 }
 
