@@ -48,14 +48,15 @@ function Receive() {
                 <Input
                     value={address}
                     disabled={true}
-                    style={{ width: "100%", margin: "0 auto 1rem" }}
+                    style={{ width: "265px", margin: "0 auto 1rem" }}
                 />
 
                 <ButtonConfirm
                     label="Close"
                     action={() => setOperation("")}
-                    style={{ width: "227px", margin: "auto" }}
+                    style={{ width: "263px", margin: "auto" }}
                 />
+                    style={{ margin: "0", width: "auto" }}
             </S.ReceiveContainer>
         </S.Container>
     )
