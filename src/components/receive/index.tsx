@@ -56,7 +56,12 @@ function Receive() {
                     action={() => setOperation("")}
                     style={{ width: "263px", margin: "auto" }}
                 />
+
+                <ButtonCancelTransparent
+                    label="Back"
+                    action={() => setOperation("")}
                     style={{ margin: "0", width: "auto" }}
+                />
             </S.ReceiveContainer>
         </S.Container>
     )
