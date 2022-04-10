@@ -35,7 +35,10 @@ export const ButtonCancel = (props: ButtonProps) => {
 
 export const ButtonCancelTransparent = (props: ButtonProps) => {
     return (
-        <S.ButtonCancelTransparent onClick={() => props.action()}>
+        <S.ButtonCancelTransparent
+            onClick={() => props.action()}
+            style={props.style}
+        >
             {props.label}
         </S.ButtonCancelTransparent>
     )

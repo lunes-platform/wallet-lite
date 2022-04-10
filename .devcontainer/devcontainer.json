@@ -1,6 +1,7 @@
 {
+    "name": "Existing Dockerfile",
     "context": "..",
-    "dockerFile": "../Dockerfile",
-    "extensions": ["Tyriar.sort-lines"],
+    "dockerFile": "./dockerfile",
+    "extensions": ["esbenp.prettier-vscode", "Tyriar.sort-lines"],
     "postCreateCommand": "yarn install"
 }
