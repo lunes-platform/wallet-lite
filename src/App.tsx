@@ -1,5 +1,8 @@
 import React, { useState } from "react"
 
+import { ToastContainer } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
+
 import { ThemeProvider } from "styled-components"
 import { MainContainer, GlobalStyles } from "./styles/globalStyles"
 
@@ -40,6 +43,7 @@ function App() {
                     <GlobalStyles />
                 </MainContainer>
             </OperationContext.Provider>
+            <ToastContainer />
         </ThemeProvider>
     )
 }
