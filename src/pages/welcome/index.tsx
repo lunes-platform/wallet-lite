@@ -1,7 +1,6 @@
-import { useNavigate } from "react-router-dom"
-
-import * as S from "./styles"
 import { ButtonConfirm } from "../../components/button"
+import { useNavigate } from "react-router-dom"
+import * as S from "./styles"
 
 function Welcome() {
     const navigate = useNavigate()

@@ -1,11 +1,10 @@
-import TextInput from "../../components/textInput"
 import { ButtonConfirm } from "../../components/button/index"
-
-import * as S from "./styles"
+import { encryptSha512 } from "../../services/cryptograpy"
+import { ModalAlert } from "../../components/modal"
+import TextInput from "../../components/textInput"
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
-import { ModalAlert } from "../../components/modal"
-import { encryptSha512 } from "../../services/cryptograpy"
+import * as S from "./styles"
 
 const Pass = () => {
     const navigate = useNavigate()

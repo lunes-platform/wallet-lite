@@ -1,12 +1,9 @@
-import { useState } from "react"
-import { useNavigate, useLocation } from "react-router-dom"
-import { encryptAes } from "../../services/cryptograpy"
-
 import { ButtonNeutral, ButtonConfirm } from "../../components/button/index"
-import { ModalAlert } from "../../components/modal/index"
-
 import { decodeWallet, newSeed, validateSeed } from "../../services/lunes"
-
+import { useNavigate, useLocation } from "react-router-dom"
+import { ModalAlert } from "../../components/modal/index"
+import { encryptAes } from "../../services/cryptograpy"
+import { useState } from "react"
 import * as S from "./styles"
 
 const Seed = () => {

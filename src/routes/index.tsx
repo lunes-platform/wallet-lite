@@ -1,13 +1,12 @@
+import { HashRouter, Route, Routes } from "react-router-dom"
 import React from "react"
 
-import { HashRouter, Route, Routes } from "react-router-dom"
-
 // Routes
+import Password from "../pages/password"
+import Welcome from "../pages/welcome"
+import Advice from "../pages/advice"
 import Home from "../pages/home"
 import Seed from "../pages/seed"
-import Password from "../pages/password"
-import Advice from "../pages/advice"
-import Welcome from "../pages/welcome"
 
 export default function Router() {
     return (

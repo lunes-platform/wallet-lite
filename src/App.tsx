@@ -1,17 +1,13 @@
-import React, { useState } from "react"
-
+import { MainContainer, GlobalStyles } from "./styles/globalStyles"
+import { ThemeProvider } from "styled-components"
 import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
-
-import { ThemeProvider } from "styled-components"
-import { MainContainer, GlobalStyles } from "./styles/globalStyles"
-
-import useTheme from "./hooks/useTheme"
-
-import Router from "./routes"
-import Navbar from "./components/navbar"
-import Send from "./components/send"
 import Receive from "./components/receive"
+import Navbar from "./components/navbar"
+import React, { useState } from "react"
+import useTheme from "./hooks/useTheme"
+import Send from "./components/send"
+import Router from "./routes"
 
 const initialvalue: { setOperation: any; setAsset: any } = {
     setAsset: () => {},

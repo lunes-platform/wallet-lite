@@ -1,27 +1,20 @@
+import { toBiggestCoinUnit } from "../../utils/amountConverter"
 import Receive from "../../assets/images/money-recive.png"
-import Send from "../../assets/images/money-send.png"
-import Explorer from "../../assets/images/explorer.png"
-
 import LunesIcon from "../../assets/images/lunes-icon.png"
-
-import { useNavigate } from "react-router-dom"
-
-import * as S from "./styles"
-
-import { OperationContext } from "../../App"
+import Explorer from "../../assets/images/explorer.png"
+import Send from "../../assets/images/money-send.png"
 import React, { useEffect, useState } from "react"
-
+import { getIcon } from "../../utils/getIconUrl"
+import { useNavigate } from "react-router-dom"
+import { OperationContext } from "../../App"
+import { Asset } from "../../types/assets"
+import * as S from "./styles"
 import {
     getAddressFromStorage,
     getAssetsBalance,
     getEncryptedSeedFromStorageOrNull,
     getLunesBalance
 } from "../../services/lunes"
-import { toBiggestCoinUnit } from "../../utils/amountConverter"
-import { getIcon } from "../../utils/getIconUrl"
-
-// types
-import { Asset } from "../../types/assets"
 
 function Home() {
     const navigate = useNavigate()
