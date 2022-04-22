@@ -1,14 +1,9 @@
-import Theme from "../styles/index"
-
-const userPreferences = () => {
-    return {
-        theme: "dark"
-    }
-}
-
 const useTheme = () => {
-    const preferences = userPreferences()
-    return Theme[preferences.theme === "dark" ? "dark" : "light"]
+    const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
+    if (darkThemeMq.matches || localStorage.getItem("useDarkTheme")) {
+        return "dark"
+    }
+    return "light"
 }
 
 export default useTheme
