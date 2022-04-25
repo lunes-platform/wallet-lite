@@ -1,31 +1,77 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-smooth: always;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-    font-family: "Inter", sans-serif;
+  font-smooth: always;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-family: "Inter", sans-serif !important;
 }
 
 .light {
-    background-color: white;
-    color: black;
+  background-color: #ffffff;
+  color: #060203;
 }
 
 .dark {
-    background-color: black;
-    color: white;
+  background-color: black;
+  color: white;
 }
 
 .main {
-    width: 360px;
-    height: 640px;
-    border: solid 1px #ccc;
-    border-radius: 0 0 24px 24px;
-    margin: 0 auto;
+  width: 360px;
+  height: 640px;
+  border: solid 1px #ccc;
+  margin: 0 auto;
+  position: relative;
 }
+
+.header {
+  width: 100%;
+  height: 72px;
+  padding: 8px 16px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.02);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gesture-button {
+  background-color: #060203;
+  position: absolute;
+  bottom: 6px;
+  left: calc(50% - 36px);
+  width: 72px;
+  height: 3px;
+  border-radius: 5px;
+}
+
+.select {
+  border: none;
+  color: #1a1a1a;
+  outline: none;
+  font-size: 1rem;
+  background-color: transparent;
+  width: 50px;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background-image: url(../assets/images/arrow-down.svg);
+  background-repeat: no-repeat;
+  background-position: right center;
+  cursor: pointer;
+}
+
+.select:active {
+  background-image: url(../assets/images/arrow-up.svg);
+}
+
+/*# sourceMappingURL=index.css.map */

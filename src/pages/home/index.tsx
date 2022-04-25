@@ -1,8 +1,8 @@
-import "./styles.css"
+
 
 const Home = () => {
     return (
-        <div className="container">
+        <div>
             <h1>Hello World 3</h1>
         </div>
     )
