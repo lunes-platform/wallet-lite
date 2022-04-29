@@ -62,8 +62,8 @@ $color-themeColor-800: #6c38ff;
 // Fonts
 $font-family-brand: "Space Grotesk";
 $font-family-base: "Inter";
-$font-size-xxxs: 8px;
-$font-size-xxs: 12px;
+$font-size-xxxs: 0.9rem;
+$font-size-xxs: 1rem;
 $font-size-xs: 16px;
 $font-size-sm: 18px;
 $font-size-md: 24px;
@@ -75,7 +75,7 @@ $font-size-xxxl: 56px;
 $font-weight-thin: thin;
 $font-weight-extralight: extralight;
 $font-weight-light: light;
-$font-weight-regular: regular;
+$font-weight-regular: 500;
 $font-weight-medium: medium;
 $font-weight-semibold: semibold;
 $font-weight-bold: bold;
@@ -83,14 +83,15 @@ $font-weight-extrabold: extrabold;
 $font-weight-black: black;
 
 $font-line-height-height: 100%;
-$font-line-height-compact: 120%;
-$font-line-height-far: 148%;
+$font-line-height-compact: 125%;
+$font-line-height-far: 150%;
 $font-line-height-further: 200%;
 
 $font-letterspacing-none: 0%;
 
 // Spacing
 $spacing-squish-nano: 8px 16px;
+$spacing-squish-xs: 24px 16px;
 
 // Shadow
 $shadow-level-1: 0px 4px 8px rgba(0, 0, 0, 0.02);

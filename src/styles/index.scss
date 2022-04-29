@@ -6,6 +6,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    transition: linear 0.2s;
 }
 
 body {
@@ -29,10 +30,35 @@ body {
 
 .main {
     width: 360px;
-    height: 640px;
+    height: 580px;
     border: solid 1px #ccc;
     margin: 0 auto;
     position: relative;
+}
+
+// Flex
+.d-flex {
+    display: flex;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-space-between {
+    justify-content: space-between;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.text-center {
+    text-align: center;
 }
 
 // Components
@@ -40,14 +66,98 @@ body {
     width: 100%;
     height: 72px;
     padding: $spacing-squish-nano;
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
     box-shadow: $shadow-level-1;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+}
+
+.container-header {
+    width: 100%;
+    padding: 18.82px 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.select {
+    border: none;
+    outline: none;
+    font-size: $font-size-xxxs;
+    background-color: transparent;
+    width: 50px;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background-image: url(../assets/images/arrow-down.svg);
+    background-repeat: no-repeat;
+    background-position: right center;
+    color: inherit;
+    cursor: pointer;
+
+    option {
+        color: #000000;
+    }
+}
+
+.select:active {
+    background-image: url(../assets/images/arrow-up.svg);
+}
+
+.input-text-holder {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+    position: relative;
+}
+
+.input-label {
+    font-size: 0.9rem;
+    color: #1a1a1a;
+    font-weight: 500;
+}
+
+.input-text {
+    width: 100%;
+    padding: 17px 16px;
+    background-color: #f9f9f9;
+    border-radius: 16px;
+    border: none;
+    color: #8a8a8e;
+    margin-top: 6px;
+    font-size: 0.89rem; // 14px
+    line-height: 100%;
+
+    &::placeholder {
+        color: #8a8a8e;
+    }
+
+    &:focus {
+        outline: solid 1px $color-themeColor-800;
+    }
+}
+
+.password-visibility-switch {
+    padding: 2px 3px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 38px;
+    border-radius: 50%;
+
+    &:active {
+        opacity: 0.33;
+        background-color: #000000;
+    }
 }
 
 .gesture-button {
@@ -60,22 +170,141 @@ body {
     border-radius: 5px;
 }
 
-.select {
-    border: none;
+.title-h1 {
+    font-family: "Space Grotesk";
+    font-weight: $font-weight-bold;
+    font-size: 2.2rem;
+    line-height: $font-line-height-compact;
     color: $color-themeColor-100;
-    outline: none;
-    font-size: 1rem;
-    background-color: transparent;
-    width: 50px;
-    appearance: none;
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    background-image: url(../assets/images/arrow-down.svg);
-    background-repeat: no-repeat;
-    background-position: right center;
-    cursor: pointer;
 }
 
-.select:active {
-    background-image: url(../assets/images/arrow-up.svg);
+.paragraph {
+    font-family: $font-family-base;
+    font-style: normal;
+    font-weight: $font-weight-regular;
+    font-size: 1rem;
+    line-height: $font-line-height-far;
+    letter-spacing: 0.05em;
+    color: $color-themeColor-200;
+}
+
+.container-main {
+    width: 100%;
+    height: 100%;
+    padding: 16px;
+    position: relative;
+}
+
+.welcome {
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    .hero {
+        width: 100%;
+        padding: 24px 16px 0;
+        background-color: $color-themeColor-600;
+
+        & > .title-h1 {
+            margin: 24px 0;
+        }
+
+        & > :nth-child(1) {
+            font-size: 1.1rem;
+        }
+    }
+
+    .button-hold {
+        width: 100%;
+        padding: 16px;
+        position: absolute;
+        bottom: 0;
+        z-index: 1;
+    }
+}
+
+.welcome::after {
+    content: "";
+    width: 100%;
+    background-image: url(../assets/images/illustrations/girl-with-smartphone.jpg);
+    height: 184px;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+}
+
+.button-component {
+    width: 100%;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    font-family: $font-family-base;
+    font-weight: bold;
+    color: #ffffff;
+    border: none;
+    outline: none;
+    font-size: 0.9rem;
+    border-radius: 16px;
+    position: relative;
+    cursor: pointer;
+    transition: linear 0.2s;
+
+    &:active {
+        transform: translateY(2px);
+        transition: linear 0.2s;
+    }
+
+    &.primary {
+        background-color: $color-themeColor-800;
+    }
+}
+
+.password-input-box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+
+    & > :nth-child(3) {
+        margin-top: 15px;
+    }
+}
+
+.password-logo {
+    margin-top: 78px;
+    width: 100px;
+}
+
+.terms-advice {
+    margin-top: 70px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.89rem;
+    line-height: 150%;
+    letter-spacing: 0.05em;
+    color: #1a1a1a;
+    opacity: 0.8;
+
+    .a {
+        color: #6c38ff;
+    }
+}
+.modal {
+    position: absolute !important;
+}
+
+.modal-background {
+    display: flex;
+    justify-content: center !important;
+    align-items: center !important;
+    background: rgba(10, 10, 10, 0.34) !important;
+}
+
+.modal-content {
+    width: 312px !important;
+    height: 150px !important;
+    background-color: #ffffff;
+    border-radius: 16px;
 }
