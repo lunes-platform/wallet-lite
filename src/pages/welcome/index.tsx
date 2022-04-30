@@ -4,8 +4,11 @@ import Logo from "../../assets/images/logo.svg"
 import Button from "../../components/button"
 
 import { translate } from "../../lang/translation"
+import { useNavigate } from "react-router-dom"
 
 const Welcome = () => {
+
+    const navigate = useNavigate()
 
     return (
         <div className="welcome">
@@ -29,7 +32,7 @@ const Welcome = () => {
             </section>
 
             <div className="button-hold">
-                <Button label={translate.welcome.button} variant="primary" onClick={() => console.log("click")} />
+                <Button label={translate.welcome.button} variant="primary" onClick={() => navigate("/password")} />
             </div>
         </div>
 

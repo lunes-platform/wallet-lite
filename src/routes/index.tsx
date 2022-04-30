@@ -10,8 +10,8 @@ export default function Router() {
         <HashRouter>
             <Routes>
                 <Route element={<Home />} />
-                <Route index element={<Password />} />
-                <Route element={<Welcome />} />
+                <Route path="/" element={<Password />} />
+                <Route path="/welcome" element={<Welcome />} />
             </Routes>
         </HashRouter>
     )

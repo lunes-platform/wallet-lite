@@ -1,17 +1,33 @@
-import en from "./translations/en"
-import pt from "./translations/pt"
+import EN from "./translations/en"
+import PT from "./translations/pt"
+
+import { Translation } from "./translations/types"
 
 export const locals = {
-    pt,
-    en
+    PT,
+    EN
 }
 
-export const getLanguages = () => {
-    const userLang = localStorage.getItem("LANGUAGE") || "en"
-    const language = locals[userLang]
+type Locals = "EN" | "PT"
+
+export const availabeLanguages: Locals[] = ["PT", "EN"]
+
+const getLangFromLocalStorage = (): Locals => {
+    let userLang: Locals = "EN"
+
+    availabeLanguages.forEach((item) => {
+        if (localStorage.getItem("LANGUAGE") === item) {
+            userLang = item
+        }
+    })
+
+    return userLang
+}
+
+export const getLanguages = (): Translation => {
+    const language = locals[getLangFromLocalStorage()]
+
     return language
 }
 
 export const translate = getLanguages()
-
-export const availabeLanguages = ["PT", "EN"]

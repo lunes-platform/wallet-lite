@@ -1,4 +1,6 @@
-const pt = {
+import { Translation } from "./types"
+
+const PT: Translation = {
     welcome: {
         hero: {
             title: "Aqui, você é a única pessoa no controle das suas finanças.",
@@ -22,4 +24,4 @@ const pt = {
     }
 }
 
-export default pt
+export default PT

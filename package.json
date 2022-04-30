@@ -54,6 +54,7 @@
         ]
     },
     "devDependencies": {
+        "@types/crypto-js": "^4.1.1",
         "@types/styled-components": "^5.1.24",
         "bulma": "^0.9.3",
         "react-error-overlay": "6.0.9",

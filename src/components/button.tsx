@@ -1,5 +1,5 @@
 
-import { IButton } from "../types/components"
+import { IButton } from "./types"
 
 const Button = (props: IButton) => {
     return (

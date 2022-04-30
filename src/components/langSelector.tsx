@@ -7,7 +7,7 @@ const LangSelector = () => {
             id="lang"
             className="select"
             onChange={(event) => {
-                localStorage.setItem("LANGUAGE", event.target.value.toLowerCase())
+                localStorage.setItem("LANGUAGE", event.target.value.toUpperCase())
                 window.location.reload()
             }}
             defaultValue={localStorage.getItem("LANGUAGE")?.toUpperCase() || "EN"}

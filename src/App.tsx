@@ -3,18 +3,17 @@ import useTheme from './hooks/useTheme';
 
 import "./styles/index.css"
 
-import "bulma"
-import Modal from './components/modal';
+// import "bulma"
+import BasicModal from './components/modal';
+
 
 const App = () => {
     const theme = useTheme()
+
     return (
-        <div className={`main ${theme}`}>
-            <Modal />
+        <div id="main" className={`main ${theme}`}>
             <Router />
             <span className="gesture-button"></span>
-
-
         </div>
     )
 }

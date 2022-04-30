@@ -1,4 +1,15 @@
-import { icons } from "../assets/assetIcons"
+import { icons, IconNames } from "../assets/assetIcons"
 
-export const getIcon = (name: string) =>
-    icons[name.replace(/\ /g, "_").toLowerCase()] || icons.default
+const getName = (name: string): IconNames => {
+    const newName = name.replace(/\ /g, "_").toLowerCase()
+
+    Object.keys(icons).map((icon) => {
+        if (newName === icon) {
+            return newName
+        }
+    })
+
+    return icons.default
+}
+
+export const getIcon = (name: string) => getName(name)

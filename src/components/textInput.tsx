@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Eye from "../assets/images/eye-slash.svg"
-import { ITextInput } from "../types/components";
+import { ITextInput } from "./types";
 
 export default function TextInput(props: ITextInput) {
     const [isPassword, setIsPassword] = useState(false)

@@ -6,7 +6,7 @@ export interface IButton {
 
 export interface ITextInput {
     label: string
-    onChange: (string) => void
+    onChange: (arg0: string) => void
     value: string
     placeholder: string
     isPassword?: boolean

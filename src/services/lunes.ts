@@ -1,12 +1,21 @@
 import { create } from "lunes-js-api"
 import axios from "axios"
-import { TransferPayload, TransferResponse } from "../types/assets.d"
+import { TransferPayload, TransferResponse } from "./types"
 import { decryptAes } from "./cryptograpy"
 import { generateMnemonic, validateMnemonic } from "bip39"
 
 import { config } from "../config/lunes.config"
 
-const lunes = create(config[localStorage.getItem("NETWORK") || "mainnet"])
+const network = (): "mainnet" | "testnet" => {
+    const userNetwork = localStorage.getItem("NETWORK")
+    if (userNetwork === "testnet") {
+        return userNetwork
+    }
+
+    return "mainnet"
+}
+
+const lunes = create(config[network()])
 
 export const newSeed = () => {
     return { phrase: generateMnemonic() }
