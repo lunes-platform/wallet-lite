@@ -4,7 +4,6 @@ import useTheme from './hooks/useTheme';
 import "./styles/index.css"
 
 // import "bulma"
-import BasicModal from './components/modal';
 
 
 const App = () => {
