@@ -1,4 +1,5 @@
 export type Translation = {
+    attention: string
     welcome: {
         hero: {
             title: string
@@ -18,5 +19,23 @@ export type Translation = {
         button: string
         termsAdvice: string
         terms: string
+        passwordNotMatch: string
+        passwordSavedSuccess: string
+    }
+    terms: {
+        accessAccount: string
+        faq: {
+            headline: string
+            explanation: string
+        }[]
+    }
+    seed: {
+        title: string
+        instructions: string
+        typeWord: string
+        validate: string
+        generate: string
+        invalidSeed: string
+        invalidSeedMessage: string
     }
 }
