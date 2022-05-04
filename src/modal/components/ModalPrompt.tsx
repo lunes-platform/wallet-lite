@@ -1,5 +1,5 @@
 import { useState } from "react"
-import ValidatorIcon from "../../assets/images/close-square.svg"
+import ValidatorIcon from "../../assets/images/icons/close-square.svg"
 import "../index.css"
 import { IModalPrompt } from "../types"
 
@@ -16,6 +16,11 @@ const ModalPrompt = (props: IModalPrompt) => {
         }
 
         props.onConfirm(text)
+        handleDismiss()
+    }
+
+    const handleDismiss = () => {
+        document.getElementById("modal")?.remove();
     }
 
     return (
@@ -36,8 +41,8 @@ const ModalPrompt = (props: IModalPrompt) => {
             </div>}
 
             <div className="row button-holder">
-                <button className="button">Cancelar</button>
-                <button className="button" onClick={handleConfirmAction}>Finalizar</button>
+                <button className="button" onClick={handleDismiss}>{props.dismissButtonLabel || "Cancel"}</button>
+                <button className="button" onClick={handleConfirmAction}>{props.confirmButtonLabel || "Confirm"}</button>
             </div>
         </div>
     )

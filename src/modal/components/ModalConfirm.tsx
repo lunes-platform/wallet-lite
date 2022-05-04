@@ -6,10 +6,15 @@ import {
 
 
 const ModalConfirm = (props: IModalConfirm) => {
-
     const handleConfirmAction = () => {
         props.onConfirm()
+        handleDismiss()
     }
+
+    const handleDismiss = () => {
+        document.getElementById("modal")?.remove();
+    }
+
 
     return (
         <div className="modal">
@@ -19,8 +24,8 @@ const ModalConfirm = (props: IModalConfirm) => {
             </p>
 
             <div className="row button-holder">
-                <button className="button">Cancelar</button>
-                <button className="button" onClick={handleConfirmAction}>Finalizar</button>
+                <button className="button" onClick={handleDismiss}>{props.dismissButtonLabel || "Cancel"}</button>
+                <button className="button" onClick={handleConfirmAction}>{props.confirmButtonLabel || "Confirm"}</button>
             </div>
         </div>
     )

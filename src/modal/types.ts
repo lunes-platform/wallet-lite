@@ -11,6 +11,8 @@ export interface IModalAlert {
 export interface IModalConfirm {
     headline: string
     message: string
+    dismissButtonLabel?: string
+    confirmButtonLabel?: string
     onConfirm: () => void
 }
 
@@ -28,6 +30,9 @@ export interface IModalPassword {
     message: string
     dismissButtonLabel?: string
     confirmButtonLabel?: string
+    /**
+     * SHA512 encrypted
+     */
     password: string
     onConfirm: () => void
     options: IOptions

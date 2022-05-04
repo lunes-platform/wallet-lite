@@ -13,8 +13,8 @@ import "../index.css"
 let containerDomNode: HTMLElement;
 
 function dispatchModal(props: any) {
-    console.log(props)
-    containerDomNode = document.createElement('div');
+    containerDomNode = document.createElement('div')
+    containerDomNode.id = "modal"
     document.body.appendChild(containerDomNode);
 
     render(<ModalContainer {...props} />, containerDomNode);
