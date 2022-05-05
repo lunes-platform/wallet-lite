@@ -11,9 +11,9 @@ export default function Router() {
     return (
         <HashRouter>
             <Routes>
-                <Route element={<Home />} />
+                <Route index element={<Home />} />
                 <Route path="/password" element={<Password />} />
-                <Route index element={<Welcome />} />
+                <Route path="/welcome" element={<Welcome />} />
                 <Route path="/seed" element={<Seed />} />
                 <Route path="/terms" element={<Terms />} />
             </Routes>
