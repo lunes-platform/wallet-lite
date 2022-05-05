@@ -1,9 +1,9 @@
 import { useState } from "react";
-import Eye from "../assets/images/eye-slash.svg"
+import Eye from "../assets/images/icons/eye-slash.svg"
 import { ITextInput } from "./types";
 
 export default function TextInput(props: ITextInput) {
-    const [isPassword, setIsPassword] = useState(false)
+    const [isPassword, setIsPassword] = useState(props.isPassword)
     return (
         <div className="input-text-holder">
             <label className="input-label">{props.label}</label>
