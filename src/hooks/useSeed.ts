@@ -4,6 +4,8 @@ import { translate } from "../lang/translation"
 import { modalAlert } from "../modal/core/modal"
 import { encryptAes } from "../services/cryptograpy"
 
+import { decodeWallet, getAddressFromStorage } from "../services/lunes"
+
 const useSeed = () => {
     const generateSeed = () => generateMnemonic()
 
@@ -22,6 +24,7 @@ const useSeed = () => {
         }
 
         localStorage.setItem("SEED", encryptAes(seed, password))
+        localStorage.setItem("ADDRESS", decodeWallet(seed).address)
         callback()
     }
 
@@ -33,12 +36,15 @@ const useSeed = () => {
         return wordList.includes(word)
     }
 
+    const getAddress = () => getAddressFromStorage()
+
     return {
         generateSeed,
         validateSeed,
         toString,
         toStringArray,
-        validateIndividualWord
+        validateIndividualWord,
+        getAddress
     }
 }
 
