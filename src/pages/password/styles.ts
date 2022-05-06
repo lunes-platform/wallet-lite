@@ -5,6 +5,7 @@ export const Container = styled.div`
     height: 100%;
     padding: 16px;
     position: relative;
+    animation: fadeInRight 0.2s;
 `
 
 export const Column = styled.div`

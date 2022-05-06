@@ -3,6 +3,9 @@ import styled from "styled-components"
 import BackgroundImage from "../../assets/images/illustrations/girl-with-smartphone.jpg"
 
 export const Container = styled.div`
+    animation: fadeInDown;
+    animation-duration: 300ms;
+
     &::after {
         content: "";
         width: 100%;

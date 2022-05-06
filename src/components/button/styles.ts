@@ -22,10 +22,17 @@ export const Primary = styled.button`
             transform: translateY(2px);
             transition: linear 0.2s;
         }
+
+        &:hover {
+            background-color: ${({ theme }) => theme.colors.primary[600]};
+        }
     `}
 `
 
 export const Transparent = styled(Primary)`
     background-color: transparent;
     color: ${({ theme }) => theme.colors.themeColors[100]};
+    &:hover {
+        background-color: ${({ theme }) => theme.colors.themeColors[600]};
+    }
 `

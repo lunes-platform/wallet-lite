@@ -3,6 +3,7 @@ import styled from "styled-components"
 export const Container = styled.div`
     width: 100%;
     padding: 18px;
+    animation: fadeInRight 0.2s;
 `
 export const ContainerTerms = styled.div`
     width: 100%;
@@ -11,6 +12,7 @@ export const ContainerTerms = styled.div`
     padding: 24px 16px;
     height: 477px;
     overflow: scroll;
+
     & > div {
         margin-bottom: 70px;
 

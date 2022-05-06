@@ -3,6 +3,7 @@ import styled from "styled-components"
 export const Container = styled.div`
     width: 100%;
     padding: 24px 16px;
+    animation: fadeInRight 0.2s;
 `
 
 export const SeedContainer = styled(Container)`
