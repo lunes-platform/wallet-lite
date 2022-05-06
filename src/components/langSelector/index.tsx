@@ -1,8 +1,9 @@
-import { availabeLanguages } from "../lang/translation"
+import { availabeLanguages } from "../../lang/translation"
+import * as Styles from "./styles"
 
 const LangSelector = () => {
     return (
-        <select
+        <Styles.Select
             name="select-lang"
             id="lang"
             className="select"
@@ -15,7 +16,7 @@ const LangSelector = () => {
             {
                 availabeLanguages.map((lang, index) => <option key={index}>{lang}</option>)
             }
-        </select>
+        </Styles.Select>
     )
 }
 

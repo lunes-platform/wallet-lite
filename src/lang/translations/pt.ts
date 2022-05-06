@@ -1,6 +1,7 @@
 import { Translation } from "./types"
 
 const PT: Translation = {
+    lunesWallet: "Lunes Wallet",
     attention: "Atenção",
     welcome: {
         hero: {
@@ -60,6 +61,9 @@ const PT: Translation = {
         invalidSeed: "Seed inválida!",
         invalidSeedMessage:
             "Verifique a ortografia e a ordem das palavras e tente novamente."
+    },
+    balance: {
+        title: "Saldo da carteira"
     }
 }
 

@@ -1,9 +1,6 @@
+import { IModalConfirm } from "../types"
 
-import "../index.css"
-import {
-    IModalConfirm
-} from "../types"
-
+import * as Styles from "./styles"
 
 const ModalConfirm = (props: IModalConfirm) => {
     const handleConfirmAction = () => {
@@ -15,19 +12,11 @@ const ModalConfirm = (props: IModalConfirm) => {
         document.getElementById("modal")?.remove();
     }
 
-
     return (
-        <div className="modal">
-            <h2 className="headline">{props.headline}</h2>
-            <p className="message">
-                {props.message}
-            </p>
-
-            <div className="row button-holder">
-                <button className="button" onClick={handleDismiss}>{props.dismissButtonLabel || "Cancel"}</button>
-                <button className="button" onClick={handleConfirmAction}>{props.confirmButtonLabel || "Confirm"}</button>
-            </div>
-        </div>
+        <Styles.ButtonHolder>
+            <Styles.Button className="button" onClick={handleDismiss}>{props.dismissButtonLabel || "Cancel"}</Styles.Button>
+            <Styles.Button className="button" onClick={handleConfirmAction}>{props.confirmButtonLabel || "Confirm"}</Styles.Button>
+        </Styles.ButtonHolder>
     )
 }
 

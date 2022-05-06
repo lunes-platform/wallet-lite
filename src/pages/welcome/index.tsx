@@ -1,41 +1,37 @@
-
-import LangSelector from "../../components/langSelector"
-import Logo from "../../assets/images/logo.svg"
 import Button from "../../components/button"
+import Header from "../../components/header"
+import { Paragraph, QuoteParagraph, Headline } from "../../components/text"
 
 import { translate } from "../../lang/translation"
 import { useNavigate } from "react-router-dom"
 
-const Welcome = () => {
+import * as Styles from "./styles"
 
+const Welcome = () => {
     const navigate = useNavigate()
 
     return (
-        <div className="welcome">
-            <nav className="header">
-                <div className="container-header">
-                    <img src={Logo} alt="" />
-                    <LangSelector />
-                </div>
-            </nav>
+        <Styles.Container>
+            <Header />
 
-            <section className="hero">
-                <p className="paragraph">
-                    Lunes Wallet
-                </p>
-                <h1 className="title-h1">
+            <Styles.Hero>
+                <QuoteParagraph>
+                    {translate.lunesWallet}
+                </QuoteParagraph>
+
+                <Headline>
                     {translate.welcome.hero.title}
-                </h1>
-                <p className="paragraph">
+                </Headline>
+
+                <Paragraph>
                     {translate.welcome.hero.subtitle}
-                </p>
-            </section>
+                </Paragraph>
+            </Styles.Hero>
 
-            <div className="button-hold">
-                <Button label={translate.welcome.button} variant="primary" onClick={() => navigate("/password")} />
-            </div>
-        </div>
-
+            <Styles.ButtonHold>
+                <Button variant="primary" label={translate.welcome.button} onClick={() => navigate("/password")} />
+            </Styles.ButtonHold>
+        </Styles.Container>
     )
 }
 

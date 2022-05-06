@@ -1,14 +1,16 @@
 import { useState } from "react"
-import ValidatorIcon from "../../assets/images/icons/close-square.svg"
-import Eye from "../../assets/images/icons/eye-slash.svg"
+
 import { encryptSha512 } from "../../services/cryptograpy"
-import "../index.css"
+import Eye from "../../assets/images/icons/eye-slash.svg"
+import ValidatorIcon from "../../assets/images/icons/close-square.svg"
+
 import { IModalPassword } from "../types"
+
+import * as Styles from "./styles"
 
 
 const ModalPassword = (props: IModalPassword) => {
     const [fieldError, setFieldError] = useState("")
-    const errorClass = fieldError ? "has-error" : ""
     const [text, setText] = useState("")
     const [hidde, setHidde] = useState(true)
 
@@ -28,30 +30,25 @@ const ModalPassword = (props: IModalPassword) => {
 
 
     return (
-        <div className="modal">
-            <h2 className="headline">{props.headline}</h2>
-            <p className="message">
-                {props.message}
-            </p>
-
-            <div className="input-box">
-                <input type={hidde ? "password" : "text"} placeholder="Digite sua senha" className={`input ${errorClass}`} onChange={(event) => setText(event.target.value)} />
-                <button className="visibility-switch" onClick={() => setHidde(!hidde)}  >
+        <>
+            <Styles.InputBox>
+                <Styles.Input type={hidde ? "password" : "text"} placeholder="Digite sua senha" hasError={fieldError ? true : false} onChange={(event) => setText(event.target.value)} />
+                <Styles.VisibilitySwitch onClick={() => setHidde(!hidde)}  >
                     <img src={Eye} alt="" />
-                </button>
-            </div>
+                </Styles.VisibilitySwitch>
+            </Styles.InputBox>
 
 
-            {fieldError && <div className="row field-validator">
+            {fieldError && <Styles.FieldValidatorBox>
                 <img src={ValidatorIcon} alt="" />
-                <small className="validator-text">{fieldError}</small>
-            </div>}
+                <Styles.ValidatorText>{fieldError}</Styles.ValidatorText>
+            </Styles.FieldValidatorBox>}
 
-            <div className="row button-holder">
-                <button className="button" onClick={handleDismiss}>{props.dismissButtonLabel || "Cancel"}</button>
-                <button className="button" onClick={handleConfirmAction}>{props.confirmButtonLabel || "Confirm"}</button>
-            </div>
-        </div>
+            <Styles.ButtonHolder>
+                <Styles.Button onClick={handleDismiss}>{props.dismissButtonLabel || "Cancel"}</Styles.Button>
+                <Styles.Button onClick={handleConfirmAction}>{props.confirmButtonLabel || "Confirm"}</Styles.Button>
+            </Styles.ButtonHolder>
+        </>
     )
 }
 

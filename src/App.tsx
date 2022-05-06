@@ -1,19 +1,15 @@
 import Router from './routes';
 import useTheme from './hooks/useTheme';
 
-import "./styles/index.css"
-
-// import "bulma"
-
+import { ThemeProvider } from "styled-components"
 
 const App = () => {
     const theme = useTheme()
 
     return (
-        <div id="main" className={`main ${theme}`}>
+        <ThemeProvider theme={theme}>
             <Router />
-            <span className="gesture-button"></span>
-        </div>
+        </ThemeProvider>
     )
 }
 

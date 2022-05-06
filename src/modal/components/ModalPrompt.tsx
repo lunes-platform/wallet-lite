@@ -1,12 +1,13 @@
 import { useState } from "react"
+
 import ValidatorIcon from "../../assets/images/icons/close-square.svg"
-import "../index.css"
+
 import { IModalPrompt } from "../types"
 
+import * as Styles from "./styles"
 
 const ModalPrompt = (props: IModalPrompt) => {
     const [fieldError, setFieldError] = useState("")
-    const errorClass = fieldError ? "has-error" : ""
     const [text, setText] = useState("")
 
     const handleConfirmAction = () => {
@@ -24,27 +25,21 @@ const ModalPrompt = (props: IModalPrompt) => {
     }
 
     return (
-        <div className="modal">
-            <h2 className="headline">{props.headline}</h2>
-            <p className="message">
-                {props.message}
-            </p>
+        <>
+            <Styles.InputBox>
+                <Styles.Input hasError={fieldError ? true : false} type="text" placeholder="Digite sua senha" onChange={event => setText(event.target.value)} />
+            </Styles.InputBox>
 
-            <div className="input-box">
-                <input type="text" placeholder="Digite sua senha" className={`input ${errorClass}`} onChange={event => setText(event.target.value)} />
-            </div>
-
-
-            {fieldError && <div className="row field-validator">
+            {fieldError && <Styles.FieldValidatorBox>
                 <img src={ValidatorIcon} alt="" />
-                <small className="validator-text">{fieldError}</small>
-            </div>}
+                <Styles.ValidatorText>{fieldError}</Styles.ValidatorText>
+            </Styles.FieldValidatorBox>}
 
-            <div className="row button-holder">
-                <button className="button" onClick={handleDismiss}>{props.dismissButtonLabel || "Cancel"}</button>
-                <button className="button" onClick={handleConfirmAction}>{props.confirmButtonLabel || "Confirm"}</button>
-            </div>
-        </div>
+            <Styles.ButtonHolder>
+                <Styles.Button onClick={handleDismiss}>{props.dismissButtonLabel || "Cancel"}</Styles.Button>
+                <Styles.Button onClick={handleConfirmAction}>{props.confirmButtonLabel || "Confirm"}</Styles.Button>
+            </Styles.ButtonHolder>
+        </>
     )
 }
 

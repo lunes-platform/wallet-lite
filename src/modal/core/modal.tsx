@@ -8,7 +8,7 @@ import {
     IModalPrompt,
 } from "../types"
 
-import "../index.css"
+
 
 let containerDomNode: HTMLElement;
 

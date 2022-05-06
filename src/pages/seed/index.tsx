@@ -1,10 +1,14 @@
 import { useState } from "react"
-import Button from "../../components/button"
 
+import Button from "../../components/button"
+import { PageTitle, Paragraph } from "../../components/text"
+import { TextInput } from "../../components/input"
+
+import { useLocation, useNavigate } from "react-router-dom"
+import useSeed from "../../hooks/useSeed"
 import { translate } from "../../lang/translation"
 
-import useSeed from "../../hooks/useSeed"
-import { useLocation, useNavigate } from "react-router-dom"
+import * as Styles from "./styles"
 
 const Seed = () => {
     const navigate = useNavigate()
@@ -18,42 +22,45 @@ const Seed = () => {
 
     return (
         <>
-            <div className="container">
-                <h1 className="page-title">{translate.seed.title}</h1>
-                <p className="page-instructions">{translate.seed.instructions}</p>
-            </div>
+            <Styles.Container>
+                <PageTitle>
+                    {translate.seed.title}
+                </PageTitle>
+                <Paragraph>
+                    {translate.seed.instructions}
+                </Paragraph>
+            </Styles.Container>
 
-            <div className="container seed-container" style={{ paddingTop: 0 }}>
+            <Styles.SeedContainer>
                 {
                     words.map((word, index) => {
-                        const errorClass = word && !validateIndividualWord(word) ? "has-error" : ""
                         return (
-                            <div key={index} className="d-flex flex-column justify-center align-center">
-                                <span className="type-seed-word">
+                            <Styles.WordSlot key={index}>
+                                <Styles.SeedWordLabel>
                                     {`${index + 1}`}
                                     <sup>a</sup>
-                                </span>
-                                <input
-                                    className={`input-text ${errorClass}`}
+                                </Styles.SeedWordLabel>
+                                <TextInput
                                     value={word}
                                     placeholder={translate.seed.typeWord}
+                                    hashError={word && !validateIndividualWord(word)}
                                     onChange={(e) => {
                                         let arr = [...words];
                                         arr[index] = e.target.value.trim().toLowerCase();
                                         setWords(arr);
                                     }}
                                 />
-                            </div>
+                            </Styles.WordSlot>
                         )
                     }
                     )
                 }
-            </div>
+            </Styles.SeedContainer>
 
-            <div className="container d-flex flex-column justify-center align-center">
+            <Styles.ButtonHolder>
                 <Button label={translate.seed.validate} variant="primary" onClick={() => validateSeed(toString(words), password, () => navigate("/"))} />
                 <Button label={translate.seed.generate} variant="transparent" onClick={handleGenerateSeed} />
-            </div>
+            </Styles.ButtonHolder>
         </>
     )
 }

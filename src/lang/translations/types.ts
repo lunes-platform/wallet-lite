@@ -1,4 +1,5 @@
-export type Translation = {
+export interface Translation {
+    lunesWallet: string
     attention: string
     welcome: {
         hero: {
@@ -37,5 +38,8 @@ export type Translation = {
         generate: string
         invalidSeed: string
         invalidSeedMessage: string
+    }
+    balance: {
+        title: string
     }
 }

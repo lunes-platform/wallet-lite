@@ -1,13 +1,17 @@
 import { useState } from "react"
-import TextInput from "../../components/textInput"
-import Logo from "../../assets/images/logo.svg"
-import Button from "../../components/button"
-import { translate } from "../../lang/translation"
 
-import usePassword from "../../hooks/usePassword"
+import Button from "../../components/button"
+import Logo from "../../assets/images/logo.svg"
+import { InputTextHolder, TextInput } from "../../components/input"
 
 import { encryptSha512 } from "../../services/cryptograpy"
+import { translate } from "../../lang/translation"
 import { useNavigate } from "react-router-dom"
+import usePassword from "../../hooks/usePassword"
+
+import * as Styles from "./styles"
+import { Label } from "../../components/text"
+
 
 export default function Password() {
     const { comparePasswords } = usePassword()
@@ -16,37 +20,45 @@ export default function Password() {
 
     const navigate = useNavigate()
 
+    const handlePassword = () => {
+        if (!password || !confirm) {
+            return
+        }
+        if (comparePasswords(encryptSha512(password), encryptSha512(confirm))) {
+            navigate("/seed", {
+                state: {
+                    password: password
+                }
+            })
+        }
+    }
+
     return (
-        <div className="container-main d-flex flex-column align-center">
-            <img src={Logo} alt="" className="password-logo " />
+        <Styles.Container>
+            <Styles.Column>
+                <Styles.Logo src={Logo} alt="Logo" />
+                <Styles.PasswordInputBox>
+                    <InputTextHolder>
+                        <Label>{translate.password.enterPassword.label}</Label>
+                        <TextInput type={"password"} value={password} onChange={(event) => setPassword(event.target.value)} placeholder={translate.password.enterPassword.placeholder} />
+                    </InputTextHolder>
 
-            <div className="password-input-box">
-                <TextInput isPassword label={translate.password.enterPassword.label} value={password} onChange={value => setPassword(value)} placeholder={translate.password.enterPassword.placeholder} />
-                <TextInput isPassword label={translate.password.confirmPassword.label} value={confirm} onChange={value => setConfirm(value)} placeholder={translate.password.confirmPassword.placeholder} />
+                    <InputTextHolder>
+                        <Label>{translate.password.confirmPassword.label}</Label>
+                        <TextInput type={"password"} value={confirm} onChange={(event) => setConfirm(event.target.value)} placeholder={translate.password.confirmPassword.placeholder} />
+                    </InputTextHolder>
 
-                <Button
-                    label={translate.password.button}
-                    variant="primary"
-                    onClick={() => {
-                        if (!password || !confirm) {
-                            return
-                        }
-                        if (comparePasswords(encryptSha512(password), encryptSha512(confirm))) {
-                            navigate("/seed", {
-                                state: {
-                                    password: password
-                                }
-                            })
-                        }
-                    }
-                    }
-                />
-            </div>
+                    <Button
+                        label={translate.password.button}
+                        variant="primary"
+                        onClick={handlePassword}
+                    />
+                </Styles.PasswordInputBox>
 
-            <p className="text-center terms-advice">
-                {translate.password.termsAdvice} <button onClick={() => navigate("/terms")}>{translate.password.terms}</button>
-            </p>
-
-        </div>
+                <Styles.TermsAdvice>
+                    {translate.password.termsAdvice} <Styles.Link onClick={() => navigate("/terms")}>{translate.password.terms}</Styles.Link>
+                </Styles.TermsAdvice>
+            </Styles.Column>
+        </Styles.Container>
     )
 }

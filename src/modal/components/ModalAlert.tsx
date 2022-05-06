@@ -1,6 +1,6 @@
-import "../index.css"
 import { IModalAlert } from "../types"
 
+import * as Styles from "./styles"
 
 const ModalAlert = (props: IModalAlert) => {
     const handleDismiss = () => {
@@ -8,15 +8,9 @@ const ModalAlert = (props: IModalAlert) => {
     }
 
     return (
-        <div className="modal">
-            <h2 className="headline">{props.headline}</h2>
-            <p className="message">
-                {props.message}
-            </p>
-            <div className="row button-holder">
-                <button className="button" onClick={handleDismiss}>{props.dismissButtonLabel || "OK"}</button>
-            </div>
-        </div>
+        <Styles.ButtonHolder>
+            <Styles.Button onClick={handleDismiss}>{props.dismissButtonLabel || "OK"}</Styles.Button>
+        </Styles.ButtonHolder>
     )
 }
 
