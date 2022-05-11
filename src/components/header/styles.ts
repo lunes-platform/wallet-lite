@@ -57,3 +57,28 @@ export const NavigationBar = styled.div`
     align-items: center;
     padding: 18px;
 `
+
+export const BalanceHeadline = styled.span`
+    font-family: ${lunesui.font.family.base.value};
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.75rem;
+    line-height: 150%;
+    color: ${({ theme }) => theme.colors.themeColors[100]};
+`
+
+export const BalanceAmount = styled.span`
+    font-family: ${lunesui.font.family.base.value};
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.75rem;
+    line-height: 100%;
+    color: ${({ theme }) => theme.colors.themeColors[200]};
+    margin-top: 4px;
+`
+
+export const BalanceGroup = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+`

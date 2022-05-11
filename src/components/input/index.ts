@@ -12,7 +12,7 @@ export const TextInput = styled.input`
         border-radius: 16px;
         border: none;
         color: ${theme.colors.themeColors[200]};
-        margin-top: 6px;
+        margin-top: 8px;
         font-size: 0.89rem;
         line-height: 100%;
         outline: ${(props: InputProps) =>

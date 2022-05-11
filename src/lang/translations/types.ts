@@ -42,4 +42,23 @@ export interface Translation {
     balance: {
         title: string
     }
+    home: {
+        defaultIcon: string
+        send: string
+        receive: string
+        explorer: string
+        support: string
+    }
+    send: {
+        pageTitle: string
+        instructions: string
+        receiverAddressLabel: string
+        receiverAddressPlaceholder: string
+        amountLabel: string
+        amountPlaceholder: string
+        available: string
+        fee: string
+        confirm: string
+        feeDescription: string
+    }
 }

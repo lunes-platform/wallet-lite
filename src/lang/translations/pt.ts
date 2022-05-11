@@ -64,6 +64,26 @@ const PT: Translation = {
     },
     balance: {
         title: "Saldo da carteira"
+    },
+    home: {
+        defaultIcon: "Padrão",
+        explorer: "Explorer",
+        receive: "Receber",
+        send: "Enviar",
+        support: "Suporte"
+    },
+    send: {
+        pageTitle: "Insira o endereço da carteira Lunes",
+        instructions:
+            "Envie apenas Lunes para o endereço. O envio de outras moedas pode resultar em perda permanente.",
+        receiverAddressLabel: "Endereço do destinatário",
+        receiverAddressPlaceholder: "Digite o endereço do destinatário",
+        amountLabel: "Quantidade",
+        amountPlaceholder: "Valor em LUNES",
+        available: "Disponível: ",
+        fee: "Taxa",
+        confirm: "Confirmar",
+        feeDescription: "Taxa cobrada pelo serviço"
     }
 }
 

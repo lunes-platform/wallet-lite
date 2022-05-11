@@ -34,6 +34,6 @@ export interface IModalPassword {
      * SHA512 encrypted
      */
     password: string
-    onConfirm: () => void
+    onConfirm: (typedPassword: string) => void
     options: IOptions
 }

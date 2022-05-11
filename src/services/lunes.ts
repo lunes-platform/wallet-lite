@@ -26,7 +26,7 @@ export const validateSeed = (seed: string): boolean => validateMnemonic(seed)
 export const decodeWallet = (mnemonic: string) =>
     lunes.Seed.fromExistingPhrase(mnemonic)
 
-export const sendLunes = async (
+export const sendTransaction = async (
     payload: TransferPayload,
     password: string
 ): Promise<TransferResponse> => {
@@ -59,16 +59,30 @@ export const getAssetsBalance = async (address: string) => {
         .catch((error) => console.error(error))
 }
 
-export const getLunesBalance = async (address: string) => {
+export const getLunesBalance = async (address: string): Promise<number> => {
     return axios
         .get(`https://lunesnode.lunes.io/addresses/balance/${address}`)
         .then((response) => response.data.balance)
         .catch((error) => console.error(error))
 }
 
-export const getAssetBalance = (address: string, assetId: string) => {
-    return axios
-        .get(`https://lunesnode.lunes.io/assets/balance/${address}/${assetId}`)
-        .then((response) => response.data.balance)
-        .catch((error) => console.error(error))
+export const getAssetBalance = async (address: string, assetId: string) => {
+    try {
+        const response = await axios.get(
+            `https://lunesnode.lunes.io/assets/balance/${address}/${assetId}`
+        )
+        return response.data.balance
+    } catch (error) {
+        return console.error(error)
+    }
+}
+export const ValidateAddress = async (address: string) => {
+    try {
+        const response = await axios.get(
+            `https://lunesnode.lunes.io/addresses/validate/${address}`
+        )
+        return response.data.valid
+    } catch (error) {
+        return error
+    }
 }

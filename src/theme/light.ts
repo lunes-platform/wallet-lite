@@ -60,14 +60,14 @@ export const light: DefaultTheme = {
             900: lunesui.color.critical[900].value
         },
         themeColors: {
-            100: lunesui.color.themeColors.light[100].value,
-            200: lunesui.color.themeColors.light[200].value,
-            300: lunesui.color.themeColors.light[300].value,
-            400: lunesui.color.themeColors.light[400].value,
-            500: lunesui.color.themeColors.light[500].value,
-            600: lunesui.color.themeColors.light[600].value,
-            700: lunesui.color.themeColors.light[700].value,
-            800: lunesui.color.themeColors.light[800].value
+            100: lunesui.themeColors.light[100].value,
+            200: lunesui.themeColors.light[200].value,
+            300: lunesui.themeColors.light[300].value,
+            400: lunesui.themeColors.light[400].value,
+            500: lunesui.themeColors.light[500].value,
+            600: lunesui.themeColors.light[600].value,
+            700: lunesui.themeColors.light[700].value,
+            800: lunesui.themeColors.light[800].value
         }
     }
 }

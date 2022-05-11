@@ -62,6 +62,26 @@ const EN: Translation = {
     },
     balance: {
         title: "Account balance"
+    },
+    home: {
+        defaultIcon: "Default",
+        explorer: "Explorer",
+        receive: "Receive",
+        send: "Send",
+        support: "Support"
+    },
+    send: {
+        pageTitle: "Insert Lunes wallet address",
+        instructions:
+            "Send only Lunes to this address, sending other coins can result in permanent lost.",
+        receiverAddressLabel: "Receiver address",
+        receiverAddressPlaceholder: "Enter the receiver address",
+        amountLabel: "Amount",
+        amountPlaceholder: "Value in Lunes",
+        available: "Available",
+        fee: "Fee",
+        confirm: "Confirm",
+        feeDescription: "Network Fee"
     }
 }
 

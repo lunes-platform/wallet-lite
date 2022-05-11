@@ -20,7 +20,7 @@ const ModalPassword = (props: IModalPassword) => {
             return
         }
 
-        props.onConfirm()
+        props.onConfirm(text)
         handleDismiss()
     }
 
