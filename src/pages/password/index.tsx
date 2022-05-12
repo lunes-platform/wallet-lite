@@ -1,72 +1,64 @@
-import TextInput from "../../components/textInput"
-import { ButtonConfirm } from "../../components/button/index"
-
-import * as S from "./styles"
-import { useNavigate } from "react-router-dom"
 import { useState } from "react"
-import { ModalAlert } from "../../components/modal"
-import { encryptSha512 } from "../../services/cryptograpy"
 
-const Pass = () => {
+import Button from "../../components/button"
+import Logo from "../../assets/images/logo.svg"
+import { InputTextHolder, TextInput } from "../../components/input"
+
+import { encryptSha512 } from "../../services/cryptograpy"
+import { translate } from "../../lang/translation"
+import { useNavigate } from "react-router-dom"
+import usePassword from "../../hooks/usePassword"
+
+import * as Styles from "./styles"
+import { Label } from "../../components/text"
+
+
+export default function Password() {
+    const { comparePasswords } = usePassword()
+    const [password, setPassword] = useState("")
+    const [confirm, setConfirm] = useState("")
+
     const navigate = useNavigate()
 
-    const [newPassword, setNewPassword] = useState("")
-    const [confirmPassword, setConfirmPassword] = useState("")
-
-    const [hasError, setHasError] = useState(false)
-
-    function handlePassword() {
-        if (!newPassword || !confirmPassword) {
-            setHasError(true)
+    const handlePassword = () => {
+        if (!password || !confirm) {
             return
         }
-        if (newPassword !== confirmPassword) {
-            setHasError(true)
-            return
+        if (comparePasswords(encryptSha512(password), encryptSha512(confirm))) {
+            navigate("/seed", {
+                state: {
+                    password: password
+                }
+            })
         }
-
-        localStorage.setItem("wallet_key", encryptSha512(newPassword))
-        navigate("/seed", {
-            state: {
-                password: newPassword
-            }
-        })
     }
 
     return (
-        <S.Container>
-            <S.Title>Password</S.Title>
-            <S.InputHolder>
-                <TextInput
-                    labelText="Choose a password"
-                    inputType="password"
-                    onChange={(event: any) =>
-                        setNewPassword(event.target.value)
-                    }
-                />
-                <TextInput
-                    labelText="Type the password again"
-                    inputType="password"
-                    onChange={(event: any) =>
-                        setConfirmPassword(event.target.value)
-                    }
-                />
-                <ButtonConfirm
-                    label="Continue"
-                    action={() => handlePassword()}
-                />
-            </S.InputHolder>
+        <Styles.Container>
+            <Styles.Column>
+                <Styles.Logo src={Logo} alt="Logo" />
+                <Styles.PasswordInputBox>
+                    <InputTextHolder>
+                        <Label>{translate.password.enterPassword.label}</Label>
+                        <TextInput type={"password"} value={password} onChange={(event) => setPassword(event.target.value)} placeholder={translate.password.enterPassword.placeholder} />
+                    </InputTextHolder>
 
-            {hasError && (
-                <ModalAlert
-                    text="Passwords don't match"
-                    type="error"
-                    buttonLabel="OK"
-                    onClose={() => setHasError(false)}
-                />
-            )}
-        </S.Container>
+                    <InputTextHolder>
+                        <Label>{translate.password.confirmPassword.label}</Label>
+                        <TextInput type={"password"} value={confirm} onChange={(event) => setConfirm(event.target.value)} placeholder={translate.password.confirmPassword.placeholder} />
+                    </InputTextHolder>
+
+                    <Button
+                        label={translate.password.button}
+                        variant="primary"
+                        onClick={handlePassword}
+                    />
+                </Styles.PasswordInputBox>
+
+                <Styles.TermsAdvice>
+                    {translate.password.termsAdvice} <Styles.Link onClick={() => navigate("/terms")}>{translate.password.terms}</Styles.Link>
+                </Styles.TermsAdvice>
+            </Styles.Column>
+        </Styles.Container>
     )
 }
-
-export default Pass

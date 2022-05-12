@@ -1,12 +1,21 @@
 import { create } from "lunes-js-api"
 import axios from "axios"
-import { TransferPayload, TransferResponse } from "../types/assets.d"
+import { TransferPayload, TransferResponse } from "./types"
 import { decryptAes } from "./cryptograpy"
 import { generateMnemonic, validateMnemonic } from "bip39"
 
 import { config } from "../config/lunes.config"
 
-const lunes = create(config[localStorage.getItem("NETWORK") || "mainnet"])
+const network = (): "mainnet" | "testnet" => {
+    const userNetwork = localStorage.getItem("NETWORK")
+    if (userNetwork === "testnet") {
+        return userNetwork
+    }
+
+    return "mainnet"
+}
+
+const lunes = create(config[network()])
 
 export const newSeed = () => {
     return { phrase: generateMnemonic() }
@@ -17,7 +26,7 @@ export const validateSeed = (seed: string): boolean => validateMnemonic(seed)
 export const decodeWallet = (mnemonic: string) =>
     lunes.Seed.fromExistingPhrase(mnemonic)
 
-export const sendLunes = async (
+export const sendTransaction = async (
     payload: TransferPayload,
     password: string
 ): Promise<TransferResponse> => {
@@ -44,22 +53,46 @@ export const getAddressFromStorage = () => {
 }
 
 export const getAssetsBalance = async (address: string) => {
+    if (!address) {
+        return
+    }
     return axios
         .get(`https://lunesnode.lunes.io/assets/balance/${address}`)
         .then((response) => response.data.balances)
-        .catch((error) => console.error(error))
+        .catch((error) => null)
 }
 
-export const getLunesBalance = async (address: string) => {
+export const getLunesBalance = async (address: string): Promise<number> => {
+    if (!address) {
+        return 0
+    }
     return axios
         .get(`https://lunesnode.lunes.io/addresses/balance/${address}`)
         .then((response) => response.data.balance)
-        .catch((error) => console.error(error))
+        .catch((error) => null)
 }
 
-export const getAssetBalance = (address: string, assetId: string) => {
-    return axios
-        .get(`https://lunesnode.lunes.io/assets/balance/${address}/${assetId}`)
-        .then((response) => response.data.balance)
-        .catch((error) => console.error(error))
+export const getAssetBalance = async (address: string, assetId: string) => {
+    if (!address) {
+        return
+    }
+
+    try {
+        const response = await axios.get(
+            `https://lunesnode.lunes.io/assets/balance/${address}/${assetId}`
+        )
+        return response.data.balance
+    } catch (error) {
+        return null
+    }
+}
+export const ValidateAddress = async (address: string) => {
+    try {
+        const response = await axios.get(
+            `https://lunesnode.lunes.io/addresses/validate/${address}`
+        )
+        return response.data.valid
+    } catch (error) {
+        return error
+    }
 }

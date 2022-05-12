@@ -1,51 +1,47 @@
-import React, { useState } from "react"
-
-import { ToastContainer } from "react-toastify"
-import "react-toastify/dist/ReactToastify.css"
+import Router from './routes';
+import useTheme from './hooks/useTheme';
 
 import { ThemeProvider } from "styled-components"
-import { MainContainer, GlobalStyles } from "./styles/globalStyles"
 
-import useTheme from "./hooks/useTheme"
+import { AppContext } from "./hooks/useContext"
+import { useState } from 'react';
 
-import Router from "./routes"
-import Navbar from "./components/navbar"
-import Send from "./components/send"
-import Receive from "./components/receive"
+import { ToastContainer, cssTransition } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const initialvalue: { setOperation: any; setAsset: any } = {
-    setAsset: () => {},
-    setOperation: () => {}
-}
-
-export const OperationContext = React.createContext(initialvalue)
-
-function App() {
+const App = () => {
     const theme = useTheme()
-    const [operation, setOperation] = useState("")
-    const [asset, setAsset] = useState({
-        name: "",
-        assetId: ""
-    })
+    const [selectedToken,
+        setSelectedToken] = useState({
+            balance: 0,
+            issueTransaction: {
+                name: "",
+                decimals: 8
+            }
+        })
+
+    const fadeInUp = cssTransition({
+        enter: "animate__animated animate__fadeInUp",
+        exit: "animate__animated animate__fadeInDown"
+    });
+
     return (
         <ThemeProvider theme={theme}>
-            <OperationContext.Provider
-                value={{
-                    setOperation,
-                    setAsset
-                }}
-            >
-                <MainContainer>
-                    {operation === "send" && <Send asset={asset} />}
-                    {operation === "receive" && <Receive />}
-                    <Navbar />
-                    <Router />
-                    <GlobalStyles />
-                </MainContainer>
-            </OperationContext.Provider>
-            <ToastContainer />
+            <AppContext.Provider value={{
+                selectedToken,
+                setSelectedToken
+            }}>
+                <Router />
+            </AppContext.Provider>
+            <ToastContainer
+                transition={fadeInUp}
+                style={{
+                    position: "absolute",
+                    top: 450,
+                    left: 0
+                }} />
         </ThemeProvider>
     )
 }
 
-export default App
+export default App;

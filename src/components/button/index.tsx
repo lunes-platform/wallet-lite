@@ -1,45 +1,27 @@
-import * as S from "./styles"
 
-type ButtonProps = {
-    label: string
-    action: Function
-    style?: {
-        width: string
-        margin: string
+import { IButton } from "../types"
+
+import * as Styles from "./styles"
+
+
+const Button = (props: IButton) => {
+    switch (props.variant) {
+        case "primary":
+            return <Styles.Primary onClick={props.onClick} >
+                {props.label}
+            </Styles.Primary>
+
+        case "transparent":
+            return <Styles.Transparent onClick={props.onClick} >
+                {props.label}
+            </Styles.Transparent>
+
+        default:
+            return <Styles.Primary onClick={props.onClick} >
+                {props.label}
+            </Styles.Primary>
     }
 }
 
-export const ButtonNeutral = (props: ButtonProps) => {
-    return (
-        <S.ButtonNeutral onClick={() => props.action()}>
-            {props.label}
-        </S.ButtonNeutral>
-    )
-}
+export default Button
 
-export const ButtonConfirm = (props: ButtonProps) => {
-    return (
-        <S.ButtonConfirm onClick={() => props.action()} style={props.style}>
-            {props.label}
-        </S.ButtonConfirm>
-    )
-}
-
-export const ButtonCancel = (props: ButtonProps) => {
-    return (
-        <S.ButtonCancel onClick={() => props.action()}>
-            {props.label}
-        </S.ButtonCancel>
-    )
-}
-
-export const ButtonCancelTransparent = (props: ButtonProps) => {
-    return (
-        <S.ButtonCancelTransparent
-            onClick={() => props.action()}
-            style={props.style}
-        >
-            {props.label}
-        </S.ButtonCancelTransparent>
-    )
-}

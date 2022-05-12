@@ -1,82 +1,69 @@
 import { useState } from "react"
-import { useNavigate, useLocation } from "react-router-dom"
-import { encryptAes } from "../../services/cryptograpy"
 
-import { ButtonNeutral, ButtonConfirm } from "../../components/button/index"
-import { ModalAlert } from "../../components/modal/index"
+import Button from "../../components/button"
+import { PageTitle, Paragraph } from "../../components/text"
+import { TextInput } from "../../components/input"
 
-import { decodeWallet, newSeed, validateSeed } from "../../services/lunes"
+import { useLocation, useNavigate } from "react-router-dom"
+import useSeed from "../../hooks/useSeed"
+import { translate } from "../../lang/translation"
 
-import * as S from "./styles"
+import * as Styles from "./styles"
 
 const Seed = () => {
     const navigate = useNavigate()
     const location: any = useLocation()
     const { password } = location.state
-    const [modal, setModal] = useState("")
-    const [seed, setSeed] = useState("")
+    const { validateSeed, toString, generateSeed, toStringArray, validateIndividualWord } = useSeed()
+    const [words, setWords] = useState(new Array(12).fill(""))
+    const handleGenerateSeed = () => {
+        setWords(toStringArray(generateSeed()))
+    }
 
     return (
-        <S.Container>
-            <S.InputSeedTitle>Enter your seed</S.InputSeedTitle>
-            <S.InputSeed
-                rows={5}
-                value={seed}
-                onChange={(event) => setSeed(event.target.value)}
-            />
+        <>
+            <Styles.Container>
+                <PageTitle>
+                    {translate.seed.title}
+                </PageTitle>
+                <Paragraph>
+                    {translate.seed.instructions}
+                </Paragraph>
+            </Styles.Container>
 
-            <S.ButtonHolder>
-                <ButtonNeutral
-                    action={() => {
-                        const generated = newSeed()
-                        setSeed(generated.phrase)
-                    }}
-                    label="Generate new"
-                />
-                <ButtonConfirm
-                    action={() => {
-                        if (!validateSeed(seed.trim())) {
-                            setModal("seed-invalid")
-                            return
-                        }
-                        localStorage.setItem(
-                            "SEED",
-                            encryptAes(seed.trim(), password)
+            <Styles.SeedContainer>
+                {
+                    words.map((word, index) => {
+                        return (
+                            <Styles.WordSlot key={index}>
+                                <Styles.SeedWordLabel>
+                                    {`${index + 1}`}
+                                    <sup>a</sup>
+                                </Styles.SeedWordLabel>
+                                <TextInput
+                                    value={word}
+                                    placeholder={translate.seed.typeWord}
+                                    hashError={word && !validateIndividualWord(word)}
+                                    onChange={(e) => {
+                                        let arr = [...words];
+                                        arr[index] = e.target.value.trim().toLowerCase();
+                                        setWords(arr);
+                                    }}
+                                />
+                            </Styles.WordSlot>
                         )
-                        localStorage.setItem(
-                            "ADDRESS",
-                            decodeWallet(seed.trim()).address
-                        )
-                        setModal("confirm")
-                    }}
-                    label="Validate"
-                />
-            </S.ButtonHolder>
+                    }
+                    )
+                }
+            </Styles.SeedContainer>
 
-            {modal === "confirm" && (
-                <ModalAlert
-                    text="Your seed has been inserted successfully!"
-                    type="success"
-                    buttonLabel="Continue"
-                    onClose={() => {
-                        setModal("")
-                        navigate("/")
-                    }}
-                />
-            )}
-
-            {modal === "seed-invalid" && (
-                <ModalAlert
-                    text="The seed entered is invalid"
-                    type="error"
-                    buttonLabel="Try again"
-                    onClose={() => {
-                        setModal("")
-                    }}
-                />
-            )}
-        </S.Container>
+            <Styles.ButtonHolder>
+                <Button label={translate.seed.validate} variant="primary" onClick={() => validateSeed(toString(words), password, () => navigate("/"))} />
+                <Button label={translate.seed.generate} variant="transparent" onClick={handleGenerateSeed} />
+            </Styles.ButtonHolder>
+        </>
     )
 }
+
 
 export default Seed

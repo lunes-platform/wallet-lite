@@ -1,36 +1,32 @@
 import styled from "styled-components"
 
+import BackgroundImage from "../../assets/images/illustrations/girl-with-smartphone.jpg"
+
 export const Container = styled.div`
+    animation: fadeInDown;
+    animation-duration: 300ms;
+
+    &::after {
+        content: "";
+        width: 100%;
+        background-image: url(${BackgroundImage});
+        height: 184px;
+        background-repeat: no-repeat;
+        background-position: center;
+        position: absolute;
+    }
+`
+
+export const Hero = styled.div`
     width: 100%;
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-    button {
-        margin-top: 1.5rem;
-    }
+    padding: 24px 16px 0;
+    background-color: ${({ theme }) => theme.colors.themeColors[600]};
 `
-
-export const Title = styled.h1`
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: ${({ theme }) => theme.colors.success[500]};
-    text-align: center;
-`
-
-export const Paragraph = styled.p`
-    font-size: 1.2rem;
-    margin-top: 1rem;
-    color: ${({ theme }) => theme.colors.themeColors[100]};
-    text-align: center;
-    span {
-        color: ${({ theme }) => theme.colors.success[500]};
-    }
-`
-
-export const CenterBox = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 5rem;
+export const ButtonHold = styled.div`
+    width: 100%;
+    padding: 16px;
+    position: absolute;
+    bottom: 0;
+    z-index: 1;
+    margin-bottom: 4px;
 `

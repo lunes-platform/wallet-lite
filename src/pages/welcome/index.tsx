@@ -1,24 +1,37 @@
+import Button from "../../components/button"
+import Header from "../../components/header"
+import { Paragraph, QuoteParagraph, Headline } from "../../components/text"
+
+import { translate } from "../../lang/translation"
 import { useNavigate } from "react-router-dom"
 
-import * as S from "./styles"
-import { ButtonConfirm } from "../../components/button"
+import * as Styles from "./styles"
 
-function Welcome() {
+const Welcome = () => {
     const navigate = useNavigate()
-    return (
-        <S.Container>
-            <S.CenterBox>
-                <S.Title>Welcome!</S.Title>
-                <S.Paragraph>
-                    Click continue to add your <span>seed</span>
-                </S.Paragraph>
 
-                <ButtonConfirm
-                    label="Continue"
-                    action={() => navigate("/advice")}
-                />
-            </S.CenterBox>
-        </S.Container>
+    return (
+        <Styles.Container>
+            <Header />
+
+            <Styles.Hero>
+                <QuoteParagraph>
+                    {translate.lunesWallet}
+                </QuoteParagraph>
+
+                <Headline>
+                    {translate.welcome.hero.title}
+                </Headline>
+
+                <Paragraph>
+                    {translate.welcome.hero.subtitle}
+                </Paragraph>
+            </Styles.Hero>
+
+            <Styles.ButtonHold>
+                <Button variant="primary" label={translate.welcome.button} onClick={() => navigate("/password")} />
+            </Styles.ButtonHold>
+        </Styles.Container>
     )
 }
 

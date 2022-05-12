@@ -1,144 +1,79 @@
-import Receive from "../../assets/images/money-recive.png"
-import Send from "../../assets/images/money-send.png"
-import Explorer from "../../assets/images/explorer.png"
-
-import LunesIcon from "../../assets/images/lunes-icon.png"
-
+import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 
-import * as S from "./styles"
+import Balance from "../../components/header/balance"
+import ButtonsContainer from "./components/buttonsContainer"
+import Header from "../../components/header"
+import ListItem from "./components/listItem"
+import Tabs from "./components/tabs"
+import useSeed from "../../hooks/useSeed"
 
-import { OperationContext } from "../../App"
-import React, { useEffect, useState } from "react"
+import { AppContext } from "../../hooks/useContext"
+import { getAssetsBalance, getLunesBalance } from "../../services/lunes"
 
-import {
-    getAddressFromStorage,
-    getAssetsBalance,
-    getEncryptedSeedFromStorageOrNull,
-    getLunesBalance
-} from "../../services/lunes"
-import { toBiggestCoinUnit } from "../../utils/amountConverter"
-import { getIcon } from "../../utils/getIconUrl"
+import * as Styles from "./styles"
 
-// types
-import { Asset } from "../../types/assets"
 
-function Home() {
+const Home = () => {
     const navigate = useNavigate()
-    const address = getAddressFromStorage()
-    const [balance, setBalance] = useState(0)
-    const { setOperation, setAsset } = React.useContext(OperationContext)
-    const [assetBalances, setAssetBalances] = useState([])
+    const { getAddress } = useSeed()
+    const userAddress = getAddress()
 
-    const [selectedAsset, setSelectedAsset] = useState({
-        issueTransaction: {
-            name: "",
-            assetId: ""
-        }
-    })
+    const [lunesBalance, setLunesBalance] = useState(0)
+    const [balances, setBalances] = useState([])
+    const { selectedToken, setSelectedToken } = React.useContext(AppContext)
 
     useEffect(() => {
-        const encrypted = getEncryptedSeedFromStorageOrNull()
-
-        if (!encrypted || encrypted === null) {
+        if (!userAddress) {
             navigate("/welcome")
             return
         }
+    }, [userAddress, navigate])
 
-        async function getAssets() {
-            setAssetBalances(await getAssetsBalance(address))
+    useEffect(() => {
+        async function getBalances() {
+            setBalances(await getAssetsBalance(userAddress))
+            setLunesBalance(await getLunesBalance(userAddress))
+            setSelectedToken({
+                balance: lunesBalance,
+                issueTransaction: {
+                    name: "Lunes",
+                    decimals: 8
+                }
+            })
         }
+        getBalances()
+    }, [userAddress, lunesBalance, setSelectedToken])
 
-        getAssets()
 
-        handleLunesBalance()
-    }, [])
-
-    async function handleLunesBalance() {
-        setBalance(toBiggestCoinUnit(await getLunesBalance(address), 8))
-    }
 
     return (
-        <S.Container>
-            <S.BoxBalance>
-                <S.LunesButton>
-                    <img
-                        src={
-                            selectedAsset.issueTransaction.name
-                                ? getIcon(selectedAsset.issueTransaction.name)
-                                : LunesIcon
-                        }
-                        onClick={() => {
-                            handleLunesBalance()
-                            setAsset({})
-                            setSelectedAsset({
-                                issueTransaction: {
-                                    name: "",
-                                    assetId: ""
-                                }
-                            })
-                        }}
-                    />
-                </S.LunesButton>
+        <Styles.Container>
+            <Header rightSideComponent={<Balance />} />
 
-                <S.BalanceText>{`${balance} ${
-                    selectedAsset.issueTransaction.name || "LUNES"
-                }`}</S.BalanceText>
-                {/* <S.CotationText>R$ 0,00</S.CotationText> */}
-            </S.BoxBalance>
-
-            <S.ButtonHolder>
-                <S.ActionButton onClick={() => setOperation("receive")}>
-                    <img src={Receive} alt="receive" />
-                    <span>Receive</span>
-                </S.ActionButton>
-                <S.ActionButton onClick={() => setOperation("send")}>
-                    <img src={Send} />
-                    <span>Send</span>
-                </S.ActionButton>
-                <S.ActionButton
-                    onClick={() =>
-                        window.open(
-                            "https://blockexplorer.lunes.io",
-                            "_blanket"
-                        )
+            <Styles.TokenContainer>
+                <Tabs />
+                <Styles.TabContent>
+                    <ListItem
+                        selectedToken={selectedToken.issueTransaction?.name === "Lunes"}
+                        token={{
+                            balance: lunesBalance,
+                            issueTransaction: {
+                                name: "Lunes",
+                                decimals: 8
+                            }
+                        }} />
+                    {
+                        balances.map((item: Token, index) => {
+                            return <ListItem key={index} token={item} selectedToken={selectedToken.issueTransaction?.name === item?.issueTransaction?.name} />
+                        })
                     }
-                >
-                    <img src={Explorer} />
-                    <span>Explorer</span>
-                </S.ActionButton>
-            </S.ButtonHolder>
+                </Styles.TabContent>
 
-            <S.AssetsBox>
-                {assetBalances.length > 0 && (
-                    <S.AssetsTitle>Your tokens</S.AssetsTitle>
-                )}
-                <S.AssetButtonHolder>
-                    {assetBalances.map((asset: Asset, index: number) => {
-                        return (
-                            <S.AssetButton
-                                key={index}
-                                onClick={() => {
-                                    setSelectedAsset(asset)
-                                    setAsset({
-                                        name: asset.issueTransaction.name,
-                                        assetId: asset.issueTransaction.assetId
-                                    })
-                                    setBalance(
-                                        toBiggestCoinUnit(asset.balance, 8)
-                                    )
-                                }}
-                            >
-                                <img
-                                    src={getIcon(asset.issueTransaction.name)}
-                                />
-                                <span>{asset.issueTransaction.name}</span>
-                            </S.AssetButton>
-                        )
-                    })}
-                </S.AssetButtonHolder>
-            </S.AssetsBox>
-        </S.Container>
+            </Styles.TokenContainer>
+
+            <ButtonsContainer />
+        </Styles.Container>
     )
 }
 

@@ -1,6 +1,7 @@
-import "styled-components/native"
+import "styled-components"
 
 type Neutral = {
+    0: string
     100: string
     200: string
     300: string

@@ -1,42 +1,38 @@
 import styled, { css } from "styled-components"
+import lunesui from "lunesui"
 
-export const ButtonComponent = styled.button`
+export const Primary = styled.button`
     ${({ theme }) => css`
-        padding: 10px 15px;
-        cursor: pointer;
-        outline: none;
+        width: 100%;
+        padding-top: 16px;
+        padding-bottom: 16px;
+        font-family: ${lunesui.font.family.base.value};
+        font-weight: bold;
+        background-color: ${theme.colors.themeColors[800]};
+        color: ${theme.colors.themeColors[500]};
         border: none;
-        border-radius: 6px;
-        color ${theme.colors.themeColors[100]};
-        font-size: 1rem;
-        &:active{
-            transform: translateY(2px)
+        outline: none;
+        font-size: 0.9rem;
+        border-radius: 16px;
+        position: relative;
+        cursor: pointer;
+        transition: linear 0.2s;
+
+        &:active {
+            transform: translateY(2px);
+            transition: linear 0.2s;
+        }
+
+        &:hover {
+            background-color: ${({ theme }) => theme.colors.primary[600]};
         }
     `}
 `
 
-export const ButtonNeutral = styled(ButtonComponent)`
-    ${({ theme }) => css`
-        background-color: ${theme.colors.themeColors[400]};
-    `}
-`
-
-export const ButtonConfirm = styled(ButtonComponent)`
-    ${({ theme }) => css`
-        background-color: ${theme.colors.success[600]};
-    `}
-`
-
-export const ButtonCancel = styled(ButtonComponent)`
-    ${({ theme }) => css`
-        background-color: ${theme.colors.critical[600]};
-    `}
-`
-
-export const ButtonCancelTransparent = styled(ButtonCancel)`
-    ${({ theme }) => css`
-        color: ${theme.colors.critical[600]};
-        background-color: transparent;
-        font-weight: bold;
-    `}
+export const Transparent = styled(Primary)`
+    background-color: transparent;
+    color: ${({ theme }) => theme.colors.themeColors[100]};
+    &:hover {
+        background-color: ${({ theme }) => theme.colors.themeColors[600]};
+    }
 `

@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: linear 0.2s;
+}
+
+body {
+    font-smooth: always;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-family: "Inter", sans-serif !important;
+}
+
+#root {
+    width: 360px;
+    height: 580px;
+    border: solid 1px #ccc;
+    margin: 0 auto;
+    position: relative;
+}
+
+.toast {
+    position: absolute;
+    bottom: 0;
+}

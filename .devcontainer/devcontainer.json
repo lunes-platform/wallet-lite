@@ -13,7 +13,11 @@
     "settings": {},
 
     // Add the IDs of extensions you want installed when the container is created.
-    "extensions": ["esbenp.prettier-vscode"],
+    "extensions": [
+        "esbenp.prettier-vscode",
+        "pranaygp.vscode-css-peek",
+        "pranaygp.vscode-css-peek"
+    ],
 
     // Use 'forwardPorts' to make a list of ports inside the container available locally.
     // "forwardPorts": [],
