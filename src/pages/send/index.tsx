@@ -6,44 +6,37 @@ import Button from "../../components/button"
 import { AppContext } from "../../hooks/useContext"
 import useTransaction from "../../hooks/useTransaction";
 
-import * as Styles from "./styles"
 import React, { useState } from "react";
-import { modalPassword } from "../../modal/core/modal";
 import { toBiggestCoinUnit } from "../../utils/amountConverter";
 import { translate } from "../../lang/translation";
+import { useNavigate } from "react-router-dom";
+
+import * as Styles from "./styles"
 
 const Send = () => {
-    const { validateAmount,
-        validateAddress,
-        makeTransaction
-    } = useTransaction()
+    const { validateAmount, validateAddress } = useTransaction()
+    const navigate = useNavigate()
     const [amount, setAmount] = useState("")
     const [receiverAddress, setReceiverAddress] = useState("")
     const { selectedToken } = React.useContext(AppContext)
-
-    const sendTransaction = (password: string) => makeTransaction(selectedToken, Number(amount), receiverAddress, password)
 
     const validateTransaction = async () => {
         if (!await validateAddress(receiverAddress) || !validateAmount(selectedToken, Number(amount))) {
             return
         }
 
-        modalPassword({
-            headline: "Digite sua senha",
-            message: "Para realizar esta transação precisamos que você digite sua senha",
-            password: localStorage.getItem("PASS") || "",
-            options: {
-                validationErrorMessage: "Senha inválida"
-            },
-            onConfirm: sendTransaction
+        navigate("/send/confirmation", {
+            state: {
+                selectedToken,
+                amount: Number(amount),
+                receiverAddress,
+            }
         })
     }
 
-
-
     return (
         <>
-            <NavigationBar title="Enviar" />
+            <NavigationBar title={translate.send.navigationTitle} />
             <Styles.Container>
                 <Styles.Hero>
                     <Styles.PageTitle>
@@ -63,10 +56,10 @@ const Send = () => {
                     <InputTextHolder>
                         <Styles.InputRows>
                             <Label>{translate.send.amountLabel}</Label>
-                            <Styles.AmountSpan>{`${translate.send.available}: ${toBiggestCoinUnit(selectedToken.balance, selectedToken.issueTransaction.decimals)} ${selectedToken.issueTransaction?.name}`}</Styles.AmountSpan>
+                            <Styles.AmountSpan style={{ display: "block" }}>{`${translate.send.available}: ${toBiggestCoinUnit(selectedToken.balance, selectedToken.issueTransaction.decimals)} ${selectedToken.issueTransaction?.name}`}</Styles.AmountSpan>
                         </Styles.InputRows>
                         <Styles.InputRows>
-                            <TextInput placeholder={translate.send.amountPlaceholder} value={amount} onChange={event => setAmount(event.target.value)} />
+                            <TextInput placeholder={translate.send.amountPlaceholder} type="number" value={amount} onChange={event => setAmount(event.target.value)} />
                             <Styles.ButtonContainer>
                                 <Button label="Max" variant="primary" onClick={() => setAmount((toBiggestCoinUnit(selectedToken.balance, selectedToken.issueTransaction.decimals) - 0.001).toString())} />
                             </Styles.ButtonContainer>

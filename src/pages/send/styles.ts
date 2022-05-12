@@ -9,6 +9,9 @@ export const Container = styled.div`
         display: none;
     }
 `
+export const SendConfirmContainer = styled(Container)`
+    animation: fadeInRight 0.2s;
+`
 
 export const Hero = styled.div`
     width: 100%;
@@ -50,12 +53,16 @@ export const InputRows = styled.div`
 export const AmountSpan = styled.span`
     font-style: normal;
     font-weight: 500;
-    font-size: 0.75rem;
+    font-size: 0.875rem;
     line-height: 100%;
     display: flex;
     align-items: center;
     text-align: right;
     color: ${({ theme }) => theme.colors.themeColors[200]};
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 `
 
 export const FeeRow = styled.div`
@@ -75,4 +82,24 @@ export const ConfirmButtonContainer = styled.div`
     bottom: 0;
     width: 100%;
     padding: 16px;
+`
+
+export const ConfirmationRows = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 0;
+`
+
+export const TotalLabel = styled.span`
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.875rem;
+    line-height: 148%;
+    text-transform: uppercase;
+    color: #1a1a1a;
+`
+
+export const TotalValueLabel = styled(TotalLabel)`
+    font-size: 1.125rem;
 `

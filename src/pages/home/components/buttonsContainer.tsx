@@ -5,10 +5,13 @@ import IconSupport from "../../../assets/images/icons/support.svg"
 
 import { useNavigate } from "react-router-dom"
 
-import * as Styles from "../styles"
 import { translate } from "../../../lang/translation"
+import useSeed from "../../../hooks/useSeed"
+
+import * as Styles from "../styles"
 
 const ButtonsContainer = () => {
+    const { getAddress } = useSeed()
     const navigate = useNavigate()
     return (
         <Styles.ButtonsHolder>
@@ -20,7 +23,7 @@ const ButtonsContainer = () => {
             </Styles.Column>
 
             <Styles.Column>
-                <Styles.Button>
+                <Styles.Button >
                     <img src={IconReceive} alt="Send" />
                 </Styles.Button>
                 <Styles.Label>{translate.home.receive}</Styles.Label>
@@ -28,7 +31,9 @@ const ButtonsContainer = () => {
 
 
             <Styles.Column>
-                <Styles.Button>
+                <Styles.Button onClick={() => {
+                    window.open(`https://blockexplorer.lunes.io/address/${getAddress()}}`, "_blank")
+                }}>
                     <img src={IconExplorer} alt="Send" />
                 </Styles.Button>
                 <Styles.Label>{translate.home.explorer}</Styles.Label>
@@ -36,7 +41,9 @@ const ButtonsContainer = () => {
 
 
             <Styles.Column>
-                <Styles.Button>
+                <Styles.Button onClick={() => {
+                    window.open(`mailto:support@lunes.io`, "_blank")
+                }}>
                     <img src={IconSupport} alt="Send" />
                 </Styles.Button>
                 <Styles.Label>{translate.home.support}</Styles.Label>

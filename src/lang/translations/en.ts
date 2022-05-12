@@ -71,6 +71,7 @@ const EN: Translation = {
         support: "Support"
     },
     send: {
+        navigationTitle: "Send",
         pageTitle: "Insert Lunes wallet address",
         instructions:
             "Send only Lunes to this address, sending other coins can result in permanent lost.",
@@ -80,8 +81,37 @@ const EN: Translation = {
         amountPlaceholder: "Value in Lunes",
         available: "Available",
         fee: "Fee",
-        confirm: "Confirm",
+        confirm: "Continue",
         feeDescription: "Network Fee"
+    },
+    sendConfirm: {
+        modalPassword: {
+            headline: "Enter your password",
+            message: "To confirm this transfer you need to enter your password",
+            errorMessage: "Inválid password"
+        },
+        pageTitle: "Chek if everithing is ok",
+        pageInstructions:
+            "Before you confirm this transction check if everything is ok. This action can not be undone.",
+        amountOf: "Amount of ",
+        totalAmount: "Total Amount"
+    },
+    hooks: {
+        useTransaction: {
+            invalidAmountHeadLine: "Invalid Amount",
+            invalidAmountMessage: "Total amount must be greater than zero",
+            insufficientFundsHeadLine: "Insufficient funds",
+            insufficientFundsMessage:
+                "You have no balance to complete this transaction",
+            invalidAddressHeadLine: "Invalid address",
+            invalidAddressMessage:
+                "The address entered does not match a Valid Lunes address",
+            successHeadLine: "Success!",
+            successMessage: "Your transaction was successful",
+            failureHeadLine: "Shipping cancelled!",
+            failureMessage:
+                "Failed to make the transaction. Check shipping data and password."
+        }
     }
 }
 

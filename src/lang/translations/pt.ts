@@ -73,6 +73,7 @@ const PT: Translation = {
         support: "Suporte"
     },
     send: {
+        navigationTitle: "Enviar",
         pageTitle: "Insira o endereço da carteira Lunes",
         instructions:
             "Envie apenas Lunes para o endereço. O envio de outras moedas pode resultar em perda permanente.",
@@ -82,8 +83,40 @@ const PT: Translation = {
         amountPlaceholder: "Valor em LUNES",
         available: "Disponível: ",
         fee: "Taxa",
-        confirm: "Confirmar",
+        confirm: "Continuar",
         feeDescription: "Taxa cobrada pelo serviço"
+    },
+    sendConfirm: {
+        modalPassword: {
+            headline: "Digite sua senha",
+            message:
+                "Para realizar esta transação precisamos que você digite sua senha",
+            errorMessage: "Senha inválida"
+        },
+        pageTitle: "Confira se está tudo correto!",
+        pageInstructions:
+            "Antes de realizar esta transação, confira se todos os dados estão corretos. Essa ação não poderá ser desfeita.",
+        amountOf: "Quantidade de ",
+        totalAmount: "Valor Total"
+    },
+
+    hooks: {
+        useTransaction: {
+            invalidAmountHeadLine: "Valor inválido",
+            invalidAmountMessage:
+                "O valor a ser enviado deve ser maior que zero",
+            insufficientFundsHeadLine: "Saldo insuficiente",
+            insufficientFundsMessage:
+                "Você não tem saldo para completar esta transação",
+            invalidAddressHeadLine: "Endereço inválido",
+            invalidAddressMessage:
+                "O endereço digitado não corresponde a um endereço Lunes Válido",
+            successHeadLine: "Sucesso!",
+            successMessage: "Sua transação foi realizada com sucesso",
+            failureHeadLine: "Envio cancelado!",
+            failureMessage:
+                "Falha ao fazer a transação. Verifique os dados de envio e senha."
+        }
     }
 }
 

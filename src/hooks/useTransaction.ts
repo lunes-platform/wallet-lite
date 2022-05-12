@@ -3,6 +3,8 @@ import { sendTransaction, ValidateAddress } from "../services/lunes"
 import { toBiggestCoinUnit, toSmallerCoinUnit } from "../utils/amountConverter"
 
 import { useNavigate } from "react-router-dom"
+import { getCotationFromApi } from "../services/cotation"
+import { translate } from "../lang/translation"
 
 const useTransaction = () => {
     const navigate = useNavigate()
@@ -14,8 +16,8 @@ const useTransaction = () => {
     const validateAmount = (selectedToken: Token, amount: number) => {
         if (Number(amount) <= 0) {
             modalAlert({
-                headline: "Valor inválido",
-                message: "O valor a ser enviado deve ser maior que zero"
+                headline: translate.hooks.useTransaction.invalidAmountHeadLine,
+                message: translate.hooks.useTransaction.invalidAmountMessage
             })
             return false
         }
@@ -28,8 +30,9 @@ const useTransaction = () => {
             )
         ) {
             modalAlert({
-                headline: "Saldo insuficiente",
-                message: "Você não tem saldo para completar esta transação"
+                headline:
+                    translate.hooks.useTransaction.insufficientFundsHeadLine,
+                message: translate.hooks.useTransaction.insufficientFundsMessage
             })
             return false
         }
@@ -40,9 +43,8 @@ const useTransaction = () => {
     const validateAddress = async (receiverAddress: string) => {
         if (!(await checkAddress(receiverAddress))) {
             modalAlert({
-                headline: "Endereço inválido",
-                message:
-                    "O endereço digitado não corresponde a um endereço Lunes Válido"
+                headline: translate.hooks.useTransaction.invalidAddressHeadLine,
+                message: translate.hooks.useTransaction.invalidAddressMessage
             })
 
             return false
@@ -57,6 +59,10 @@ const useTransaction = () => {
         toAddress: string,
         password: string
     ) => {
+        console.log(
+            toSmallerCoinUnit(amount, selectedToken.issueTransaction.decimals)
+        )
+
         const tx = await sendTransaction(
             {
                 amount: toSmallerCoinUnit(
@@ -72,24 +78,28 @@ const useTransaction = () => {
 
         if (tx.id) {
             modalAlert({
-                headline: "Sucesso!",
-                message: "Sua transação foi realizada com sucesso"
+                headline: translate.hooks.useTransaction.successHeadLine,
+                message: translate.hooks.useTransaction.successMessage
             })
 
-            navigate(-1)
+            navigate("/")
         } else {
             modalAlert({
-                headline: "Envio cancelado!",
-                message:
-                    "Falha ao fazer a transação. Verifique os dados de envio e senha."
+                headline: translate.hooks.useTransaction.failureHeadLine,
+                message: translate.hooks.useTransaction.failureMessage
             })
         }
+    }
+
+    const getCotation = async (coin: string): Promise<number | null> => {
+        return await getCotationFromApi(coin)
     }
 
     return {
         validateAmount,
         validateAddress,
-        makeTransaction
+        makeTransaction,
+        getCotation
     }
 }
 

@@ -7,6 +7,7 @@ import Seed from "../pages/seed"
 import Send from "../pages/send"
 import Welcome from "../pages/welcome"
 import Terms from "../pages/terms"
+import SendConfirmation from "../pages/send/sendConfirmation"
 
 export default function Router() {
     return (
@@ -17,6 +18,7 @@ export default function Router() {
                 <Route path="/welcome" element={<Welcome />} />
                 <Route path="/seed" element={<Seed />} />
                 <Route path="/send" element={<Send />} />
+                <Route path="/send/confirmation" element={<SendConfirmation />} />
                 <Route path="/terms" element={<Terms />} />
             </Routes>
         </HashRouter>

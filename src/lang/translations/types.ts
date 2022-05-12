@@ -50,6 +50,7 @@ export interface Translation {
         support: string
     }
     send: {
+        navigationTitle: string
         pageTitle: string
         instructions: string
         receiverAddressLabel: string
@@ -60,5 +61,31 @@ export interface Translation {
         fee: string
         confirm: string
         feeDescription: string
+    }
+    sendConfirm: {
+        modalPassword: {
+            headline: string
+            message: string
+            errorMessage: string
+        }
+
+        pageTitle: string
+        pageInstructions: string
+        amountOf: string
+        totalAmount: string
+    }
+    hooks: {
+        useTransaction: {
+            invalidAmountHeadLine: string
+            invalidAmountMessage: string
+            insufficientFundsHeadLine: string
+            insufficientFundsMessage: string
+            invalidAddressHeadLine: string
+            invalidAddressMessage: string
+            successHeadLine: string
+            successMessage: string
+            failureHeadLine: string
+            failureMessage: string
+        }
     }
 }
