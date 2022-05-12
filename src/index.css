@@ -20,3 +20,8 @@ body {
     margin: 0 auto;
     position: relative;
 }
+
+.toast {
+    position: absolute;
+    bottom: 0;
+}

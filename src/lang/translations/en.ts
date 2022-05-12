@@ -78,7 +78,7 @@ const EN: Translation = {
         receiverAddressLabel: "Receiver address",
         receiverAddressPlaceholder: "Enter the receiver address",
         amountLabel: "Amount",
-        amountPlaceholder: "Value in Lunes",
+        amountPlaceholder: "Value in ",
         available: "Available",
         fee: "Fee",
         confirm: "Continue",
@@ -112,6 +112,14 @@ const EN: Translation = {
             failureMessage:
                 "Failed to make the transaction. Check shipping data and password."
         }
+    },
+    receive: {
+        navigationTitle: "Receive",
+        pageTitle: "Get this code!",
+        instructions:
+            "Send only Lunes and Lunes Tokens to this address. If you try to send another coin, your balance can be forever lost.",
+        copy: "Copy",
+        copied: "Copiado"
     }
 }
 

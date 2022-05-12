@@ -59,7 +59,7 @@ const Send = () => {
                             <Styles.AmountSpan style={{ display: "block" }}>{`${translate.send.available}: ${toBiggestCoinUnit(selectedToken.balance, selectedToken.issueTransaction.decimals)} ${selectedToken.issueTransaction?.name}`}</Styles.AmountSpan>
                         </Styles.InputRows>
                         <Styles.InputRows>
-                            <TextInput placeholder={translate.send.amountPlaceholder} type="number" value={amount} onChange={event => setAmount(event.target.value)} />
+                            <TextInput placeholder={`${translate.send.amountPlaceholder} ${selectedToken.issueTransaction.name}`} type="number" value={amount} onChange={event => setAmount(event.target.value)} />
                             <Styles.ButtonContainer>
                                 <Button label="Max" variant="primary" onClick={() => setAmount((toBiggestCoinUnit(selectedToken.balance, selectedToken.issueTransaction.decimals) - 0.001).toString())} />
                             </Styles.ButtonContainer>

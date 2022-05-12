@@ -5,14 +5,17 @@ export const getCotationFromApi = async (
 ): Promise<number | null> => {
     try {
         return await (
-            await axios.get(`https://your-api-cotation.example.com`, {
-                headers: {
-                    "Content-Type": "application/json"
+            await axios.get(
+                `https://lunes-prod.api-lunes.com/api-lunes/token/price/?coin=${coin}`,
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        "x-api-key": "YH1E5V0WSFXJ84LJGJAW0OX"
+                    }
                 }
-            })
+            )
         ).data
     } catch (error) {
-        console.warn("Could not get cotation due an server error")
         return null
     }
 }

@@ -24,6 +24,13 @@ const Home = () => {
     const { selectedToken, setSelectedToken } = React.useContext(AppContext)
 
     useEffect(() => {
+        if (!userAddress) {
+            navigate("/welcome")
+            return
+        }
+    }, [userAddress, navigate])
+
+    useEffect(() => {
         async function getBalances() {
             setBalances(await getAssetsBalance(userAddress))
             setLunesBalance(await getLunesBalance(userAddress))
@@ -38,12 +45,6 @@ const Home = () => {
         getBalances()
     }, [userAddress, lunesBalance, setSelectedToken])
 
-    useEffect(() => {
-        if (!userAddress) {
-            navigate("/welcome")
-            return
-        }
-    }, [userAddress, navigate])
 
 
     return (

@@ -80,7 +80,7 @@ const PT: Translation = {
         receiverAddressLabel: "Endereço do destinatário",
         receiverAddressPlaceholder: "Digite o endereço do destinatário",
         amountLabel: "Quantidade",
-        amountPlaceholder: "Valor em LUNES",
+        amountPlaceholder: "Valor em ",
         available: "Disponível: ",
         fee: "Taxa",
         confirm: "Continuar",
@@ -117,6 +117,15 @@ const PT: Translation = {
             failureMessage:
                 "Falha ao fazer a transação. Verifique os dados de envio e senha."
         }
+    },
+
+    receive: {
+        navigationTitle: "Receber",
+        pageTitle: "Copie o código!",
+        instructions:
+            "Envie apenas Lunes para esse endereço. O envio de outras moedas pode resultar em perda permanente.",
+        copy: "Copiar",
+        copied: "Copiado"
     }
 }
 

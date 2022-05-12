@@ -6,6 +6,9 @@ import { ThemeProvider } from "styled-components"
 import { AppContext } from "./hooks/useContext"
 import { useState } from 'react';
 
+import { ToastContainer, cssTransition } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const App = () => {
     const theme = useTheme()
     const [selectedToken,
@@ -17,6 +20,11 @@ const App = () => {
             }
         })
 
+    const fadeInUp = cssTransition({
+        enter: "animate__animated animate__fadeInUp",
+        exit: "animate__animated animate__fadeInDown"
+    });
+
     return (
         <ThemeProvider theme={theme}>
             <AppContext.Provider value={{
@@ -25,6 +33,13 @@ const App = () => {
             }}>
                 <Router />
             </AppContext.Provider>
+            <ToastContainer
+                transition={fadeInUp}
+                style={{
+                    position: "absolute",
+                    top: 450,
+                    left: 0
+                }} />
         </ThemeProvider>
     )
 }

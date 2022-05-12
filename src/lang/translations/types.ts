@@ -88,4 +88,12 @@ export interface Translation {
             failureMessage: string
         }
     }
+
+    receive: {
+        navigationTitle: string
+        pageTitle: string
+        instructions: string
+        copy: string
+        copied: string
+    }
 }

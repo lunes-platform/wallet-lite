@@ -53,27 +53,37 @@ export const getAddressFromStorage = () => {
 }
 
 export const getAssetsBalance = async (address: string) => {
+    if (!address) {
+        return
+    }
     return axios
         .get(`https://lunesnode.lunes.io/assets/balance/${address}`)
         .then((response) => response.data.balances)
-        .catch((error) => console.error(error))
+        .catch((error) => null)
 }
 
 export const getLunesBalance = async (address: string): Promise<number> => {
+    if (!address) {
+        return 0
+    }
     return axios
         .get(`https://lunesnode.lunes.io/addresses/balance/${address}`)
         .then((response) => response.data.balance)
-        .catch((error) => console.error(error))
+        .catch((error) => null)
 }
 
 export const getAssetBalance = async (address: string, assetId: string) => {
+    if (!address) {
+        return
+    }
+
     try {
         const response = await axios.get(
             `https://lunesnode.lunes.io/assets/balance/${address}/${assetId}`
         )
         return response.data.balance
     } catch (error) {
-        return console.error(error)
+        return null
     }
 }
 export const ValidateAddress = async (address: string) => {

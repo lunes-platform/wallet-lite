@@ -23,7 +23,7 @@ const ButtonsContainer = () => {
             </Styles.Column>
 
             <Styles.Column>
-                <Styles.Button >
+                <Styles.Button onClick={() => navigate("/receive")}>
                     <img src={IconReceive} alt="Send" />
                 </Styles.Button>
                 <Styles.Label>{translate.home.receive}</Styles.Label>
