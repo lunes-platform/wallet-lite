@@ -31,9 +31,14 @@ const ButtonsContainer = () => {
 
 
             <Styles.Column>
-                <Styles.Button onClick={() => {
-                    window.open(`https://blockexplorer.lunes.io/address/${getAddress()}}`, "_blank")
-                }}>
+                <Styles.Button
+                    onClick={() => {
+                        window.open(
+                            `https://blockexplorer.lunes.io/address/${getAddress()}`,
+                            "_blank"
+                        )
+                    }}
+                >
                     <img src={IconExplorer} alt="Send" />
                 </Styles.Button>
                 <Styles.Label>{translate.home.explorer}</Styles.Label>
