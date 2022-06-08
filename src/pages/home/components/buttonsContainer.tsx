@@ -29,7 +29,6 @@ const ButtonsContainer = () => {
                 <Styles.Label>{translate.home.receive}</Styles.Label>
             </Styles.Column>
 
-
             <Styles.Column>
                 <Styles.Button
                     onClick={() => {
@@ -44,18 +43,16 @@ const ButtonsContainer = () => {
                 <Styles.Label>{translate.home.explorer}</Styles.Label>
             </Styles.Column>
 
-
             <Styles.Column>
-                <Styles.Button onClick={() => {
-                    window.open(`mailto:support@lunes.io`, "_blank")
-                }}>
+                <Styles.Button
+                    onClick={() => {
+                        window.open(`mailto:suporte@lunes.io`, "_blank")
+                    }}
+                >
                     <img src={IconSupport} alt="Send" />
                 </Styles.Button>
                 <Styles.Label>{translate.home.support}</Styles.Label>
             </Styles.Column>
-
-
-
         </Styles.ButtonsHolder>
     )
 }
