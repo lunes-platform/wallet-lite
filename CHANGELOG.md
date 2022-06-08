@@ -1,3 +1,203 @@
+commit ed1c9afa9f478a98c2cefeb4c4501db00a0c5851
+Author: Robson <robson.miranda@lunes.io>
+Date:   Wed Jun 8 10:50:01 2022 -0300
+
+    1.0.4
+
+commit d51bc3d82e90f30a0765c02ce6d55333eb79d582
+Author: Robson <robson.miranda@lunes.io>
+Date:   Wed Jun 8 10:49:55 2022 -0300
+
+    1.0.3
+
+commit b306c6bcbc1938426e8d446d2aad7e367a2cc3a1
+Author: Robson <robson.miranda@lunes.io>
+Date:   Wed Jun 8 10:48:11 2022 -0300
+
+    fix: support button
+
+commit cb42e04e17f939e822168c19232ac5bb25d01ae2
+Author: Robson <robson.miranda@lunes.io>
+Date:   Wed Jun 8 10:47:48 2022 -0300
+
+    fix: explorer button
+
+commit 5cd6d386741834fca2b9e2d9ce17d43c8d826f0c
+Author: Robson <robson.miranda@lunes.io>
+Date:   Wed Jun 8 10:47:19 2022 -0300
+
+    updated version
+
+commit 9329604256588f2d47854e007a57557cd5d0fcda
+Author: Robson Miranda <46539960+robson036@users.noreply.github.com>
+Date:   Thu May 12 12:56:30 2022 -0300
+
+    Refactor remake design (#19)
+    
+    * deprecate: removed previous template
+    
+    * add: bulma css and start page
+    
+    * refactor: updated template
+    
+    * refactor: types
+    
+    * add: modal alert
+    
+    * add: modal confirm
+    
+    * add: modal container
+    
+    * add: modal password
+    
+    * add: modal prompt
+    
+    * add: modal core
+    
+    * add: modal
+    
+    * add: modal
+    
+    * refactor: reordered images
+    
+    * add: title bar
+    
+    * add: transparent button
+    
+    * add: password hook
+    
+    * add: use seed hook
+    
+    * add: seed and password translations
+    
+    * add: modal component
+    
+    * add: seed creation
+    
+    * add: terms of use
+    
+    * add: route to seed
+    
+    * add: styles
+    
+    * add: git to dockerfile
+    
+    * add: crypto-js
+    
+    * fix: input password hide by default
+    
+    * add: get address hook
+    
+    * add: home screen route
+    
+    * refactored: added styled components
+    
+    - removed bulma css
+    - created components
+    
+    * added: animations
+    
+    * add: send screen
+    
+    * added: send confirmation screen
+    
+    * added: dot env
+    
+    * add: design updates
+    
+    * added: open in new tab when installed
+    
+    * added cotation url example
+    
+    * removed warning
+    
+    Co-authored-by: Robson <robson.miranda@lunes.io>
+
+commit 2546cb631327363cb27adf5afb519a080c539e09
+Author: Lucas Oliveira <olivmath@protonmail.com>
+Date:   Wed May 11 23:40:00 2022 -0300
+
+    remove: unused file
+
+commit dfe741cc3a8e5c65f96afbcbdc595cc4cdebb701
+Author: Robson Miranda <46539960+robson036@users.noreply.github.com>
+Date:   Tue Apr 12 11:30:05 2022 -0300
+
+    8 add button to copy address (#17)
+    
+    * refactor: renamed dockerfile name
+    
+    - Renamed to use in dev container
+    
+    * added: prettier to devcontainer
+    
+    * refactored: changed button sizes
+    
+    * added: style props to transparent button
+    
+    * refactor: changed button confirm to copy
+    
+    * added: button back to screen address
+    
+    * added: react toasify
+    
+    * added: copy button
+    
+    * refactor: changed app version
+    
+    * renamed dockerfile
+    
+    Co-authored-by: Robson <robson.miranda@lunes.io>
+
+commit 137e19cfb3aef4095ccb3fdf5fb480b49db9310d
+Author: nunesinc <nunes@nunesinc.net>
+Date:   Mon Apr 4 17:32:00 2022 -0300
+
+    added: broken link google chrome refactored
+    
+    Signed-off-by: nunesinc <nunes@nunesinc.net>
+
+commit b3f205e5eb767bac1f5ebee3c0bb69ed5e4daa04
+Author: Lucas Oliveira <lucas.oliveira@lunes.io>
+Date:   Fri Apr 1 17:13:09 2022 +0000
+
+    update: dev container
+
+commit cd2032ec1fe8dcd6fe88ada86c9565fc2fd8ad96
+Author: Lucas Oliveira <50037567+olivmath@users.noreply.github.com>
+Date:   Fri Apr 1 13:54:55 2022 -0300
+
+    update: name icon
+
+commit bd6e7cd5fa1a195c70195fd0e6f642d9fd77ad28
+Merge: 5b6b608 f951144
+Author: Robson <robson.miranda@lunes.io>
+Date:   Thu Mar 31 23:02:23 2022 -0300
+
+    Merge branch 'master' of github.com:lunes-platform/lunes-lite
+
+commit 5b6b60842242fe4956ee822910e65e0846a646d1
+Author: Robson <robson.miranda@lunes.io>
+Date:   Thu Mar 31 23:02:12 2022 -0300
+
+    updated version in manifest
+
+commit f951144f4777e61fcdd3bf63047deb1c37182b65
+Author: Lucas Oliveira <50037567+olivmath@users.noreply.github.com>
+Date:   Thu Mar 31 08:48:50 2022 -0300
+
+    Add blockchain certified badge (#12)
+    
+    * added: lunes dev score badge
+    
+    * updated: contributing
+
+commit d4e99454063c5f609f1d903f01d98bb832a72772
+Author: Robson <robson.miranda@lunes.io>
+Date:   Thu Mar 31 00:01:26 2022 -0300
+
+    updated changelog
+
 commit 43992f5722738950e32106608393fd8dcb8bb7c8
 Author: Robson Miranda <46539960+robson036@users.noreply.github.com>
 Date:   Wed Mar 30 23:59:44 2022 -0300
