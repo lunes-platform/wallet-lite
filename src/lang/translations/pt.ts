@@ -66,7 +66,7 @@ const PT: Translation = {
         title: "Saldo da carteira"
     },
     home: {
-        defaultIcon: "Padrão",
+        defaultIcon: "Ativo",
         explorer: "Explorer",
         receive: "Receber",
         send: "Enviar",
@@ -84,7 +84,8 @@ const PT: Translation = {
         available: "Disponível: ",
         fee: "Taxa",
         confirm: "Continuar",
-        feeDescription: "Taxa cobrada pelo serviço"
+        feeDescription: "Taxa cobrada pelo serviço",
+        receiver: "Destinatário"
     },
     sendConfirm: {
         modalPassword: {
@@ -118,7 +119,10 @@ const PT: Translation = {
                 "Falha ao fazer a transação. Verifique os dados de envio e senha."
         }
     },
-
+    modal: {
+        confirm: "Confirmar",
+        cancel: "Cancelar"
+    },
     receive: {
         navigationTitle: "Receber",
         pageTitle: "Copie o código!",

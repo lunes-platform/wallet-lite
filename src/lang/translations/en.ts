@@ -64,7 +64,7 @@ const EN: Translation = {
         title: "Account balance"
     },
     home: {
-        defaultIcon: "Default",
+        defaultIcon: "Active",
         explorer: "Explorer",
         receive: "Receive",
         send: "Send",
@@ -74,7 +74,7 @@ const EN: Translation = {
         navigationTitle: "Send",
         pageTitle: "Insert Lunes wallet address",
         instructions:
-            "Send only Lunes to this address, sending other coins can result in permanent lost.",
+            "Send only Lunes to this address, sending other coins can result in permanent loss.",
         receiverAddressLabel: "Receiver address",
         receiverAddressPlaceholder: "Enter the receiver address",
         amountLabel: "Amount",
@@ -82,15 +82,16 @@ const EN: Translation = {
         available: "Available",
         fee: "Fee",
         confirm: "Continue",
-        feeDescription: "Network Fee"
+        feeDescription: "Network Fee",
+        receiver: "Receiver"
     },
     sendConfirm: {
         modalPassword: {
             headline: "Enter your password",
             message: "To confirm this transfer you need to enter your password",
-            errorMessage: "Inválid password"
+            errorMessage: "Invalid password"
         },
-        pageTitle: "Chek if everithing is ok",
+        pageTitle: "Check if everything is ok",
         pageInstructions:
             "Before you confirm this transction check if everything is ok. This action can not be undone.",
         amountOf: "Amount of ",
@@ -113,13 +114,17 @@ const EN: Translation = {
                 "Failed to make the transaction. Check shipping data and password."
         }
     },
+    modal: {
+        confirm: "Confirm",
+        cancel: "Cancel"
+    },
     receive: {
         navigationTitle: "Receive",
-        pageTitle: "Get this code!",
+        pageTitle: "Copy the code!",
         instructions:
-            "Send only Lunes and Lunes Tokens to this address. If you try to send another coin, your balance can be forever lost.",
+            "Send only Lunes and Lunes Tokens to this address. If you try to send another coin, your balance can be forever loss.",
         copy: "Copy",
-        copied: "Copiado"
+        copied: "Copied"
     }
 }
 
