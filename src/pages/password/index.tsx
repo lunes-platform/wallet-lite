@@ -12,7 +12,6 @@ import usePassword from "../../hooks/usePassword"
 import * as Styles from "./styles"
 import { Label } from "../../components/text"
 
-
 export default function Password() {
     const { comparePasswords } = usePassword()
     const [password, setPassword] = useState("")
@@ -40,12 +39,30 @@ export default function Password() {
                 <Styles.PasswordInputBox>
                     <InputTextHolder>
                         <Label>{translate.password.enterPassword.label}</Label>
-                        <TextInput type={"password"} value={password} onChange={(event) => setPassword(event.target.value)} placeholder={translate.password.enterPassword.placeholder} />
+                        <TextInput
+                            type={"password"}
+                            value={password}
+                            onChange={(event) =>
+                                setPassword(event.target.value)
+                            }
+                            placeholder={
+                                translate.password.enterPassword.placeholder
+                            }
+                        />
                     </InputTextHolder>
 
                     <InputTextHolder>
-                        <Label>{translate.password.confirmPassword.label}</Label>
-                        <TextInput type={"password"} value={confirm} onChange={(event) => setConfirm(event.target.value)} placeholder={translate.password.confirmPassword.placeholder} />
+                        <Label>
+                            {translate.password.confirmPassword.label}
+                        </Label>
+                        <TextInput
+                            type={"password"}
+                            value={confirm}
+                            onChange={(event) => setConfirm(event.target.value)}
+                            placeholder={
+                                translate.password.confirmPassword.placeholder
+                            }
+                        />
                     </InputTextHolder>
 
                     <Button
@@ -56,7 +73,10 @@ export default function Password() {
                 </Styles.PasswordInputBox>
 
                 <Styles.TermsAdvice>
-                    {translate.password.termsAdvice} <Styles.Link onClick={() => navigate("/terms")}>{translate.password.terms}</Styles.Link>
+                    {translate.password.termsAdvice}{" "}
+                    <Styles.Link onClick={() => navigate("/terms")}>
+                        {translate.password.terms}
+                    </Styles.Link>
                 </Styles.TermsAdvice>
             </Styles.Column>
         </Styles.Container>

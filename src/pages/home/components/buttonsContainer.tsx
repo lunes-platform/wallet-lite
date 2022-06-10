@@ -46,7 +46,7 @@ const ButtonsContainer = () => {
             <Styles.Column>
                 <Styles.Button
                     onClick={() => {
-                        window.open(`mailto:suporte@lunes.io`, "_blank")
+                        window.open(`mailto:support@lunes.io`, "_blank")
                     }}
                 >
                     <img src={IconSupport} alt="Send" />

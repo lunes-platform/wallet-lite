@@ -61,6 +61,7 @@ export interface Translation {
         fee: string
         confirm: string
         feeDescription: string
+        receiver: string
     }
     sendConfirm: {
         modalPassword: {
@@ -88,7 +89,10 @@ export interface Translation {
             failureMessage: string
         }
     }
-
+    modal: {
+        confirm: string
+        cancel: string
+    }
     receive: {
         navigationTitle: string
         pageTitle: string
