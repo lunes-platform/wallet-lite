@@ -41,6 +41,13 @@ const useTransaction = () => {
     }
 
     const validateAddress = async (receiverAddress: string) => {
+        if (!receiverAddress) {
+            modalAlert({
+                headline: translate.hooks.useTransaction.invalidAddressHeadLine,
+                message: translate.hooks.useTransaction.invalidAddressMessage
+            })
+            return false
+        }
         if (!(await checkAddress(receiverAddress))) {
             modalAlert({
                 headline: translate.hooks.useTransaction.invalidAddressHeadLine,
