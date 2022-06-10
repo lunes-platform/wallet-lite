@@ -1,32 +1,34 @@
-commit ed1c9afa9f478a98c2cefeb4c4501db00a0c5851
+commit 6e36c0be7d58cfdc2b10d047bb8b067eb2dd4bdb
 Author: Robson <robson.miranda@lunes.io>
-Date:   Wed Jun 8 10:50:01 2022 -0300
+Date:   Fri Jun 10 16:24:42 2022 -0300
 
-    1.0.4
+    refactor: now allow send negative amount
 
-commit d51bc3d82e90f30a0765c02ce6d55333eb79d582
+commit ab016eeee3dd9b7c8581505bfe0d797b227acdc9
 Author: Robson <robson.miranda@lunes.io>
-Date:   Wed Jun 8 10:49:55 2022 -0300
-
-    1.0.3
-
-commit b306c6bcbc1938426e8d446d2aad7e367a2cc3a1
-Author: Robson <robson.miranda@lunes.io>
-Date:   Wed Jun 8 10:48:11 2022 -0300
-
-    fix: support button
-
-commit cb42e04e17f939e822168c19232ac5bb25d01ae2
-Author: Robson <robson.miranda@lunes.io>
-Date:   Wed Jun 8 10:47:48 2022 -0300
-
-    fix: explorer button
-
-commit 5cd6d386741834fca2b9e2d9ce17d43c8d826f0c
-Author: Robson <robson.miranda@lunes.io>
-Date:   Wed Jun 8 10:47:19 2022 -0300
+Date:   Fri Jun 10 16:24:03 2022 -0300
 
     updated version
+
+commit 87c7bb72fa3bcaee27536bc9da10b0b4e8ca6a52
+Author: Robson Miranda <46539960+robson036@users.noreply.github.com>
+Date:   Wed Jun 8 10:54:56 2022 -0300
+
+    Fix explorer button (#20)
+    
+    * updated version
+    
+    * fix: explorer button
+    
+    * fix: support button
+    
+    * 1.0.3
+    
+    * 1.0.4
+    
+    * added: changelog generation
+    
+    Co-authored-by: Robson <robson.miranda@lunes.io>
 
 commit 9329604256588f2d47854e007a57557cd5d0fcda
 Author: Robson Miranda <46539960+robson036@users.noreply.github.com>
