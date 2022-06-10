@@ -1,8 +1,14 @@
-commit 64e9c729402ddbadd85156857cc2f294906da709
-Author: Robson <robson.miranda@lunes.io>
-Date:   Fri Jun 10 17:41:51 2022 -0300
+commit 06f0f2953f62b6470dd668f7599a2e8eda40df80
+Author: Robson Miranda <46539960+robson036@users.noreply.github.com>
+Date:   Fri Jun 10 17:44:34 2022 -0300
 
-    fixed tests
+    Refactor tests and translations (#24)
+    
+    * fixed tests
+    
+    * updated version
+    
+    Co-authored-by: Robson <robson.miranda@lunes.io>
 
 commit 81572fb60f9e88941fba714537cdeb005ee37954
 Author: Robson Miranda <46539960+robson036@users.noreply.github.com>
