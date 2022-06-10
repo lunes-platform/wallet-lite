@@ -1,21 +1,22 @@
-commit bbce874d04e198f501a84ccb4a7f4db623fd1492
+commit 64e9c729402ddbadd85156857cc2f294906da709
 Author: Robson <robson.miranda@lunes.io>
-Date:   Fri Jun 10 16:48:34 2022 -0300
+Date:   Fri Jun 10 17:41:51 2022 -0300
 
-    updated version
+    fixed tests
 
-commit 4698b203e6c370baa4af53c8f4b08b1b6a826180
-Merge: 8950cff a5914ae
-Author: Robson <robson.miranda@lunes.io>
-Date:   Fri Jun 10 16:48:06 2022 -0300
+commit 81572fb60f9e88941fba714537cdeb005ee37954
+Author: Robson Miranda <46539960+robson036@users.noreply.github.com>
+Date:   Fri Jun 10 16:56:35 2022 -0300
 
-    Merge branch 'main' of github.com:lunes-platform/wallet-lite into fix-receiver-address-validating
-
-commit 8950cff6fdf01e7fef719b74b47c6b3852ec2b03
-Author: Robson <robson.miranda@lunes.io>
-Date:   Fri Jun 10 16:46:29 2022 -0300
-
-    fix: receiver address validation
+    fix: receiver address validation (#23)
+    
+    * fix: receiver address validation
+    
+    * updated version
+    
+    * updated changelog
+    
+    Co-authored-by: Robson <robson.miranda@lunes.io>
 
 commit a5914aefe0f81ad2852c380dca1a5744c38c8881
 Author: Robson Miranda <46539960+robson036@users.noreply.github.com>
