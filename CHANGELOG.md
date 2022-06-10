@@ -1,14 +1,33 @@
-commit 6e36c0be7d58cfdc2b10d047bb8b067eb2dd4bdb
+commit bbce874d04e198f501a84ccb4a7f4db623fd1492
 Author: Robson <robson.miranda@lunes.io>
-Date:   Fri Jun 10 16:24:42 2022 -0300
-
-    refactor: now allow send negative amount
-
-commit ab016eeee3dd9b7c8581505bfe0d797b227acdc9
-Author: Robson <robson.miranda@lunes.io>
-Date:   Fri Jun 10 16:24:03 2022 -0300
+Date:   Fri Jun 10 16:48:34 2022 -0300
 
     updated version
+
+commit 4698b203e6c370baa4af53c8f4b08b1b6a826180
+Merge: 8950cff a5914ae
+Author: Robson <robson.miranda@lunes.io>
+Date:   Fri Jun 10 16:48:06 2022 -0300
+
+    Merge branch 'main' of github.com:lunes-platform/wallet-lite into fix-receiver-address-validating
+
+commit 8950cff6fdf01e7fef719b74b47c6b3852ec2b03
+Author: Robson <robson.miranda@lunes.io>
+Date:   Fri Jun 10 16:46:29 2022 -0300
+
+    fix: receiver address validation
+
+commit a5914aefe0f81ad2852c380dca1a5744c38c8881
+Author: Robson Miranda <46539960+robson036@users.noreply.github.com>
+Date:   Fri Jun 10 16:26:26 2022 -0300
+
+    Fix negative amount sending (#22)
+    
+    * updated version
+    
+    * refactor: now allow send negative amount
+    
+    * updated changelog
 
 commit 87c7bb72fa3bcaee27536bc9da10b0b4e8ca6a52
 Author: Robson Miranda <46539960+robson036@users.noreply.github.com>
