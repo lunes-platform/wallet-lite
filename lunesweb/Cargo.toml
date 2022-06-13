@@ -1,0 +1,25 @@
+[package]
+name = "lunesweb"
+readme = "README.md"
+edition = "2021"
+version = "0.3.0"
+license = "Apache-2.0"
+authors = ["Lunes Platform <development@lunes.io>"]
+repository = "https://github.com/lunes-platform/lunesweb"
+description = "Library for communication with nodes in mainnet or testnet of the lunes-blockchain network Allows the automation of sending assets, issue end reissue tokens, leasing, registry, and create new wallet."
+keywords = ["ed25519-axolotl", "lunes", "cryptography", "cryptocurrencies", "wasm"]
+categories = ["algorithms", "cryptography::cryptocurrencies", "cryptography", "wasm"]
+
+[dependencies]
+wasm-bindgen = "0.2.78"
+lunesrs = "1.9.3"
+
+[package.metadata.wasm-pack.profile.release]
+wasm-opt = false
+
+[profile.release]
+opt-level = "s"
+lto = true
+
+[lib]
+crate-type = ["cdylib", "rlib"]
