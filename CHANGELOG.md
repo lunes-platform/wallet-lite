@@ -1,3 +1,11 @@
+commit fa2dd178504afc2f6c6089fd946d1a03a0e91d85
+Author: Robson Miranda <46539960+robson036@users.noreply.github.com>
+Date:   Fri Jun 10 17:52:07 2022 -0300
+
+    refctor: updated icon (#25)
+    
+    Co-authored-by: Robson <robson.miranda@lunes.io>
+
 commit 06f0f2953f62b6470dd668f7599a2e8eda40df80
 Author: Robson Miranda <46539960+robson036@users.noreply.github.com>
 Date:   Fri Jun 10 17:44:34 2022 -0300
