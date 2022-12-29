@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 
+import wallet from "../../services/lunes/wallet"
+
 import Balance from "../../components/header/balance"
 import ButtonsContainer from "./components/buttonsContainer"
 import Header from "../../components/header"
@@ -46,7 +48,8 @@ const Home = () => {
     }, [userAddress, lunesBalance, setSelectedToken])
 
 
-
+    wallet.newWallet()
+    wallet.fromSeed("foi mesmo")
     return (
         <Styles.Container>
             <Header rightSideComponent={<Balance />} />
