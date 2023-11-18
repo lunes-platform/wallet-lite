@@ -4,12 +4,12 @@ import { translate } from "../lang/translation"
 import { modalAlert } from "../modal/core/modal"
 import { encryptAes } from "../services/cryptograpy"
 
-import { decodeWallet, getAddressFromStorage } from "../services/lunes"
+import { decodeWallet, getAddressFromStorage } from "../services/lunesNightly"
 
 const useSeed = () => {
     const generateSeed = () => generateMnemonic()
 
-    const validateSeed = (
+    const  validateSeed =  async (
         seed: string,
         password: string,
         callback: () => void
@@ -22,9 +22,9 @@ const useSeed = () => {
 
             return
         }
-
+        let address = await decodeWallet(seed)
         localStorage.setItem("SEED", encryptAes(seed, password))
-        localStorage.setItem("ADDRESS", decodeWallet(seed).address)
+        localStorage.setItem("ADDRESS", address)
         callback()
     }
 

@@ -19,5 +19,8 @@ export const config = {
         networkByte: "0".charCodeAt(0),
         nodeAddress: "https://lunesnode-testnet.lunes.io",
         matcherAddress: "https://lunesnode-testnet.lunes.io/matcher"
-    }
+    },
+    mainnetNightly: "wss://ws.lunes.io",
+    testnetNightly: "wss://ws-test.lunes.io",
+    addressLunesFee: "5FKb7brWyF8GxMH4yoaEnaZcjMJxp8LPrN2SYZtEpdEYXsoi"
 }

@@ -58,7 +58,7 @@ const Seed = () => {
             </Styles.SeedContainer>
 
             <Styles.ButtonHolder>
-                <Button label={translate.seed.validate} variant="primary" onClick={() => validateSeed(toString(words), password, () => navigate("/"))} />
+                <Button label={translate.seed.validate} variant="primary" onClick={async ()=> await validateSeed(toString(words), password, () => navigate("/"))} />
                 <Button label={translate.seed.generate} variant="transparent" onClick={handleGenerateSeed} />
             </Styles.ButtonHolder>
         </>

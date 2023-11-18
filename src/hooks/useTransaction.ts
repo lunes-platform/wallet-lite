@@ -1,5 +1,5 @@
 import { modalAlert } from "../modal/core/modal"
-import { sendTransaction, ValidateAddress } from "../services/lunes"
+import { sendTransaction, ValidateAddress } from "../services/lunesNightly"
 import { toBiggestCoinUnit, toSmallerCoinUnit } from "../utils/amountConverter"
 
 import { useNavigate } from "react-router-dom"
