@@ -83,7 +83,7 @@ const useTransaction = () => {
             password
         )
 
-        if (tx.id) {
+        if (tx) {
             modalAlert({
                 headline: translate.hooks.useTransaction.successHeadLine,
                 message: translate.hooks.useTransaction.successMessage
