@@ -3,6 +3,9 @@
     "version": "1.0.7",
     "private": true,
     "dependencies": {
+        "@polkadot/api": "^10.11.1",
+        "@polkadot/keyring": "^12.6.1",
+        "@polkadot/x-global": "^12.6.1",
         "@testing-library/jest-dom": "^5.16.2",
         "@testing-library/react": "^12.1.4",
         "@testing-library/user-event": "^13.5.0",
