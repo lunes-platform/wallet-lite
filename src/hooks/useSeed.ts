@@ -14,15 +14,16 @@ const useSeed = () => {
         password: string,
         callback: () => void
     ) => {
-        if (!validateMnemonic(seed)) {
+       /* if (!validateMnemonic(seed)) {
             modalAlert({
                 headline: translate.seed.invalidSeed,
                 message: translate.seed.invalidSeedMessage
             })
 
             return
-        }
+        }*/
         let address = await decodeWallet(seed)
+        console.log(address)
         localStorage.setItem("SEED", encryptAes(seed, password))
         localStorage.setItem("ADDRESS", address)
         callback()

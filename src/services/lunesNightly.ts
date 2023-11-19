@@ -1,15 +1,16 @@
-import { TransferPayload, TransferResponse } from "./types"
+import { TransferPayload } from "./types"
+import { config } from "../config/lunes.config"
 // Import
 import { ApiPromise, WsProvider } from '@polkadot/api';
-import { generateMnemonic, validateMnemonic } from "bip39"
+import { generateMnemonic } from "bip39"
 import { decryptAes } from "./cryptograpy";
 import { Keyring } from '@polkadot/api';
 // Create a keyring instance
 const keyring = new Keyring({ type: 'sr25519' });
-import { config } from "../config/lunes.config"
+
 const getApi = async () => {
-    const network = localStorage.getItem("NETWORK_LUNES")?.toString();
-    const wsProvider = new WsProvider(config.testnetNightly);
+    const network = config.testnetNightly
+    const wsProvider = new WsProvider(network);
     return await ApiPromise.create({ provider: wsProvider });
 }
 export const newSeed = () => {
@@ -78,7 +79,7 @@ export const getAddressFromStorage = () => {
     return localStorage.getItem("ADDRESS") || ""
 }
 export const decodeWallet = async (mnemonic: string):Promise<string> => {
-    const api = await getApi();
+    await getApi();
     const keyPair = keyring.addFromUri(mnemonic);
     return keyPair.address
 }
