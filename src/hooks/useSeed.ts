@@ -5,6 +5,7 @@ import { modalAlert } from "../modal/core/modal"
 import { encryptAes } from "../services/cryptograpy"
 
 import { decodeWallet, getAddressFromStorage } from "../services/lunesNightly"
+import { validateMnemonic } from "bip39"
 const bip39 = require('bip39')
 const useSeed = () => {
     const generateSeed = () => bip39.generateMnemonic()
@@ -15,6 +16,14 @@ const useSeed = () => {
         callback: () => void
     ) => {
        try {
+        if (!validateMnemonic(seed)) {
+            modalAlert({
+                headline: translate.seed.invalidSeed,
+                message: translate.seed.invalidSeedMessage
+            })
+
+            return
+        }
         let address = await decodeWallet(seed)
         localStorage.setItem("SEED", encryptAes(seed, password))
         localStorage.setItem("ADDRESS", address)
