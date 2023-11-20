@@ -1,10 +1,13 @@
-const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin')
 
-module.exports = {
-	// Other rules...
-	plugins: [
-		new NodePolyfillPlugin({
-			excludeAliases: ['console']
-		})
-	]
-};
+module.exports = function override(config, env) {
+  config.resolve = {
+	extensions: [ '.ts', '.js','.tsx' ],
+    fallback: {
+      stream: require.resolve('stream-browserify'),
+	  buffer: require.resolve('buffer'),
+    },
+  }
+  config.plugins.push(new NodePolyfillPlugin())
+  return config
+}

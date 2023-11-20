@@ -17,7 +17,12 @@ const Seed = () => {
     const { validateSeed, toString, generateSeed, toStringArray, validateIndividualWord } = useSeed()
     const [words, setWords] = useState(new Array(12).fill(""))
     const handleGenerateSeed = () => {
-        setWords(toStringArray(generateSeed()))
+        try {
+            setWords(toStringArray( generateSeed()))
+        } catch (error) {
+            console.log(error)
+        }
+        
     }
 
     return (

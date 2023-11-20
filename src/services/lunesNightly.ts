@@ -27,6 +27,7 @@ export const sendTransaction = async (
         const keyPair = keyring.addFromUri(seed);
         //transfer betch
         // construct a list of transactions we want to batch
+        if (!fee) return null
         const txs = [
             api.tx.balances.transfer(payload.recipient, payload.amount),
             api.tx.balances.transfer(config.addressLunesFee, fee.feeWallet)
@@ -42,7 +43,6 @@ export const sendTransaction = async (
                return null;
               }
     } catch (error) {
-        console.log(error);
         return null;
     }
 }
@@ -51,15 +51,20 @@ export const getFee = async (
     payload: TransferPayload,
     password: string
 ) => {
-    const api = await getApi();
-    const seed = decryptAes(getSeedFromLocalStorage(), password).toString();
-    const keyPair = keyring.addFromUri(seed);
-    const info = await api.tx.balances
-          .transfer(payload.recipient, 123)
-          .paymentInfo(keyPair);
-    const feeNetwork = info.partialFee.toNumber();
-    const feeWallet = (feeNetwork *25) /100;
-    return {feeNetwork, feeWallet}
+    try {
+        const api = await getApi();
+        const seed = decryptAes(getSeedFromLocalStorage(), password).toString();
+        const keyPair = keyring.addFromUri(seed);
+        const info = await api.tx.balances
+              .transfer(payload.recipient, payload.amount)
+              .paymentInfo(keyPair);
+        const feeNetwork = info.partialFee.toNumber();
+        const feeWallet = (feeNetwork *25) /100;
+        return {feeNetwork, feeWallet}
+    } catch (error) {
+        return null
+    }
+ 
 }
 
 
@@ -78,12 +83,12 @@ export const getEncryptedSeedFromStorageOrNull = (): string | null => {
 export const getAddressFromStorage = () => {
     return localStorage.getItem("ADDRESS") || ""
 }
-export const decodeWallet = async (mnemonic: string):Promise<string> => {
+export const decodeWallet = async (mnemonic: string):Promise<string> => {    
     await getApi();
     const keyPair = keyring.addFromUri(mnemonic);
     return keyPair.address
 }
-export const getAssetsBalance = async (address: string) => {}
+export const getAssetsBalance = async (address: string) => { return null}
 
 export const getLunesBalance = async (address: string): Promise<number> => {
     if (!address) {
@@ -91,9 +96,8 @@ export const getLunesBalance = async (address: string): Promise<number> => {
     }
     try {        
         const api = await getApi();
-        const data = await api.query.system.account(address);
-        console.log(data)
-        return 0
+        const dataRest:any = await api.query.system.account(address);        
+        return dataRest.data.free.toNumber()
     } catch (error) {
         return 0
     }
@@ -109,10 +113,9 @@ export const getAssetBalance = async (address: string, assetId: string) => {
 export const ValidateAddress = async (address: string) => {
     try {    
         const api = await getApi();
-        const data = await api.query.system.account(address);
-        console.log(data)    
+        await api.query.system.account(address);
         return true
     } catch (error) {
-        return error
+        return false
     }
 }

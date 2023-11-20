@@ -6,6 +6,7 @@ import * as Styles from "./styles"
 
 const Balance = () => {
     const { selectedToken } = React.useContext(AppContext)
+    
     return (
         <Styles.BalanceGroup>
             <Styles.BalanceHeadline>{translate.balance.title}</Styles.BalanceHeadline>

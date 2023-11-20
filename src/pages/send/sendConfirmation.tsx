@@ -81,7 +81,7 @@ const SendConfirmation = () => {
 
                 <Styles.ConfirmationRows>
                     <Styles.AmountSpan>{translate.send.fee}</Styles.AmountSpan>
-                    <Styles.AmountSpan>0.001</Styles.AmountSpan>
+                    <Styles.AmountSpan>{state.fee/100000000}</Styles.AmountSpan>
                 </Styles.ConfirmationRows>
 
                 <Styles.ConfirmationRows>
@@ -107,7 +107,7 @@ const SendConfirmation = () => {
                                   "pt-BR",
                                   { style: "currency", currency: "BRL" }
                               )
-                            : state.amount}
+                            : (state.amount - (state.fee/100000000))}
                     </Styles.TotalLabel>
                 </Styles.InputRows>
             </Styles.Hero>

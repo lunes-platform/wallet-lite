@@ -1,32 +1,31 @@
-import { generateMnemonic, validateMnemonic } from "bip39"
+
 import wordList from "bip39/src/wordlists/english.json"
 import { translate } from "../lang/translation"
 import { modalAlert } from "../modal/core/modal"
 import { encryptAes } from "../services/cryptograpy"
 
 import { decodeWallet, getAddressFromStorage } from "../services/lunesNightly"
-
+const bip39 = require('bip39')
 const useSeed = () => {
-    const generateSeed = () => generateMnemonic()
+    const generateSeed = () => bip39.generateMnemonic()
 
     const  validateSeed =  async (
         seed: string,
         password: string,
         callback: () => void
     ) => {
-       /* if (!validateMnemonic(seed)) {
-            modalAlert({
-                headline: translate.seed.invalidSeed,
-                message: translate.seed.invalidSeedMessage
-            })
-
-            return
-        }*/
+       try {
         let address = await decodeWallet(seed)
-        console.log(address)
         localStorage.setItem("SEED", encryptAes(seed, password))
         localStorage.setItem("ADDRESS", address)
         callback()
+       } catch (error) {
+        modalAlert({
+            headline: translate.seed.invalidSeed,
+            message: translate.seed.invalidSeedMessage
+        })
+       }
+       
     }
 
     const toString = (wordList: string[]): string => wordList.join(" ")

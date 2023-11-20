@@ -9,7 +9,7 @@ import Tabs from "./components/tabs"
 import useSeed from "../../hooks/useSeed"
 
 import { AppContext } from "../../hooks/useContext"
-import { getAssetsBalance, getLunesBalance } from "../../services/lunes"
+import { getLunesBalance } from "../../services/lunesNightly"
 
 import * as Styles from "./styles"
 
@@ -32,7 +32,6 @@ const Home = () => {
 
     useEffect(() => {
         async function getBalances() {
-            setBalances(await getAssetsBalance(userAddress))
             setLunesBalance(await getLunesBalance(userAddress))
             setSelectedToken({
                 balance: lunesBalance,
@@ -45,10 +44,16 @@ const Home = () => {
         getBalances()
     }, [userAddress, lunesBalance, setSelectedToken])
 
-
+    const hdSair = () => {
+        let confirm = window.confirm("Are you sure you want to exit? All data will be lost!")
+        if (!confirm) return
+        localStorage.clear()
+        window.location.reload()
+    }
 
     return (
         <Styles.Container>
+             <button onClick={()=>hdSair()}>Exit</button>
             <Header rightSideComponent={<Balance />} />
 
             <Styles.TokenContainer>

@@ -1,5 +1,5 @@
 import { modalAlert } from "../modal/core/modal"
-import { sendTransaction, ValidateAddress } from "../services/lunesNightly"
+import { sendTransaction, ValidateAddress, getFee } from "../services/lunesNightly"
 import { toBiggestCoinUnit, toSmallerCoinUnit } from "../utils/amountConverter"
 
 import { useNavigate } from "react-router-dom"
@@ -82,7 +82,6 @@ const useTransaction = () => {
             },
             password
         )
-
         if (tx) {
             modalAlert({
                 headline: translate.hooks.useTransaction.successHeadLine,
@@ -101,12 +100,44 @@ const useTransaction = () => {
     const getCotation = async (coin: string): Promise<number | null> => {
         return await getCotationFromApi(coin)
     }
+    const getEstimatedFee = async (
+        selectedToken: Token,
+        amount: number,
+        toAddress: string,
+        password: string
+    )=>{
+        try {
+            const fee = await getFee(
+                {
+                    amount: toSmallerCoinUnit(
+                        amount,
+                        selectedToken.issueTransaction.decimals
+                    ),
+                    assetId: selectedToken.assetId || "WAVES",
+                    fee: 100000,
+                    recipient: toAddress
+                },
+                password
+            )
+            if(fee === null){
+                return 0
+            }
+            return fee.feeNetwork + fee.feeWallet
+        } catch (error) {
+            modalAlert({
+                headline: translate.hooks.useTransaction.failureHeadLine,
+                message: translate.hooks.useTransaction.invalidAddressMessage
+            })
+        }
+
+    }
 
     return {
         validateAmount,
         validateAddress,
         makeTransaction,
-        getCotation
+        getCotation,
+        getEstimatedFee
     }
 }
 

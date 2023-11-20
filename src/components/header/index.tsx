@@ -9,9 +9,9 @@ type HeaderProps = {
     rightSideComponent?: ReactChild
 }
 
-const Header = (props: HeaderProps) => {
+const Header = (props: HeaderProps) => {   
     return (
-        <Styles.Header>
+        <Styles.Header>           
             <Styles.Nav>
                 <img src={Logo} alt="" />
                 {props.rightSideComponent || <LangSelector />}
