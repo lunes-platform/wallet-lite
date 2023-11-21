@@ -72,10 +72,7 @@ const useTransaction = () => {
 
         const tx = await sendTransaction(
             {
-                amount: toSmallerCoinUnit(
-                    amount,
-                    selectedToken.issueTransaction.decimals
-                ),
+                amount: Math.floor(amount * 100000000),
                 assetId: selectedToken.assetId || "WAVES",
                 fee: 100000,
                 recipient: toAddress
@@ -109,10 +106,7 @@ const useTransaction = () => {
         try {
             const fee = await getFee(
                 {
-                    amount: toSmallerCoinUnit(
-                        amount,
-                        selectedToken.issueTransaction.decimals
-                    ),
+                    amount: Math.floor(amount * 100000000),
                     assetId: selectedToken.assetId || "WAVES",
                     fee: 100000,
                     recipient: toAddress
@@ -122,7 +116,7 @@ const useTransaction = () => {
             if(fee === null){
                 return 0
             }
-            return fee.feeNetwork + fee.feeWallet
+            return fee
         } catch (error) {
             modalAlert({
                 headline: translate.hooks.useTransaction.failureHeadLine,

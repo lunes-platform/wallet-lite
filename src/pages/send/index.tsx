@@ -39,12 +39,24 @@ const Send = () => {
                     translate.sendConfirm.modalPassword.errorMessage
             },
             onConfirm: async (password: string)  =>{
+                
                 let fee = await getEstimatedFee(selectedToken, Number(amount), receiverAddress, password)
-                console.log(fee)
+                let amountReal = Number(amount);
+                console.log(fee )
+                if((selectedToken.balance/100000000) === Number(amount))
+                    amountReal = (selectedToken.balance/100000000)  - (Number(fee)/100000000)
+
+                let totalSender = Number(amountReal) + (Number(fee)/100000000)
+                if((selectedToken.balance/100000000) < totalSender){
+                    alert(translate.hooks.useTransaction.insufficientFundsMessage+" Fee + total : "+totalSender)
+                    return;
+                }
+                    
+
                 navigate("/send/confirmation", {
                     state: {
                         selectedToken,
-                        amount: Number(amount),
+                        amount: amountReal,
                         receiverAddress,
                         fee : fee
                     }
@@ -118,7 +130,7 @@ const Send = () => {
                                         )
                                     }
                                 />
-                            </Styles.ButtonContainer>
+                            </Styles.ButtonContainer>                            
                         </Styles.InputRows>
                     </InputTextHolder>
                 </Styles.SendContainer>

@@ -22,5 +22,6 @@ export const config = {
     },
     mainnetNightly: "wss://ws.lunes.io",
     testnetNightly: "wss://ws-test.lunes.io",
-    addressLunesFee: "5FKb7brWyF8GxMH4yoaEnaZcjMJxp8LPrN2SYZtEpdEYXsoi"
+    addressLunesFee: "5D7ug8F9HsMPzhdRcrp3yd5SphtVdz7hrWN6SdTNNSC6f6iF",
+    feeWallet: 53250
 }

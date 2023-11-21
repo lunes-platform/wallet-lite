@@ -20,28 +20,27 @@ export const sendTransaction = async (
     payload: TransferPayload,
     password: string
 ) => {
-    const fee = await getFee(payload, password);
     const api = await getApi();
     const seed = decryptAes(getSeedFromLocalStorage(), password).toString();
     try {
         const keyPair = keyring.addFromUri(seed);
-        //transfer betch
-        // construct a list of transactions we want to batch
-        if (!fee) return null
+
         const txs = [
             api.tx.balances.transfer(payload.recipient, payload.amount),
-            api.tx.balances.transfer(config.addressLunesFee, fee.feeWallet)
-          ];
-  
+            api.tx.balances.transfer(config.addressLunesFee, config.feeWallet)
+          ];  
           // construct the batch and send the transactions
           let tx = await api.tx.utility
             .batch(txs)
             .signAndSend(keyPair);
-            if (tx.hash) {
+            if (tx.hash.toHuman()) {
+                console.log(`included in ${tx.hash.toHuman()}`);
                 return tx.hash.toJSON();
-              } else {
-               return null;
+              }else{
+                  return null;
               }
+
+           
     } catch (error) {
         return null;
     }
@@ -51,16 +50,18 @@ export const getFee = async (
     payload: TransferPayload,
     password: string
 ) => {
-    try {
+    try {        
         const api = await getApi();
         const seed = decryptAes(getSeedFromLocalStorage(), password).toString();
         const keyPair = keyring.addFromUri(seed);
-        const info = await api.tx.balances
-              .transfer(payload.recipient, payload.amount)
-              .paymentInfo(keyPair);
-        const feeNetwork = info.partialFee.toNumber();
-        const feeWallet = (feeNetwork *25) /100;
-        return {feeNetwork, feeWallet}
+        const txs = [
+            api.tx.balances.transfer(payload.recipient, payload.amount),
+            api.tx.balances.transfer(config.addressLunesFee, config.feeWallet)
+          ];
+        let info =  await api.tx.utility
+            .batch(txs)
+            .paymentInfo(keyPair);
+        return info.partialFee.toNumber() + config.feeWallet;
     } catch (error) {
         return null
     }
