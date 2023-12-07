@@ -9,10 +9,19 @@ import { translate } from "../../../lang/translation"
 import useSeed from "../../../hooks/useSeed"
 
 import * as Styles from "../styles"
+import { useEffect, useState } from "react"
 
 const ButtonsContainer = () => {
     const { getAddress } = useSeed()
     const navigate = useNavigate()
+    const [isTestNet, setIsTestNet] = useState(false)
+    useEffect(() => {
+        const userNetwork = localStorage.getItem("NETWORK")  
+        if(userNetwork === "testnet"){
+            setIsTestNet(true)
+        }
+        console.log(userNetwork)
+    },[])
     return (
         <Styles.ButtonsHolder>
             <Styles.Column>
@@ -33,7 +42,7 @@ const ButtonsContainer = () => {
                 <Styles.Button
                     onClick={() => {
                         window.open(
-                            `https://blockexplorer.lunes.io/address/${getAddress()}`,
+                            `https://explorer.lunes.io/${isTestNet?"Lunes-testnet":"Lunes-mainet"}/account/${getAddress()}`,
                             "_blank"
                         )
                     }}

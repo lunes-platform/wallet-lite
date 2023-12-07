@@ -9,7 +9,8 @@ import { Keyring } from '@polkadot/api';
 const keyring = new Keyring({ type: 'sr25519' });
 
 const getApi = async () => {
-    const network = config.testnetNightly
+    const userNetwork = localStorage.getItem("NETWORK")
+    const network = userNetwork === "testnet"?config.testnetNightly:config.mainnetNightly
     const wsProvider = new WsProvider(network);
     return await ApiPromise.create({ provider: wsProvider });
 }
