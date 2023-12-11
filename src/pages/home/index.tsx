@@ -44,18 +44,16 @@ const Home = () => {
         getBalances()
     }, [userAddress, lunesBalance, setSelectedToken])
 
-    const hdSair = () => {
+   /* const hdSair = () => {
         let confirm = window.confirm("Are you sure you want to exit? All data will be lost!")
         if (!confirm) return
         localStorage.clear()
         window.location.reload()
-    }
+    }*/
 
     return (
         <Styles.Container>
-             <button onClick={()=>hdSair()}>Exit</button>
             <Header rightSideComponent={<Balance />} />
-
             <Styles.TokenContainer>
                 <Tabs />
                 <Styles.TabContent>
