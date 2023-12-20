@@ -1,3 +1,9 @@
+commit 5441dc05e87deddff93788af6fde25abd9018e55
+Author: Adelson Santos <adelson@securitus.group>
+Date:   Wed Dec 20 15:02:02 2023 -0300
+
+    package update to new build
+
 commit e9b3f4e8bd88b18a4e4f97b88c8bf50fa255f75c
 Author: Jorge Almeida <jorgewra@gmail.com>
 Date:   Mon Dec 11 18:41:04 2023 -0300
