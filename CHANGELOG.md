@@ -1,3 +1,75 @@
+commit e9b3f4e8bd88b18a4e4f97b88c8bf50fa255f75c
+Author: Jorge Almeida <jorgewra@gmail.com>
+Date:   Mon Dec 11 18:41:04 2023 -0300
+
+    add sair
+
+commit 15a958c450040f5dd314a4da0217e18bd3390515
+Author: Jorge Almeida <jorgewra@gmail.com>
+Date:   Thu Dec 7 19:42:21 2023 -0300
+
+    add explorer Lunes
+
+commit e9b806257e85acc9d96caac4112bda660418d208
+Author: Jorge Almeida <jorgewra@gmail.com>
+Date:   Mon Nov 20 23:29:08 2023 -0300
+
+    fix tx multi
+
+commit 7b3ed857022fa43cac4f84acdfb4ed4ad40d4c3e
+Author: Jorge Almeida <jorgewra@gmail.com>
+Date:   Mon Nov 20 18:54:09 2023 -0300
+
+    validator seed!
+
+commit 8dd0d8c063b0bd8ca61d4c49689e70b2b7843abb
+Author: Jorge Almeida <jorge.almeida@cvaconsultoria.com.br>
+Date:   Mon Nov 20 01:26:50 2023 -0300
+
+    fix sender
+
+commit b43f99f48fd7509225c05ef07a60397ef9727a18
+Author: Jorge Almeida <jorgewra@gmail.com>
+Date:   Sun Nov 19 12:12:19 2023 -0300
+
+    add fix
+
+commit e9bdbb6cfe47fc31a8474cfe186a9f638a75941b
+Author: Jorge Almeida <jorgewra@gmail.com>
+Date:   Sat Nov 18 10:13:36 2023 -0300
+
+    tx
+
+commit 85ae53bfb881811c36719492caab7aaa27dbe53f
+Author: Jorge Almeida <jorgewra@gmail.com>
+Date:   Sat Nov 18 10:12:03 2023 -0300
+
+    install
+
+commit 6c2c1f3c97217b54afefdb391fea6da8775320ee
+Author: Jorge Almeida <jorge.almeida@cvaconsultoria.com.br>
+Date:   Sat Nov 18 08:56:36 2023 -0300
+
+    add lunes Nightly
+
+commit a3d4c303fafb14106ed8c6a92d58091120cab465
+Author: Robson <robson.miranda1991@gmail.com>
+Date:   Wed Dec 14 09:52:36 2022 -0300
+
+    added vol token icon
+
+commit 9377b83ba3023a653ded0d071f151eaa3b67b728
+Author: Robson Miranda <46539960+robson036@users.noreply.github.com>
+Date:   Mon Jun 13 10:58:33 2022 -0300
+
+    add: token icon purpose
+
+commit 37c0d7e46b914a3c0570ecf2033f5ecab9487408
+Author: Robson <robson.miranda@lunes.io>
+Date:   Mon Jun 13 09:12:34 2022 -0300
+
+    updated changelog
+
 commit fa2dd178504afc2f6c6089fd946d1a03a0e91d85
 Author: Robson Miranda <46539960+robson036@users.noreply.github.com>
 Date:   Fri Jun 10 17:52:07 2022 -0300
