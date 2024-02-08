@@ -103,7 +103,11 @@ export const ListItemIcon = styled.img`
     height: 32.5px;
     animation: fadeInLeft 0.2s;
 `
-
+export const ListItemNft = styled.img`
+    width: 50.5px;
+    height: 50.5px;
+    animation: fadeInLeft 0.2s;
+`
 export const CoinName = styled.span`
     font-style: normal;
     font-weight: 500;

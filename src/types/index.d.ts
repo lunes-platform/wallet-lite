@@ -31,3 +31,22 @@ declare module "token" {
         token: Token
     }
 }
+
+type Ntf = {
+    tokenId: string
+    fileUrl: string
+    symbol: string
+    name: string
+    price: string
+    maxSupply: string
+    description: string
+    created: string
+    maxPerMint: string
+    totalMint: string
+    balance: string
+}
+declare module "nft" {
+    export interface INft {
+        nft: Ntf
+    }
+}

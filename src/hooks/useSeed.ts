@@ -4,10 +4,10 @@ import { translate } from "../lang/translation"
 import { modalAlert } from "../modal/core/modal"
 import { encryptAes } from "../services/cryptograpy"
 
-import { decodeWallet, getAddressFromStorage } from "../services/lunesNightly"
+import { decodeWallet, getAddressFromStorage, getNFTs } from "../services/lunesNightly"
 import { validateMnemonic } from "bip39"
 const bip39 = require('bip39')
-const useSeed = () => {
+const useSeed = () => {    
     const generateSeed = () => bip39.generateMnemonic()
 
     const  validateSeed =  async (
@@ -46,14 +46,15 @@ const useSeed = () => {
     }
 
     const getAddress = () => getAddressFromStorage()
-
+    const getNFTUser = async (listAddress:any = []) => await getNFTs(listAddress)
     return {
         generateSeed,
         validateSeed,
         toString,
         toStringArray,
         validateIndividualWord,
-        getAddress
+        getAddress,
+        getNFTUser
     }
 }
 
