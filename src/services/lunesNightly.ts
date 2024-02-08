@@ -84,40 +84,35 @@ export const getNFTs = async (addressContract: any = []) => {
         const api = await getApi()
         const gasLimit: any = getGasLimit(api)
         let list_nft: any = []
-        await addressContract.forEach(async (address_: string) => {
+       for (let i =0; i<addressContract.length; i++ ){
+            let address_ = addressContract[i]
             const contract = new ContractPromise(api, ABI, address_);
-            console.log("contract",contract)
             let adddressUser = getAddressFromStorage();
-            console.log("adddressUser", adddressUser)
-            const { gasRequired, result, output }: any = await contract.query['payableMintImpl::tokenAccount'](
+            const { output }: any = await contract.query['payableMintImpl::tokenAccount'](
                 adddressUser,
                 {
                     gasLimit,
                 }, {
                 page: "1",
             })
-            console.log('gasRequired', gasRequired.toString())
-            console.log('result', result.toHuman())
-            console.log('output', output)
-            if (result.isErr) {
-                console.log("error", result.toHuman())
-              }
+            
             if (output) {
                 const nfts = output.toHuman()
                 console.log(nfts)
                 if(nfts?.Ok?.Ok){
-                    nfts?.Ok?.Ok.forEach(async (nf:any) => {
+                    for(let j=0; j<nfts?.Ok?.Ok.length;j++){
+                        let nf = nfts?.Ok?.Ok[j]
                         let n = await getDetaisNFT(contract,nf.tokenId, api) as Ntf
                         if(n){
                             n.balance = nf.balance
+                            n.addressContract = address_
+                            console.log(n)
                             list_nft.push(n)
-                        }
-                        
-                    });
-                    
+                        }                        
+                    }
                 }          
               }             
-        });
+        };
         return list_nft
     } catch(error) {
         

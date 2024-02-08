@@ -6,11 +6,14 @@ type ListItemProps = {
 }
 
 const ListNFT = (props: ListItemProps) => {
-    const setSelectedToken = (nft:any) =>{
-
-    }
+    const setSelectedToken = (nft:Ntf) =>{
+        window.open(
+            `https://nft.lunes.io?address=${nft.addressContract}&id=${nft.tokenId}`,
+            '_blank' // <- This is what makes it open in a new window.
+          );
+    }   
     return (
-        <Styles.ListItem onClick={() => setSelectedToken(props.nft)}>
+        <Styles.ListItem onClick={(e) => setSelectedToken(props.nft)}>
             <Styles.ListItemContainer>
                 <Styles.ListItemCoinInfo>
                     <Styles.ListItemNft

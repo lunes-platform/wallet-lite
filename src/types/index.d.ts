@@ -44,6 +44,7 @@ type Ntf = {
     maxPerMint: string
     totalMint: string
     balance: string
+    addressContract: string
 }
 declare module "nft" {
     export interface INft {

@@ -9,11 +9,10 @@ import Tabs from "./components/tabs"
 import useSeed from "../../hooks/useSeed"
 
 import { AppContext } from "../../hooks/useContext"
-import { getLunesBalance } from "../../services/lunesNightly"
+import { getLunesBalance, getNFTs } from "../../services/lunesNightly"
 
 import * as Styles from "./styles"
 import ListNFT from "./components/listNFT"
-import useNFT from "../../hooks/useNFT"
 import Button from "../../components/button"
 import { TextInput } from "../../components/input"
 
@@ -29,10 +28,12 @@ const Home = () => {
     const { selectedToken, setSelectedToken } = React.useContext(AppContext)
 
     const [isNFT, setIsNFT] = useState(false)
+
     const [newAddress, setNewAddress] = useState("")
     const [fiedNewAddress, setFielAddress] = useState(false)
 
-    const { NFTs, getNFTUser, setListNFT } = useNFT()
+    //const { NFTs, getNFTUser, setListNFT } = useNFT()
+    const [NFTs, setListNFT] = useState([])
 
     useEffect(() => {
         if (!userAddress) {
@@ -56,11 +57,13 @@ const Home = () => {
         })
     }
     const getNftContext = async () => {
-        setListNFT([])
         let addres_json = localStorage.getItem("address_contract")
         if (addres_json) {
-            let address = JSON.parse(addres_json) as []
-            await getNFTUser(address)            
+            let address = JSON.parse(addres_json)
+            let nfts_ = await getNFTs(address)
+            console.log('nfts_',nfts_)
+            if (nfts_)
+                setListNFT(nfts_)    
         }
     }
     const handleAdressNft = () => {
@@ -145,6 +148,7 @@ const Home = () => {
                         style={{textAlign:"center"}}
                         placeholder="Address Contract NFT"
                         value={newAddress}
+                        autoFocus
                         onChange={(e) => setNewAddress(e.target.value)}
                         type={"text"}
                     />

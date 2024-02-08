@@ -4,7 +4,7 @@ import { useState } from "react"
 import { getNFTs } from "../services/lunesNightly"
 
 const useNFT = () => {    
-    const [NFTs, setListNFT] = useState([])
+    const [NFTs, setListNFT] = useState<Array<Ntf>>([])
     const getNFTUser = async (listAddress:any = []) =>{
         setListNFT([])
         let ntfs = await getNFTs(listAddress)
