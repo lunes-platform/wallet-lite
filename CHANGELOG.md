@@ -1,3 +1,21 @@
+commit 813e5c59b508efaef2094af8240d92beb16dbf05
+Author: jorge almeida <jorge.almeida@cvaconsultoria.com.br>
+Date:   Thu Feb 8 00:03:51 2024 -0300
+
+    add nft
+
+commit c70e82dfbad62992c930bcc87c8c7b8f49fc55f8
+Author: jorge almeida <jorge.almeida@cvaconsultoria.com.br>
+Date:   Wed Feb 7 21:08:46 2024 -0300
+
+    add contract
+
+commit ec1246e04bff6113e4d8c4757b86a25f16565bfa
+Author: Adelson Santos <adelson@securitus.group>
+Date:   Wed Dec 20 17:09:34 2023 -0300
+
+    update version manifest
+
 commit 5441dc05e87deddff93788af6fde25abd9018e55
 Author: Adelson Santos <adelson@securitus.group>
 Date:   Wed Dec 20 15:02:02 2023 -0300
