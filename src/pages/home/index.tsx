@@ -88,10 +88,15 @@ const Home = () => {
                 let address:any = []
                 if (addres_json) {
                     address = JSON.parse(addres_json) as []
+                    
                 }
-                address.push(newAddress)
-                console.log("salve")
-                localStorage.setItem("address_contract", JSON.stringify(address))
+                let findAddress = address.find((el:string)=>el == newAddress)
+                if(!findAddress){
+                    address.push(newAddress)
+                    console.log("salve")
+                    localStorage.setItem("address_contract", JSON.stringify(address))
+                }
+               
             }else
             {
                 console.log("erro")
