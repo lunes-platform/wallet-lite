@@ -1,3 +1,15 @@
+commit 9f3c0d1c96646c0d81530558bbe1cb5da924f3b3
+Author: jorge almeida <jorge.almeida@cvaconsultoria.com.br>
+Date:   Thu Feb 8 18:40:30 2024 -0300
+
+    add validator contract
+
+commit d9cf45e7a4421293768d8f385bddcce9e8e3cba0
+Author: jorge almeida <jorge.almeida@cvaconsultoria.com.br>
+Date:   Thu Feb 8 18:08:59 2024 -0300
+
+    add url ipfs
+
 commit 813e5c59b508efaef2094af8240d92beb16dbf05
 Author: jorge almeida <jorge.almeida@cvaconsultoria.com.br>
 Date:   Thu Feb 8 00:03:51 2024 -0300
