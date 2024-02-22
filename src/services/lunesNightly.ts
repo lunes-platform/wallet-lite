@@ -174,9 +174,10 @@ export const getLunesBalance = async (address: string): Promise<number> => {
     }
 }
 const convertAmountLunes = (value: string) => {
+    console.log(value)
     if(!value)
         return 0
-    return Number(value.replaceAll(",", "").toString()) / 100000000
+    return Number(value.replaceAll(",", "").toString())
 }
 export const getAssetBalance = async (address: string, assetId: string) => {
     if (!address) {
