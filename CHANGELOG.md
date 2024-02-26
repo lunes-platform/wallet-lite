@@ -1,3 +1,15 @@
+commit 7496208ffb5b48b431802136df448b59d7f5a65a
+Author: jorge almeida <jorge.almeida@cvaconsultoria.com.br>
+Date:   Thu Feb 22 11:08:00 2024 -0300
+
+    fix add balance
+
+commit cb8a0924c531441b1013cb69cf8e6589f8c8241e
+Author: Adelson Santos <adelson@securitus.group>
+Date:   Wed Feb 21 18:13:38 2024 -0300
+
+    update version
+
 commit 9f3c0d1c96646c0d81530558bbe1cb5da924f3b3
 Author: jorge almeida <jorge.almeida@cvaconsultoria.com.br>
 Date:   Thu Feb 8 18:40:30 2024 -0300
