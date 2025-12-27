@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lunes Wallet - Teste de Injeção Web3</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: #fff;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2rem;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #888;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card h2 {
+            font-size: 1.2rem;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .status.success {
+            background: rgba(76, 175, 80, 0.2);
+            color: #4CAF50;
+        }
+
+        .status.error {
+            background: rgba(244, 67, 54, 0.2);
+            color: #F44336;
+        }
+
+        .status.pending {
+            background: rgba(255, 193, 7, 0.2);
+            color: #FFC107;
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .log {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            padding: 16px;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 0.85rem;
+            max-height: 200px;
+            overflow-y: auto;
+            margin-top: 16px;
+        }
+
+        .log-entry {
+            padding: 4px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .log-entry.info {
+            color: #64B5F6;
+        }
+
+        .log-entry.success {
+            color: #81C784;
+        }
+
+        .log-entry.error {
+            color: #E57373;
+        }
+
+        .accounts-list {
+            margin-top: 16px;
+        }
+
+        .account {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            word-break: break-all;
+        }
+
+        .account-name {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .account-address {
+            font-family: 'Monaco', monospace;
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        .instructions {
+            background: rgba(255, 193, 7, 0.1);
+            border-left: 4px solid #FFC107;
+            padding: 16px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 20px;
+        }
+
+        .instructions h3 {
+            color: #FFC107;
+            margin-bottom: 10px;
+        }
+
+        .instructions ol {
+            padding-left: 20px;
+        }
+
+        .instructions li {
+            margin-bottom: 8px;
+            color: #ccc;
+        }
+
+        code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Monaco', monospace;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🔗 Lunes Wallet</h1>
+        <p class="subtitle">Teste de Injeção Web3</p>
+
+        <div class="instructions">
+            <h3>📋 Instruções para Testar</h3>
+            <ol>
+                <li>Execute <code>npm run build</code> no projeto</li>
+                <li>Abra <code>chrome://extensions/</code> no Chrome</li>
+                <li>Ative o <strong>Modo do desenvolvedor</strong> (canto superior direito)</li>
+                <li>Clique em <strong>Carregar sem compactação</strong></li>
+                <li>Selecione a pasta <code>build/</code> do projeto</li>
+                <li>Abra este arquivo HTML no navegador</li>
+                <li>Clique em <strong>Detectar Wallets</strong></li>
+            </ol>
+        </div>
+
+        <div class="card">
+            <h2>1️⃣ Detecção de Wallets</h2>
+            <p>Verifica se há wallets injetadas em <code>window.injectedWeb3</code></p>
+            <button id="detectBtn" onclick="detectWallets()">Detectar Wallets</button>
+            <div id="detectionLog" class="log" style="display: none;"></div>
+        </div>
+
+        <div class="card">
+            <h2>2️⃣ Conectar Wallet</h2>
+            <p>Solicita permissão para acessar as contas da wallet</p>
+            <button id="connectBtn" onclick="connectWallet()" disabled>Conectar Lunes Wallet</button>
+            <div id="accountsList" class="accounts-list"></div>
+        </div>
+
+        <div class="card">
+            <h2>3️⃣ Status da Conexão</h2>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <span>Extensão Instalada: <span id="installedStatus" class="status pending">Verificando...</span></span>
+                <span>Conectado: <span id="connectedStatus" class="status pending">Não</span></span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Logs
+        function addLog(message, type = 'info') {
+            const log = document.getElementById('detectionLog');
+            log.style.display = 'block';
+            const entry = document.createElement('div');
+            entry.className = `log-entry ${type}`;
+            entry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+            log.appendChild(entry);
+            log.scrollTop = log.scrollHeight;
+        }
+
+        // Check if extension is installed on load
+        window.addEventListener('load', () => {
+            setTimeout(checkExtension, 500);
+        });
+
+        function checkExtension() {
+            const installedStatus = document.getElementById('installedStatus');
+
+            if (window.injectedWeb3 && window.injectedWeb3['lunes-wallet']) {
+                installedStatus.textContent = 'Sim ✓';
+                installedStatus.className = 'status success';
+                document.getElementById('connectBtn').disabled = false;
+            } else if (window.injectedWeb3) {
+                installedStatus.textContent = 'Outras wallets detectadas';
+                installedStatus.className = 'status pending';
+            } else {
+                installedStatus.textContent = 'Não';
+                installedStatus.className = 'status error';
+            }
+        }
+
+        function detectWallets() {
+            const log = document.getElementById('detectionLog');
+            log.innerHTML = '';
+            log.style.display = 'block';
+
+            addLog('Iniciando detecção de wallets...', 'info');
+
+            if (!window.injectedWeb3) {
+                addLog('❌ window.injectedWeb3 não encontrado', 'error');
+                addLog('A extensão não está injetando o provider.', 'error');
+                addLog('Verifique se a extensão está carregada corretamente.', 'info');
+                return;
+            }
+
+            addLog('✓ window.injectedWeb3 encontrado', 'success');
+
+            const wallets = Object.keys(window.injectedWeb3);
+            addLog(`Wallets encontradas: ${wallets.length}`, 'info');
+
+            wallets.forEach(wallet => {
+                const provider = window.injectedWeb3[wallet];
+                addLog(`  → ${wallet} (v${provider.version || 'unknown'})`, 'success');
+            });
+
+            if (window.injectedWeb3['lunes-wallet']) {
+                addLog('✓ Lunes Wallet detectada!', 'success');
+                document.getElementById('connectBtn').disabled = false;
+            } else {
+                addLog('⚠ Lunes Wallet não encontrada nas wallets injetadas', 'error');
+            }
+
+            checkExtension();
+        }
+
+        async function connectWallet() {
+            const connectedStatus = document.getElementById('connectedStatus');
+            const accountsList = document.getElementById('accountsList');
+
+            try {
+                addLog('Solicitando conexão com Lunes Wallet...', 'info');
+
+                const lunesWallet = window.injectedWeb3['lunes-wallet'];
+                if (!lunesWallet) {
+                    throw new Error('Lunes Wallet não encontrada');
+                }
+
+                const result = await lunesWallet.enable(window.location.origin);
+                addLog('✓ Conexão autorizada!', 'success');
+
+                const accounts = await result.accounts.get();
+                addLog(`${accounts.length} conta(s) encontrada(s)`, 'success');
+
+                connectedStatus.textContent = 'Sim ✓';
+                connectedStatus.className = 'status success';
+
+                accountsList.innerHTML = '<h4 style="margin-bottom: 12px;">Contas Disponíveis:</h4>';
+
+                if (accounts.length === 0) {
+                    accountsList.innerHTML += '<p style="color: #888;">Nenhuma conta encontrada. Crie uma conta na wallet primeiro.</p>';
+                } else {
+                    accounts.forEach(account => {
+                        accountsList.innerHTML += `
+                            <div class="account">
+                                <div class="account-name">${account.name || 'Conta sem nome'}</div>
+                                <div class="account-address">${account.address}</div>
+                            </div>
+                        `;
+                    });
+                }
+
+            } catch (error) {
+                addLog(`❌ Erro: ${error.message}`, 'error');
+                connectedStatus.textContent = 'Erro';
+                connectedStatus.className = 'status error';
+            }
+        }
+
+        // Listen for extension installation
+        window.addEventListener('message', (event) => {
+            if (event.data.type === 'lunes-wallet:installed') {
+                addLog('Lunes Wallet extension installed!', 'success');
+                checkExtension();
+            }
+        });
+    </script>
+</body>
+
+</html>

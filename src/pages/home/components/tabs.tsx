@@ -1,15 +1,29 @@
 import * as Styles from "../styles"
 
-const Tabs = () => {
+interface TabsProps {
+    activeTab: "tokens" | "nfts"
+    onChange: (tab: "tokens" | "nfts") => void
+}
+
+const Tabs = ({ activeTab, onChange }: TabsProps) => {
     return (
         <Styles.TabHeadline>
             <Styles.TabBox>
-                <Styles.Tab active={true}>Tokens</Styles.Tab>
-                <Styles.Tab disabled style={{ cursor: "default" }}>NFT's'</Styles.Tab>
+                <Styles.Tab
+                    active={activeTab === "tokens"}
+                    onClick={() => onChange("tokens")}
+                >
+                    Tokens
+                </Styles.Tab>
+                <Styles.Tab
+                    active={activeTab === "nfts"}
+                    onClick={() => onChange("nfts")}
+                >
+                    NFT's
+                </Styles.Tab>
             </Styles.TabBox>
         </Styles.TabHeadline>
     )
 }
-
 
 export default Tabs

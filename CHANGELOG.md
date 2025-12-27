@@ -1,3 +1,27 @@
+commit 966952280c48528876cc2c2e350ae0644d0ffb4f
+Author: Cardeal <cliente@iMac-de-Cliente.local>
+Date:   Mon Dec 22 17:42:09 2025 -0300
+
+    🔐 Add Gitleaks secret scanning workflow and config
+
+commit a3d4c303fafb14106ed8c6a92d58091120cab465
+Author: Robson <robson.miranda1991@gmail.com>
+Date:   Wed Dec 14 09:52:36 2022 -0300
+
+    added vol token icon
+
+commit 9377b83ba3023a653ded0d071f151eaa3b67b728
+Author: Robson Miranda <46539960+robson036@users.noreply.github.com>
+Date:   Mon Jun 13 10:58:33 2022 -0300
+
+    add: token icon purpose
+
+commit 37c0d7e46b914a3c0570ecf2033f5ecab9487408
+Author: Robson <robson.miranda@lunes.io>
+Date:   Mon Jun 13 09:12:34 2022 -0300
+
+    updated changelog
+
 commit fa2dd178504afc2f6c6089fd946d1a03a0e91d85
 Author: Robson Miranda <46539960+robson036@users.noreply.github.com>
 Date:   Fri Jun 10 17:52:07 2022 -0300

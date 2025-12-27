@@ -1,10 +1,12 @@
-import { generateMnemonic, validateMnemonic } from "bip39"
-import wordList from "bip39/src/wordlists/english.json"
+import { generateMnemonic, validateMnemonic, wordlists } from "bip39"
 import { translate } from "../lang/translation"
 import { modalAlert } from "../modal/core/modal"
 import { encryptAes } from "../services/cryptograpy"
 
 import { decodeWallet, getAddressFromStorage } from "../services/lunes"
+
+// Use the English wordlist from bip39
+const wordList = wordlists.english || []
 
 const useSeed = () => {
     const generateSeed = () => generateMnemonic()

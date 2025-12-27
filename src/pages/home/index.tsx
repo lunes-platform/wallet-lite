@@ -6,6 +6,7 @@ import ButtonsContainer from "./components/buttonsContainer"
 import Header from "../../components/header"
 import ListItem from "./components/listItem"
 import Tabs from "./components/tabs"
+import NFTList from "./components/nftList"
 import useSeed from "../../hooks/useSeed"
 
 import { AppContext } from "../../hooks/useContext"
@@ -24,50 +25,68 @@ const Home = () => {
     const { selectedToken, setSelectedToken } = React.useContext(AppContext)
 
     useEffect(() => {
-        if (!userAddress) {
+        // Check if user has both ADDRESS and SEED (both are required for a valid wallet)
+        const hasSeed = localStorage.getItem("SEED");
+        const hasAddress = localStorage.getItem("ADDRESS");
+
+        if (!userAddress || !hasSeed || !hasAddress) {
             navigate("/welcome")
             return
         }
     }, [userAddress, navigate])
 
+
     useEffect(() => {
         async function getBalances() {
-            setBalances(await getAssetsBalance(userAddress))
-            setLunesBalance(await getLunesBalance(userAddress))
+            if (!userAddress) return;
+
+            const assetsResult = await getAssetsBalance(userAddress);
+            const lunesResult = await getLunesBalance(userAddress);
+
+            setBalances(assetsResult || []);
+            setLunesBalance(lunesResult || 0);
             setSelectedToken({
-                balance: lunesBalance,
+                balance: lunesResult || 0,
                 issueTransaction: {
                     name: "Lunes",
                     decimals: 8
                 }
-            })
+            });
         }
-        getBalances()
-    }, [userAddress, lunesBalance, setSelectedToken])
+        getBalances();
+    }, [userAddress, setSelectedToken])
 
 
+
+    const [activeTab, setActiveTab] = useState<"tokens" | "nfts">("tokens")
 
     return (
         <Styles.Container>
             <Header rightSideComponent={<Balance />} />
 
             <Styles.TokenContainer>
-                <Tabs />
+                <Tabs activeTab={activeTab} onChange={setActiveTab} />
                 <Styles.TabContent>
-                    <ListItem
-                        selectedToken={selectedToken.issueTransaction?.name === "Lunes"}
-                        token={{
-                            balance: lunesBalance,
-                            issueTransaction: {
-                                name: "Lunes",
-                                decimals: 8
+                    {activeTab === "tokens" ? (
+                        <>
+                            <ListItem
+                                selectedToken={selectedToken.issueTransaction?.name === "Lunes"}
+                                token={{
+                                    balance: lunesBalance,
+                                    issueTransaction: {
+                                        name: "Lunes",
+                                        decimals: 8
+                                    }
+                                }} />
+                            {
+                                (balances || []).map((item: Token, index) => {
+                                    return <ListItem key={index} token={item} selectedToken={selectedToken.issueTransaction?.name === item?.issueTransaction?.name} />
+                                })
                             }
-                        }} />
-                    {
-                        balances.map((item: Token, index) => {
-                            return <ListItem key={index} token={item} selectedToken={selectedToken.issueTransaction?.name === item?.issueTransaction?.name} />
-                        })
-                    }
+                        </>
+                    ) : (
+                        <NFTList />
+                    )}
                 </Styles.TabContent>
 
             </Styles.TokenContainer>

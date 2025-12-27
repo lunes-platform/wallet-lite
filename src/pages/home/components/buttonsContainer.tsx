@@ -13,6 +13,7 @@ import * as Styles from "../styles"
 const ButtonsContainer = () => {
     const { getAddress } = useSeed()
     const navigate = useNavigate()
+
     return (
         <Styles.ButtonsHolder>
             <Styles.Column>
@@ -24,7 +25,7 @@ const ButtonsContainer = () => {
 
             <Styles.Column>
                 <Styles.Button onClick={() => navigate("/receive")}>
-                    <img src={IconReceive} alt="Send" />
+                    <img src={IconReceive} alt="Receive" />
                 </Styles.Button>
                 <Styles.Label>{translate.home.receive}</Styles.Label>
             </Styles.Column>
@@ -38,7 +39,7 @@ const ButtonsContainer = () => {
                         )
                     }}
                 >
-                    <img src={IconExplorer} alt="Send" />
+                    <img src={IconExplorer} alt="Explorer" />
                 </Styles.Button>
                 <Styles.Label>{translate.home.explorer}</Styles.Label>
             </Styles.Column>
@@ -49,7 +50,7 @@ const ButtonsContainer = () => {
                         window.open(`mailto:support@lunes.io`, "_blank")
                     }}
                 >
-                    <img src={IconSupport} alt="Send" />
+                    <img src={IconSupport} alt="Support" />
                 </Styles.Button>
                 <Styles.Label>{translate.home.support}</Styles.Label>
             </Styles.Column>
@@ -58,3 +59,4 @@ const ButtonsContainer = () => {
 }
 
 export default ButtonsContainer
+

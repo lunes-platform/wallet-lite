@@ -86,7 +86,7 @@ const useTransaction = () => {
         if (tx.id) {
             modalAlert({
                 headline: translate.hooks.useTransaction.successHeadLine,
-                message: translate.hooks.useTransaction.successMessage
+                message: `${translate.hooks.useTransaction.successMessage}\n\nTxID: ${tx.id}`
             })
 
             navigate("/")
