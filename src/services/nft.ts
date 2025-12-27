@@ -127,8 +127,42 @@ export const getInkNFTs = async (
     }
 };
 
+export const getCustomNFTs = (): NFT[] => {
+    try {
+        const stored = localStorage.getItem("CUSTOM_NFTS")
+        return stored ? JSON.parse(stored) : []
+    } catch (e) {
+        return []
+    }
+}
+
+export const addCustomNFT = (nft: NFT) => {
+    const nfts = getCustomNFTs()
+    if (!nfts.find(n => n.id === nft.id)) {
+        nfts.push(nft)
+        localStorage.setItem("CUSTOM_NFTS", JSON.stringify(nfts))
+    }
+}
+
+export const removeCustomNFT = (id: string) => {
+    const nfts = getCustomNFTs()
+    const newNfts = nfts.filter(n => n.id !== id)
+    localStorage.setItem("CUSTOM_NFTS", JSON.stringify(newNfts))
+}
+
 export const getAllNFTs = async (address: string): Promise<NFT[]> => {
     const native = await getNativeNFTs(address);
-    // Ink! integration would be merged here
-    return [...native];
+    const custom = getCustomNFTs();
+
+    // Merge lists, avoiding duplicates if checking ID
+    // Custom NFTs might be Ink! contracts or Native assets not yet indexed
+    const all = [...native];
+
+    custom.forEach(nft => {
+        if (!all.find(n => n.id === nft.id)) {
+            all.push(nft);
+        }
+    });
+
+    return all;
 };

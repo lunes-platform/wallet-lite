@@ -4,7 +4,7 @@ import Button from "../../components/button"
 import Logo from "../../assets/images/logo.svg"
 import { InputTextHolder, TextInput } from "../../components/input"
 
-import { encryptSha512 } from "../../services/cryptograpy"
+
 import { translate } from "../../lang/translation"
 import { useNavigate } from "react-router-dom"
 import usePassword from "../../hooks/usePassword"
@@ -23,7 +23,8 @@ export default function Password() {
         if (!password || !confirm) {
             return
         }
-        if (comparePasswords(encryptSha512(password), encryptSha512(confirm))) {
+        // comparePasswords handles hashing internally, so pass plain text passwords
+        if (comparePasswords(password, confirm)) {
             navigate("/seed", {
                 state: {
                     password: password

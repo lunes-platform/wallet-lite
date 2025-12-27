@@ -42,3 +42,10 @@ export const Label = styled.span`
     color: ${({ theme }) => theme.colors.themeColors[100]};
     font-weight: 500;
 `
+
+export const ErrorMessage = styled.span`
+    display: block;
+    margin-top: 5px;
+    font-size: 0.8rem;
+    color: ${({ theme }) => theme.colors.critical[500]};
+`

@@ -82,3 +82,26 @@ export const BalanceGroup = styled.div`
     flex-direction: column;
     align-items: flex-end;
 `
+
+export const Title = styled.h1`
+    font-size: 18px;
+    font-weight: 600;
+    color: ${({ theme }) => theme.colors.themeColors[100]};
+    margin: 0;
+`
+
+export const BackButton = styled.button`
+    background: transparent;
+    border: none;
+    color: ${({ theme }) => theme.colors.themeColors[100]};
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    &:hover {
+        opacity: 0.8;
+    }
+`

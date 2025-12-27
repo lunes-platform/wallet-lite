@@ -157,11 +157,11 @@ const Seed = () => {
 
                 <Styles.SeedContainer style={{ justifyContent: "center" }}>
                     {verifyIndices.map((wordIndex, inputIndex) => (
-                        <Styles.WordSlot key={wordIndex} style={{ width: "30%" }}>
+                        <Styles.WordSlot key={wordIndex}>
                             <Styles.SeedWordLabel>
                                 {`${wordIndex + 1}`}<sup>a</sup> palavra
                             </Styles.SeedWordLabel>
-                            <TextInput
+                            <Styles.SeedInput
                                 value={verifyInputs[inputIndex]}
                                 placeholder="Digite aqui..."
                                 onChange={(e) => {

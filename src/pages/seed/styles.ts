@@ -8,11 +8,12 @@ export const Container = styled.div`
 
 export const SeedContainer = styled(Container)`
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 1fr 1fr 1fr;
     height: 300px;
     overflow: auto;
+    gap: 10px; 
     & > div {
-        padding: 8px;
+        padding: 4px;
 
         & > div {
             margin: 0;
@@ -28,16 +29,18 @@ export const WordSlot = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
 `
 
 export const SeedWordLabel = styled.span`
     font-family: "Inter";
     font-style: normal;
     font-weight: 700;
-    font-size: 18px;
+    font-size: 14px;
     line-height: 148%;
     text-align: center;
     color: ${({ theme }) => theme.colors.neutral[400]};
+    margin-bottom: 4px;
 `
 
 export const ButtonHolder = styled(Container)`
@@ -45,4 +48,27 @@ export const ButtonHolder = styled(Container)`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+`
+
+export const SeedInput = styled.input`
+    width: 100%;
+    padding: 8px 12px;
+    background-color: ${({ theme }) => theme.colors.themeColors[600]};
+    border-radius: 16px;
+    border: none;
+    color: ${({ theme }) => theme.colors.themeColors[200]};
+    font-size: 0.89rem;
+    text-align: center;
+    
+    &:focus {
+        outline: none;
+        border: none;
+        box-shadow: none;
+        background-color: ${({ theme }) => theme.colors.themeColors[700]};
+    }
+
+    &::placeholder {
+        color: ${({ theme }) => theme.colors.themeColors[400]};
+        font-size: 0.8rem;
+    }
 `

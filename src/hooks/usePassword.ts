@@ -1,9 +1,10 @@
 import { translate } from "../lang/translation"
 import { modalAlert } from "../modal/core/modal"
-import { encryptSha512 } from "../services/cryptograpy"
+import { hashPassword, verifyPasswordHash } from "../services/secureCrypto"
+import { setSecure, getSecure, STORAGE_KEYS } from "../services/secureStorage"
 
 const usePassword = () => {
-    const comparePasswords = (password: string, confirmation: string) => {
+    const comparePasswords = async (password: string, confirmation: string): Promise<boolean> => {
         if (password !== confirmation) {
             modalAlert({
                 headline: translate.attention,
@@ -12,20 +13,21 @@ const usePassword = () => {
 
             return false
         }
-        savePassword(password)
+        await savePassword(password)
         return true
     }
 
-    const savePassword = (password: string) => {
-        // Hash password before storing for security
-        localStorage.setItem("PASS", encryptSha512(password))
+    const savePassword = async (password: string): Promise<boolean> => {
+        // Hash password using PBKDF2 before storing
+        const hash = await hashPassword(password)
+        await setSecure(STORAGE_KEYS.PASS, hash)
         return true
     }
 
-    const verifyPassword = (inputPassword: string): boolean => {
-        const storedHash = localStorage.getItem("PASS")
+    const verifyPassword = async (inputPassword: string): Promise<boolean> => {
+        const storedHash = await getSecure(STORAGE_KEYS.PASS)
         if (!storedHash) return false
-        return encryptSha512(inputPassword) === storedHash
+        return verifyPasswordHash(inputPassword, storedHash)
     }
 
     return {
@@ -35,4 +37,3 @@ const usePassword = () => {
 }
 
 export default usePassword
-

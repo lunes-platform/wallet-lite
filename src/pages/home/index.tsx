@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import styled from "styled-components" // Importing styled to add PlusButton locally if needed
 
 import Balance from "../../components/header/balance"
 import ButtonsContainer from "./components/buttonsContainer"
@@ -21,7 +22,7 @@ const Home = () => {
     const userAddress = getAddress()
 
     const [lunesBalance, setLunesBalance] = useState(0)
-    const [balances, setBalances] = useState([])
+    const [balances, setBalances] = useState<any[]>([])
     const { selectedToken, setSelectedToken } = React.useContext(AppContext)
 
     useEffect(() => {
@@ -66,6 +67,22 @@ const Home = () => {
 
             <Styles.TokenContainer>
                 <Tabs activeTab={activeTab} onChange={setActiveTab} />
+                <ActionHeader>
+                    {/* Optional: Add a small header or just float the button? 
+                        The Figma usually has a button near the list or tabs. 
+                        Let's put a small 'Manage' or '+' button. */}
+
+                    {activeTab === "tokens" ? (
+                        <ManageButton onClick={() => navigate("/tokens/manage")}>
+                            + Manage Tokens
+                        </ManageButton>
+                    ) : (
+                        <ManageButton onClick={() => navigate("/nft/import")}>
+                            + Import NFT
+                        </ManageButton>
+                    )}
+                </ActionHeader>
+
                 <Styles.TabContent>
                     {activeTab === "tokens" ? (
                         <>
@@ -79,7 +96,7 @@ const Home = () => {
                                     }
                                 }} />
                             {
-                                (balances || []).map((item: Token, index) => {
+                                (balances || []).map((item: any, index) => {
                                     return <ListItem key={index} token={item} selectedToken={selectedToken.issueTransaction?.name === item?.issueTransaction?.name} />
                                 })
                             }
@@ -97,3 +114,23 @@ const Home = () => {
 }
 
 export default Home
+
+const ActionHeader = styled.div`
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 16px;
+    margin-top: 8px;
+`
+
+const ManageButton = styled.button`
+    background: transparent;
+    color: ${({ theme }) => theme.colors.primary[500]};
+    border: none;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    
+    &:hover {
+        opacity: 0.8;
+    }
+`

@@ -1,3 +1,28 @@
+commit ff588e1cd9da187d203a7a94e67d966a1026daaf
+Author: Cardeal <cliente@iMac-de-Cliente.local>
+Date:   Fri Dec 26 22:53:11 2025 -0300
+
+    feat: NFT Support, Security Fixes, UI Alignment
+    
+    - Add NFT tab to Home screen with grid display
+    - Implement NFT Details page with image, metadata, and send button
+    - Create NFT Send flow with recipient validation
+    - Add NFT service with IPFS gateway resolution
+    - Install @polkadot/api-contract for Ink! smart contract support
+    
+    Security Fixes:
+    - Fix critical password storage vulnerability (now hashed with SHA-512)
+    - Add verifyPassword function for secure login comparison
+    
+    UI Improvements:
+    - Align action buttons (Send, Receive, Explorer, Support) to Figma circular design
+    - Implement seed backup verification flow (3-word random check)
+    
+    Technical:
+    - Add polyfills for browser extension compatibility
+    - Configure Vite for Chrome extension builds
+    - Add defensive null checks throughout
+
 commit 966952280c48528876cc2c2e350ae0644d0ffb4f
 Author: Cardeal <cliente@iMac-de-Cliente.local>
 Date:   Mon Dec 22 17:42:09 2025 -0300

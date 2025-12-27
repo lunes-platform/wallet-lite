@@ -72,10 +72,12 @@
         "@types/react-dom": "^19.2.3",
         "@types/styled-components": "^5.1.24",
         "@vitejs/plugin-react": "^5.1.2",
+        "happy-dom": "^20.0.11",
         "react-error-overlay": "6.0.9",
         "typescript": "^5.9.3",
         "vite": "^7.3.0",
-        "vite-tsconfig-paths": "^6.0.3"
+        "vite-tsconfig-paths": "^6.0.3",
+        "vitest": "^4.0.16"
     },
     "sass": {
         "includePaths": [

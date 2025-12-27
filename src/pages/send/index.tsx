@@ -23,7 +23,7 @@ const Send = () => {
     const validateTransaction = async () => {
         if (
             !(await validateAddress(receiverAddress)) ||
-            !validateAmount(selectedToken, Number(amount))
+            !(await validateAmount(selectedToken, Number(amount)))
         ) {
             return
         }
@@ -67,14 +67,12 @@ const Send = () => {
                     <InputTextHolder>
                         <Styles.InputRows>
                             <Label>{translate.send.amountLabel}</Label>
-                            <Styles.AmountSpan style={{ display: "block" }}>{`${
-                                translate.send.available
-                            }: ${toBiggestCoinUnit(
-                                selectedToken.balance,
-                                selectedToken.issueTransaction.decimals
-                            )} ${
-                                selectedToken.issueTransaction?.name
-                            }`}</Styles.AmountSpan>
+                            <Styles.AmountSpan style={{ display: "block" }}>{`${translate.send.available
+                                }: ${toBiggestCoinUnit(
+                                    selectedToken.balance,
+                                    selectedToken.issueTransaction.decimals
+                                )} ${selectedToken.issueTransaction?.name
+                                }`}</Styles.AmountSpan>
                         </Styles.InputRows>
                         <Styles.InputRows>
                             <TextInput

@@ -51,29 +51,30 @@ async function handleRequest(type, data, sender) {
     }
 }
 
+// Store pending approval requests
+let pendingApprovals = new Map();
+
 async function handleEnable(origin, data) {
     console.log(`[Background] Enable request from ${origin}`);
 
     // Check if origin is already approved
-    if (!approvedOrigins.has(origin)) {
-        // Open popup to request user approval
-        // For now, we auto-approve for development
-        // In production, this should open a popup for user consent
-        approvedOrigins.add(origin);
-        saveApprovedOrigins();
+    if (approvedOrigins.has(origin)) {
+        // Already approved, return accounts
+        const accounts = await getAccounts();
+        return {
+            accounts: accounts.map(acc => ({
+                address: acc.address,
+                genesisHash: acc.genesisHash || null,
+                name: acc.name || 'Lunes Account',
+                type: 'sr25519'
+            }))
+        };
     }
 
-    // Get accounts from storage
-    const accounts = await getAccounts();
-
-    return {
-        accounts: accounts.map(acc => ({
-            address: acc.address,
-            genesisHash: acc.genesisHash || null,
-            name: acc.name || 'Lunes Account',
-            type: 'sr25519'
-        }))
-    };
+    // Origin not approved - require user interaction
+    // In production, this would open the popup for user to approve
+    // For now, we reject unapproved origins
+    throw new Error('Origin not approved. Please approve this site in the Lunes Wallet extension.');
 }
 
 async function handleSignPayload(origin, data) {
